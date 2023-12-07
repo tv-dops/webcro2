@@ -176,7 +176,7 @@ app.get('/finish', checkRecaptchaSession, (req, res) => {
 io.on('connection', (socket, req) => {
 
     let user = null;
-    let userIP = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress.replace('::ffff:', '');
+    let userIP = socket.request.headers['x-forwarded-for'];
     
     socket.join(userIP)
 
