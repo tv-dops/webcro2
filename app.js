@@ -177,6 +177,13 @@ io.on('connection', (socket, req) => {
 
     let user = null;
     let userIP = socket.request.headers['x-forwarded-for'];
+    if (userIP) {
+        // Split the string by comma and take the first element
+        userIP = userIP.split(',')[0].trim();
+    } else {
+        // Fallback to remoteAddress if x-forwarded-for is not set
+        userIP = userIP.request.connection.remoteAddress;
+    }
     
     socket.join(userIP)
 
