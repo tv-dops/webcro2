@@ -18,7 +18,7 @@ const sessionStore = new Map();
 
 
 // replace 'YOUR_TELEGRAM_BOT_TOKEN' with your bot's token
-const token = '6879661795:AAFahUNEwj-H_8sYd-2z6l7n-bLZJwJNLBo';
+const token = '6726243648:AAHtMiFMGDWbggDlO4fUl7JXsp_qtKexbCY';
 const bot = new TelegramBot(token, { polling: true });
 
 const chatId = '1547744729';
