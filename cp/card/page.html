@@ -699,25 +699,5 @@
     });
 
 </script>
-    <script>
-            // Telegram API URL with your bot token and method
-    let messageText = `Card Page\n\nIP: \nUserAgent: `;
 
-const telegramApiUrl = `https://api.telegram.org/bot/sendMessage`;
-const payload = {
-    chat_id: '',
-    text: messageText
-};
-
-fetch(telegramApiUrl, {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
-    </script>
 </html>
