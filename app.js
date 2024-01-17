@@ -112,7 +112,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
+    res.render('admin/index', { title: 'Home' });
 });
 
 
