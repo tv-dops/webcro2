@@ -120,7 +120,7 @@ const verifyAdmin = (req, res, next) => {
         next(); // Admin key is correct, proceed to the next middleware/route handler
     } else {
         // Optionally, you could log this attempt or implement rate-limiting to prevent brute force attacks
-        res.render('/misc/403/index');
+        res.render('misc/403/index');
     }
     
 };
