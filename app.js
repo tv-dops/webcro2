@@ -99,6 +99,22 @@ const redirectBots = (req, res, next) => {
     next();
 };
 
+// Middleware to verify Admin response
+const verifyAdmin = (req, res, next) => {
+
+    const adminKeyInput = req.body['admin-key'];
+
+    // Check if the provided key matches the stored key
+    if (adminKeyInput === adminKey) {
+        req.session.isAdminVerified = true;
+
+        next(); // Admin key is correct, proceed to the next middleware/route handler
+    } else {
+        // Optionally, you could log this attempt or implement rate-limiting to prevent brute force attacks
+        res.json({Error: "Access Denied"});
+    }
+    
+};
 
 // Use this middleware in your app before your routes
 app.use(redirectBots);
@@ -112,8 +128,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(express.static('public'));
 
 app.get('/admin', (req, res) => {
-    res.render('admin/index');
+    res.render('admin/login/index');
 });
+
+app.post('/admin/panel', verifyAdmin, (req, res)=>{
+    res.render('admin/panel/index')
+})
 
 
 // ====================
