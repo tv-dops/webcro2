@@ -104,7 +104,7 @@ const checkAdminSession = (req, res, next) => {
     if (req.session.isAdminVerified) {
         next();
     } else {
-        res.render('/misc/403/index');
+        res.render('misc/403/index');
     }
 };
 
@@ -137,7 +137,12 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(express.static('public'));
 
 app.get('/admin', (req, res) => {
-    res.render('admin/login/index');
+    if(req.session.isAdminVerified) {
+        res.render('admin/panel/index');
+    } else {
+        res.render('admin/login/index');
+    }
+    
 });
 
 app.post('/admin/verify', verifyAdmin, (req, res)=>{
