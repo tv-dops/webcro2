@@ -149,7 +149,7 @@ app.post('/admin/verify', verifyAdmin, (req, res)=>{
     res.redirect(200, '/admin/panel');
 })
 
-app.post('/admin/panel', checkAdminSession, (req, res) => {
+app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index');
 })
 
