@@ -146,7 +146,7 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/admin/verify', verifyAdmin, (req, res)=>{
-    res.redirect(200, '/admin/panel');
+    res.redirect(301, '/admin/panel');
 })
 
 app.get('/admin/panel', checkAdminSession, (req, res) => {
