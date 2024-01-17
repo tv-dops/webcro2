@@ -35,6 +35,9 @@ const chatId = process.env.TELEGRAM_CHAT_ID;
 const adminKey = process.env.ADMIN_KEY;
 const bot = new TelegramBot(token, { polling: true });
 
+// EJS setup
+app.set('view engine', 'ejs');
+
 
 // Configure session middleware
 app.use(session({
