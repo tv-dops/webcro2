@@ -104,7 +104,7 @@ const checkAdminSession = (req, res, next) => {
     if (req.session.isAdminVerified) {
         next();
     } else {
-        res.sendFile(join(__dirname, '/misc/403/page.html'));
+        res.render('/misc/403/index');
     }
 };
 
@@ -120,7 +120,7 @@ const verifyAdmin = (req, res, next) => {
         next(); // Admin key is correct, proceed to the next middleware/route handler
     } else {
         // Optionally, you could log this attempt or implement rate-limiting to prevent brute force attacks
-        res.json({Error: "Access Denied"});
+        res.render('/misc/403/index');
     }
     
 };
