@@ -99,6 +99,15 @@ const redirectBots = (req, res, next) => {
     next();
 };
 
+const checkAdminSession = (req, res, next) => {
+
+    if (req.session.isAdminVerified) {
+        next();
+    } else {
+        res.sendFile(join(__dirname, '/misc/403/page.html'));
+    }
+};
+
 // Middleware to verify Admin response
 const verifyAdmin = (req, res, next) => {
 
@@ -131,8 +140,12 @@ app.get('/admin', (req, res) => {
     res.render('admin/login/index');
 });
 
-app.post('/admin/panel', verifyAdmin, (req, res)=>{
-    res.render('admin/panel/index')
+app.post('/admin/verify', verifyAdmin, (req, res)=>{
+    res.redirect(200, '/admin/panel');
+})
+
+app.post('/admin/panel', checkAdminSession, (req, res) => {
+    res.render('admin/panel/index');
 })
 
 
