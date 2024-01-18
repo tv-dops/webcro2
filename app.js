@@ -153,7 +153,7 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index');
 })
 
-app.get('/admin/panel/settings', checkAdminSession, (req, res) => {
+app.get('/admin/settings', checkAdminSession, (req, res) => {
     res.render('admin/settings/index')
 })
 
