@@ -245,11 +245,11 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
             return;
         }
 
-        const values = await redisClient.mget(keys);
+        const values = await Promise.all(keys.map(key => redisClient.get(key)));
 
         const data = keys.reduce((obj, key, index) => {
             // Ensure the value exists before parsing
-            obj[key] = values[index] ? JSON.parse(values[index]) : null;
+            obj[key] = values[index];
             return obj;
         }, {});
 
