@@ -183,10 +183,10 @@ app.post('/update', async (req, res) => {
         for (const key in data) {
             await redisClient.set(key, JSON.stringify(data[key]));
         }
-        res.json({ message: 'Data updated' });
+        res.render('admin/panel/index', {bool: true, message: "Your updates have been successfully saved."});
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error updating data');
+        res.status(500).send('Error updating data. Contact webcro help.');
     }
 });
 
