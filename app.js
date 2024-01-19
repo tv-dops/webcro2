@@ -16,6 +16,21 @@ const crypto = require('crypto');
 const sessionStore = new Map();
 const redisClient = require('./redisClient');
 
+function reformatData(data) {
+    const formattedData = {};
+
+    for (const [key, value] of Object.entries(data)) {
+        const [prefix, ...rest] = key.split('-');
+        
+        if (!formattedData[prefix]) {
+            formattedData[prefix] = {};
+        }
+
+        formattedData[prefix][rest.join('-')] = value;
+    }
+
+    return formattedData;
+}
 
 
 (async () => {
@@ -177,7 +192,8 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 
 app.post('/update', async (req, res) => {
     let data = req.body;
-    console.log(data);
+    const formattedData = reformatData(data);
+    console.log(formattedData);
 
     try {
         for (const key in data) {
@@ -219,9 +235,33 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index', {bool: false});
 })
 
-app.get('/admin/settings', checkAdminSession, (req, res) => {
-    res.render('admin/settings/index')
-})
+app.get('/admin/settings', checkAdminSession, async (req, res) => {
+    try {
+        const keys = await redisClient.keys('*');
+
+        if (keys.length === 0) {
+            // Render with a message if no keys are found
+            res.render('admin/settings/index', { data: null, message: 'No settings found. Please use the form below to update.' });
+            return;
+        }
+
+        const values = await redisClient.mget(keys);
+
+        const data = keys.reduce((obj, key, index) => {
+            // Ensure the value exists before parsing
+            obj[key] = values[index] ? JSON.parse(values[index]) : null;
+            return obj;
+        }, {});
+
+        console.log(data)
+
+        res.render('admin/settings/index', { data: data });
+    } catch (error) {
+        console.error(error);
+        res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
+    }
+});
+
 
 
 // ====================
