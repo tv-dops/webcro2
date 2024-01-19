@@ -80,135 +80,133 @@
                 <div class="card">
                     <div class="card-body">
                         <form>
-                        <h5 class="mb-3"> Interac Config </h5>
-                        <div class="row">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="amount" class="form-label">Amount ($)</label>
-                                            <input type="text" class="form-control" id="amount" placeholder="123.45"
-                                                required>
+                            <h5 class="mb-3"> Interac Config </h5>
+                            <div class="row">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="amount" class="form-label">Amount ($)</label>
+                                                <input type="text" class="form-control" id="amount" placeholder="123.45"
+                                                    required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="from" class="form-label">From</label>
+                                                <input type="text" class="form-control" id="from" placeholder="Bussines"
+                                                    required>
+                                            </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="from" class="form-label">From</label>
-                                            <input type="text" class="form-control" id="from" placeholder="Bussines"
-                                                required>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label for="notice" class="form-label">Notice</label>
-                                            <input type="text" class="form-control" id="notice"
-                                                placeholder="Your new bill arrived" required>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="expire" class="form-label">Expire</label>
-                                            <input type="text" class="form-control" id="expire"
-                                                placeholder="Use the date you want" required>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label for="notice" class="form-label">Notice</label>
+                                                <input type="text" class="form-control" id="notice"
+                                                    placeholder="Your new bill arrived" required>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="expire" class="form-label">Expire</label>
+                                                <input type="text" class="form-control" id="expire"
+                                                    placeholder="Use the date you want" required>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <!-- ATB Bank Section -->
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        ATB
-                                    </div>
-                                    <div class="card-body">
-                                        
+                            <div class="row">
+                                <!-- ATB Bank Section -->
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            ATB
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- ATB Form -->
 
                                             <div class="mb-3 form-check">
                                                 <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <select class="form-select" name="atbq/a" id="atbQ/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
-
+                                            
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
+                                                <input type="checkbox" name="atbfullname" class="form-check-input" id="atbFullName">
                                                 <label class="form-check-label" for="atbFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
+                                                <input type="checkbox" name="atbpostalcode" class="form-check-input" id="atbPostalCode">
                                                 <label class="form-check-label" for="atbPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">3-Digit Tele Pin</label>
+                                                <input type="checkbox" name="atb3digit" class="form-check-input" id="atbDigit">
+                                                <label class="form-check-label" for="atbDigit">3-Digit Tele Pin</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
-                                                    Number</label>
+                                                <input type="checkbox" name="atbphone" class="form-check-input" id="atbPhoneNumber">
+                                                <label class="form-check-label" for="atbPhoneNumber">Phone Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
+                                                <input type="checkbox" name="atbemail" class="form-check-input" id="atbEmail">
                                                 <label class="form-check-label" for="atbEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
+                                                <input type="checkbox" name="atbdob" class="form-check-input" id="atbDOB">
                                                 <label class="form-check-label" for="atbDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
-                                                    Name</label>
+                                                <input type="checkbox" name="atbmmn" class="form-check-input" id="atbMMN">
+                                                <label class="form-check-label" for="atbMMN">Mother's Maiden Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
-                                                    Number</label>
+                                                <input type="checkbox" name="atbsin" class="form-check-input" id="atbSIN">
+                                                <label class="form-check-label" for="atbSIN">Social Insurance Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
+                                                <input type="checkbox" name="atbdl" class="form-check-input" id="atbDL">
                                                 <label class="form-check-label" for="atbDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
+                                                <input type="checkbox" name="atbcardnumber" class="form-check-input" id="atbCN">
                                                 <label class="form-check-label" for="atbCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
+                                                <input type="checkbox" name="atbexp" class="form-check-input" id="atbEXP">
                                                 <label class="form-check-label" for="atbEXP">Expiration Date</label>
                                             </div>
-
+                                            
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
+                                                <input type="checkbox" name="atbcvv" class="form-check-input" id="atbCVV">
                                                 <label class="form-check-label" for="atbCVV">CVV</label>
                                             </div>
-
+                                            
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
+                                                <input type="checkbox" name="atbatm" class="form-check-input" id="atbATM">
                                                 <label class="form-check-label" for="atbATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                       
+                                            
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        BMO
-                                    </div>
-                                    <div class="card-body">
-                                       
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            BMO
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- BMO Form -->
 
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="bmoQ/A">Q/A</label>
+                                                <select class="form-select" name="bmoQ/a" id="bmoQ/A">
                                                     <option selected>0</option>
                                                     <option selected>1</option>
                                                     <option selected>2</option>
@@ -219,1064 +217,1255 @@
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" name="bmoFullname" class="form-check-input"
+                                                    id="bmoFullName">
+                                                <label class="form-check-label" for="bmoFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" name="bmoPostalcode" class="form-check-input"
+                                                    id="bmoPostalCode">
+                                                <label class="form-check-label" for="bmoPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" name="bmoPhone" class="form-check-input"
+                                                    id="bmoPhoneNumber">
+                                                <label class="form-check-label" for="bmoPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" name="bmoEmail" class="form-check-input"
+                                                    id="bmoEmail">
+                                                <label class="form-check-label" for="bmoEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" name="bmoDob" class="form-check-input"
+                                                    id="bmoDOB">
+                                                <label class="form-check-label" for="bmoDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" name="bmoMmn" class="form-check-input"
+                                                    id="bmoMMN">
+                                                <label class="form-check-label" for="bmoMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" name="bmoSin" class="form-check-input"
+                                                    id="bmoSIN">
+                                                <label class="form-check-label" for="bmoSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" name="bmoDl" class="form-check-input"
+                                                    id="bmoDL">
+                                                <label class="form-check-label" for="bmoDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" name="bmoCN" class="form-check-input"
+                                                    id="bmoCN">
+                                                <label class="form-check-label" for="bmoCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" name="bmoExp" class="form-check-input"
+                                                    id="bmoEXP">
+                                                <label class="form-check-label" for="bmoEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" name="bmoCvv" class="form-check-input"
+                                                    id="bmoCVV">
+                                                <label class="form-check-label" for="bmoCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" name="bmoAtm" class="form-check-input"
+                                                    id="bmoATM">
+                                                <label class="form-check-label" for="bmoATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                        
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        CIBC
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            CIBC
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- CIBC Form -->
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcFullName"
+                                                    name="cibcFullName">
+                                                <label class="form-check-label" for="cibcFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcPostalCode"
+                                                    name="cibcPostalCode">
+                                                <label class="form-check-label" for="cibcPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">3-Digit Tele Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="cibc3digit"
+                                                    name="cibc3digit">
+                                                <label class="form-check-label" for="cibc3digit">3-Digit Tele
+                                                    Pin</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="cibcPhoneNumber"
+                                                    name="cibcPhoneNumber">
+                                                <label class="form-check-label" for="cibcPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcEmail"
+                                                    name="cibcEmail">
+                                                <label class="form-check-label" for="cibcEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcDOB"
+                                                    name="cibcDOB">
+                                                <label class="form-check-label" for="cibcDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="cibcMMN"
+                                                    name="cibcMMN">
+                                                <label class="form-check-label" for="cibcMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="cibcSIN"
+                                                    name="cibcSIN">
+                                                <label class="form-check-label" for="cibcSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcDL"
+                                                    name="cibcDL">
+                                                <label class="form-check-label" for="cibcDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcCN"
+                                                    name="cibcCN">
+                                                <label class="form-check-label" for="cibcCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcEXP"
+                                                    name="cibcEXP">
+                                                <label class="form-check-label" for="cibcEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcCVV"
+                                                    name="cibcCVV">
+                                                <label class="form-check-label" for="cibcCVV">CVV</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="cibcATM"
+                                                    name="cibcATM">
+                                                <label class="form-check-label" for="cibcATM">ATM Pin</label>
                                             </div>
-                                            <!-- Add other form fields here -->
-                                       
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Desjardins
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Desjardins
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Desjardins Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="desjQ/A">Q/A</label>
+                                                <select class="form-select" id="desjQ/A" name="desj-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="desjFullName"
+                                                    name="desj-FullName">
+                                                <label class="form-check-label" for="desjFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="desjPostalCode"
+                                                    name="desj-PostalCode">
+                                                <label class="form-check-label" for="desjPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="desjPhoneNumber"
+                                                    name="desj-PhoneNumber">
+                                                <label class="form-check-label" for="desjPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="desjEmail"
+                                                    name="desj-Email">
+                                                <label class="form-check-label" for="desjEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="desjDOB"
+                                                    name="desj-DOB">
+                                                <label class="form-check-label" for="desjDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="desjMMN"
+                                                    name="desj-MMN">
+                                                <label class="form-check-label" for="desjMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="desjSIN"
+                                                    name="desj-SIN">
+                                                <label class="form-check-label" for="desjSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="desjDL"
+                                                    name="desj-DL">
+                                                <label class="form-check-label" for="desjDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="desjCN"
+                                                    name="desj-CN">
+                                                <label class="form-check-label" for="desjCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="desjEXP"
+                                                    name="desj-EXP">
+                                                <label class="form-check-label" for="desjEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="desjCVV"
+                                                    name="desj-CVV">
+                                                <label class="form-check-label" for="desjCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="desjATM"
+                                                    name="desj-ATM">
+                                                <label class="form-check-label" for="desjATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                      
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        HSBC
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            HSBC
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- HSBC Form -->
-                            
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcFullName"
+                                                    name="hsbc-FullName">
+                                                <label class="form-check-label" for="hsbcFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcPostalCode"
+                                                    name="hsbc-PostalCode">
+                                                <label class="form-check-label" for="hsbcPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="hsbcPhoneNumber"
+                                                    name="hsbc-PhoneNumber">
+                                                <label class="form-check-label" for="hsbcPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcEmail"
+                                                    name="hsbc-Email">
+                                                <label class="form-check-label" for="hsbcEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcDOB"
+                                                    name="hsbc-DOB">
+                                                <label class="form-check-label" for="hsbcDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="hsbcMMN"
+                                                    name="hsbc-MMN">
+                                                <label class="form-check-label" for="hsbcMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="hsbcSIN"
+                                                    name="hsbc-SIN">
+                                                <label class="form-check-label" for="hsbcSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcDL"
+                                                    name="hsbc-DL">
+                                                <label class="form-check-label" for="hsbcDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcCN"
+                                                    name="hsbc-CN">
+                                                <label class="form-check-label" for="hsbcCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcEXP"
+                                                    name="hsbc-EXP">
+                                                <label class="form-check-label" for="hsbcEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="hsbcCVV"
+                                                    name="hsbc-CVV">
+                                                <label class="form-check-label" for="hsbcCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="hsbcATM"
+                                                    name="hsbc-ATM">
+                                                <label class="form-check-label" for="hsbcATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                      
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Laurentienne
-                                    </div>
-                                    <div class="card-body">
-                                       
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Laurentienne
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Laurentienne Form -->
-                                         
+
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="lauFullName"
+                                                    name="lau-FullName">
+                                                <label class="form-check-label" for="lauFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="lauPostalCode"
+                                                    name="lau-PostalCode">
+                                                <label class="form-check-label" for="lauPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="lauPhoneNumber"
+                                                    name="lau-PhoneNumber">
+                                                <label class="form-check-label" for="lauPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="lauEmail"
+                                                    name="lau-Email">
+                                                <label class="form-check-label" for="lauEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="lauDOB"
+                                                    name="lau-DOB">
+                                                <label class="form-check-label" for="lauDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="lauMMN"
+                                                    name="lau-MMN">
+                                                <label class="form-check-label" for="lauMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="lauSIN"
+                                                    name="lau-SIN">
+                                                <label class="form-check-label" for="lauSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="lauDL"
+                                                    name="lau-DL">
+                                                <label class="form-check-label" for="lauDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="lauCN"
+                                                    name="lau-CN">
+                                                <label class="form-check-label" for="lauCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="lauEXP"
+                                                    name="lau-EXP">
+                                                <label class="form-check-label" for="lauEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="lauCVV"
+                                                    name="lau-CVV">
+                                                <label class="form-check-label" for="lauCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="lauATM"
+                                                    name="lau-ATM">
+                                                <label class="form-check-label" for="lauATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                      
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Manu
-                                    </div>
-                                    <div class="card-body">
-                                      
-                                            <!-- Desjardins Form -->
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Manu
+                                        </div>
+                                        <div class="card-body">
+
+                                            <!-- Manu Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="manuQ/A">Q/A</label>
+                                                <select class="form-select" id="manuQ/A" name="manu-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="manuFullName"
+                                                    name="manu-FullName">
+                                                <label class="form-check-label" for="manuFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="manuPostalCode"
+                                                    name="manu-PostalCode">
+                                                <label class="form-check-label" for="manuPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="manuPhoneNumber"
+                                                    name="manu-PhoneNumber">
+                                                <label class="form-check-label" for="manuPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="manuEmail"
+                                                    name="manu-Email">
+                                                <label class="form-check-label" for="manuEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="manuDOB"
+                                                    name="manu-DOB">
+                                                <label class="form-check-label" for="manuDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="manuMMN"
+                                                    name="manu-MMN">
+                                                <label class="form-check-label" for="manuMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="manuSIN"
+                                                    name="manu-SIN">
+                                                <label class="form-check-label" for="manuSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="manuDL"
+                                                    name="manu-DL">
+                                                <label class="form-check-label" for="manuDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="manuCN"
+                                                    name="manu-CN">
+                                                <label class="form-check-label" for="manuCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="manuEXP"
+                                                    name="manu-EXP">
+                                                <label class="form-check-label" for="manuEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="manuCVV"
+                                                    name="manu-CVV">
+                                                <label class="form-check-label" for="manuCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="manuATM"
+                                                    name="manu-ATM">
+                                                <label class="form-check-label" for="manuATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                       
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Meridian
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Meridian
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Meridian Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="meridianQ/A">Q/A</label>
+                                                <select class="form-select" id="meridianQ/A" name="meridian-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianFullName"
+                                                    name="meridian-FullName">
+                                                <label class="form-check-label" for="meridianFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianPostalCode"
+                                                    name="meridian-PostalCode">
+                                                <label class="form-check-label" for="meridianPostalCode">Postal
+                                                    Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="meridianPhoneNumber"
+                                                    name="meridian-PhoneNumber">
+                                                <label class="form-check-label" for="meridianPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianEmail"
+                                                    name="meridian-Email">
+                                                <label class="form-check-label" for="meridianEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianDOB"
+                                                    name="meridian-DOB">
+                                                <label class="form-check-label" for="meridianDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="meridianMMN"
+                                                    name="meridian-MMN">
+                                                <label class="form-check-label" for="meridianMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="meridianSIN"
+                                                    name="meridian-SIN">
+                                                <label class="form-check-label" for="meridianSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianDL"
+                                                    name="meridian-DL">
+                                                <label class="form-check-label" for="meridianDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianCN"
+                                                    name="meridian-CN">
+                                                <label class="form-check-label" for="meridianCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianEXP"
+                                                    name="meridian-EXP">
+                                                <label class="form-check-label" for="meridianEXP">Expiration
+                                                    Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianCVV"
+                                                    name="meridian-CVV">
+                                                <label class="form-check-label" for="meridianCVV">CVV</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="meridianATM"
+                                                    name="meridian-ATM">
+                                                <label class="form-check-label" for="meridianATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                       
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Motus
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Motus
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Motus Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="motusQ/A">Q/A</label>
+                                                <select class="form-select" id="motusQ/A" name="motus-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="motusFullName"
+                                                    name="motus-FullName">
+                                                <label class="form-check-label" for="motusFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="motusPostalCode"
+                                                    name="motus-PostalCode">
+                                                <label class="form-check-label" for="motusPostalCode">Postal
+                                                    Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="motusPhoneNumber"
+                                                    name="motus-PhoneNumber">
+                                                <label class="form-check-label" for="motusPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="motusEmail"
+                                                    name="motus-Email">
+                                                <label class="form-check-label" for="motusEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="motusDOB"
+                                                    name="motus-DOB">
+                                                <label class="form-check-label" for="motusDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="motusMMN"
+                                                    name="motus-MMN">
+                                                <label class="form-check-label" for="motusMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="motusSIN"
+                                                    name="motus-SIN">
+                                                <label class="form-check-label" for="motusSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="motusDL"
+                                                    name="motus-DL">
+                                                <label class="form-check-label" for="motusDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="motusCN"
+                                                    name="motus-CN">
+                                                <label class="form-check-label" for="motusCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="motusEXP"
+                                                    name="motus-EXP">
+                                                <label class="form-check-label" for="motusEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="motusCVV"
+                                                    name="motus-CVV">
+                                                <label class="form-check-label" for="motusCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="motusATM"
+                                                    name="motus-ATM">
+                                                <label class="form-check-label" for="motusATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                       
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        NBC
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            NBC
+                                        </div>
+                                        <div class="card-body">
+
+                                            <!-- NBC Form -->
                                             <!-- NBC Form -->
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbQ/A">Debit Expiration Date</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcFullName"
+                                                    name="nbc-FullName">
+                                                <label class="form-check-label" for="nbcFullName">Debit Expiration
+                                                    Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcFullName"
+                                                    name="nbc-FullName">
+                                                <label class="form-check-label" for="nbcFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">3-Digit Tele Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcPostalCode"
+                                                    name="nbc-PostalCode">
+                                                <label class="form-check-label" for="nbcPostalCode">3-Digit Tele
+                                                    Pin</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcPostalCode"
+                                                    name="nbc-PostalCode">
+                                                <label class="form-check-label" for="nbcPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="nbcPhoneNumber"
+                                                    name="nbc-PhoneNumber">
+                                                <label class="form-check-label" for="nbcPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcEmail"
+                                                    name="nbc-Email">
+                                                <label class="form-check-label" for="nbcEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcDOB"
+                                                    name="nbc-DOB">
+                                                <label class="form-check-label" for="nbcDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="nbcMMN"
+                                                    name="nbc-MMN">
+                                                <label class="form-check-label" for="nbcMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="nbcSIN"
+                                                    name="nbc-SIN">
+                                                <label class="form-check-label" for="nbcSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcDL"
+                                                    name="nbc-DL">
+                                                <label class="form-check-label" for="nbcDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcCN"
+                                                    name="nbc-CN">
+                                                <label class="form-check-label" for="nbcCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcEXP"
+                                                    name="nbc-EXP">
+                                                <label class="form-check-label" for="nbcEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="nbcCVV"
+                                                    name="nbc-CVV">
+                                                <label class="form-check-label" for="nbcCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="nbcATM"
+                                                    name="nbc-ATM">
+                                                <label class="form-check-label" for="nbcATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                    
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        PC
-                                    </div>
-                                    <div class="card-body">
-                                        
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            PC
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- PC Form -->
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="pcFullName"
+                                                    name="pc-FullName">
+                                                <label class="form-check-label" for="pcFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="pcPostalCode"
+                                                    name="pc-PostalCode">
+                                                <label class="form-check-label" for="pcPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="pcPhoneNumber"
+                                                    name="pc-PhoneNumber">
+                                                <label class="form-check-label" for="pcPhoneNumber">Phone Number</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="pcEmail"
+                                                    name="pc-Email">
+                                                <label class="form-check-label" for="pcEmail">Email</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="pcDOB"
+                                                    name="pc-DOB">
+                                                <label class="form-check-label" for="pcDOB">Date Of Birth</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="pcMMN"
+                                                    name="pc-MMN">
+                                                <label class="form-check-label" for="pcMMN">Mother's Maiden Name</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="pcSIN"
+                                                    name="pc-SIN">
+                                                <label class="form-check-label" for="pcSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="pcDL" name="pc-DL">
+                                                <label class="form-check-label" for="pcDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="pcCN" name="pc-CN">
+                                                <label class="form-check-label" for="pcCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
-                                                    Name</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
-                                                    Number</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
+                                                <input type="checkbox" class="form-check-input" id="pcEXP"
+                                                    name="pc-EXP">
+                                                <label class="form-check-label" for="pcEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="pcCVV"
+                                                    name="pc-CVV">
+                                                <label class="form-check-label" for="pcCVV">CVV</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="pcATM"
+                                                    name="pc-ATM">
+                                                <label class="form-check-label" for="pcATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                      
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        RBC
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            RBC
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- RBC Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="rbcQ/A">Q/A</label>
+                                                <select class="form-select" id="rbcQ/A" name="rbc-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcFullName"
+                                                    name="rbc-FullName">
+                                                <label class="form-check-label" for="rbcFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcPostalCode"
+                                                    name="rbc-PostalCode">
+                                                <label class="form-check-label" for="rbcPostalCode">Postal Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="rbcPhoneNumber"
+                                                    name="rbc-PhoneNumber">
+                                                <label class="form-check-label" for="rbcPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcEmail"
+                                                    name="rbc-Email">
+                                                <label class="form-check-label" for="rbcEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcDOB"
+                                                    name="rbc-DOB">
+                                                <label class="form-check-label" for="rbcDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="rbcMMN"
+                                                    name="rbc-MMN">
+                                                <label class="form-check-label" for="rbcMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="rbcSIN"
+                                                    name="rbc-SIN">
+                                                <label class="form-check-label" for="rbcSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcDL"
+                                                    name="rbc-DL">
+                                                <label class="form-check-label" for="rbcDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcCN"
+                                                    name="rbc-CN">
+                                                <label class="form-check-label" for="rbcCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcEXP"
+                                                    name="rbc-EXP">
+                                                <label class="form-check-label" for="rbcEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">2-Digit Security Code
-                                                </label>
+                                                <input type="checkbox" class="form-check-input" id="rbcCVV"
+                                                    name="rbc-CVV">
+                                                <label class="form-check-label" for="rbcCVV">CVV</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="rbcCVV"
+                                                    name="rbc-CVV">
+                                                <label class="form-check-label" for="rbcCVV">2-Digit Security
+                                                    Code</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="rbcATM"
+                                                    name="rbc-ATM">
+                                                <label class="form-check-label" for="rbcATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                      
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Scotia
-                                    </div>
-                                    <div class="card-body">
-                                        
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Scotia
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Scotia Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="scotiaQ/A">Q/A</label>
+                                                <select class="form-select" id="scotiaQ/A" name="scotia-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaFullName"
+                                                    name="scotia-FullName">
+                                                <label class="form-check-label" for="scotiaFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaPostalCode"
+                                                    name="scotia-PostalCode">
+                                                <label class="form-check-label" for="scotiaPostalCode">Postal
+                                                    Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="scotiaPhoneNumber"
+                                                    name="scotia-PhoneNumber">
+                                                <label class="form-check-label" for="scotiaPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaEmail"
+                                                    name="scotia-Email">
+                                                <label class="form-check-label" for="scotiaEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaDOB"
+                                                    name="scotia-DOB">
+                                                <label class="form-check-label" for="scotiaDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="scotiaMMN"
+                                                    name="scotia-MMN">
+                                                <label class="form-check-label" for="scotiaMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="scotiaSIN"
+                                                    name="scotia-SIN">
+                                                <label class="form-check-label" for="scotiaSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaDL"
+                                                    name="scotia-DL">
+                                                <label class="form-check-label" for="scotiaDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaCN"
+                                                    name="scotia-CN">
+                                                <label class="form-check-label" for="scotiaCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaEXP"
+                                                    name="scotia-EXP">
+                                                <label class="form-check-label" for="scotiaEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaCVV"
+                                                    name="scotia-CVV">
+                                                <label class="form-check-label" for="scotiaCVV">CVV</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">Access Code
-                                                </label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaCVV"
+                                                    name="scotia-CVV">
+                                                <label class="form-check-label" for="scotiaCVV">Access Code</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="scotiaATM"
+                                                    name="scotia-ATM">
+                                                <label class="form-check-label" for="scotiaATM">ATM Pin</label>
                                             </div>
-                                            <!-- Add other form fields here -->
-                                       
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Simplii
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Simplii
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Simplii Form -->
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiFullName"
+                                                    name="simplii-FullName">
+                                                <label class="form-check-label" for="simpliiFullName">Full Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiPostalCode"
+                                                    name="simplii-PostalCode">
+                                                <label class="form-check-label" for="simpliiPostalCode">Postal
+                                                    Code</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">3-Digit Tele Pin
-                                                </label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiPostalCode"
+                                                    name="simplii-PostalCode">
+                                                <label class="form-check-label" for="simpliiPostalCode">3-Digit Tele
+                                                    Pin</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
+                                                <input type="checkbox" class="form-check-input" id="simpliiPhoneNumber"
+                                                    name="simplii-PhoneNumber">
+                                                <label class="form-check-label" for="simpliiPhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiEmail"
+                                                    name="simplii-Email">
+                                                <label class="form-check-label" for="simpliiEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiDOB"
+                                                    name="simplii-DOB">
+                                                <label class="form-check-label" for="simpliiDOB">Date Of Birth</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="simpliiMMN"
+                                                    name="simplii-MMN">
+                                                <label class="form-check-label" for="simpliiMMN">Mother's Maiden
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="simpliiSIN"
+                                                    name="simplii-SIN">
+                                                <label class="form-check-label" for="simpliiSIN">Social Insurance
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiDL"
+                                                    name="simplii-DL">
+                                                <label class="form-check-label" for="simpliiDL">Driver Licence</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiCN"
+                                                    name="simplii-CN">
+                                                <label class="form-check-label" for="simpliiCN">Card Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
-                                            </div>
-
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiEXP"
+                                                    name="simplii-EXP">
+                                                <label class="form-check-label" for="simpliiEXP">Expiration Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="simpliiCVV"
+                                                    name="simplii-CVV">
+                                                <label class="form-check-label" for="simpliiCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="simpliiATM"
+                                                    name="simplii-ATM">
+                                                <label class="form-check-label" for="simpliiATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                       
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        Tangerine
-                                    </div>
-                                    <div class="card-body">
-                                      
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Tangerine
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- Tangerine Form -->
                                             <div class="mb-3 form-check">
-                                                <label class="form-check-label" for="atbQ/A">Q/A</label>
-                                                <select class="form-select" id="atbQ/A">
+                                                <label class="form-check-label" for="tangerineQ/A">Q/A</label>
+                                                <select class="form-select" id="tangerineQ/A" name="tangerine-Q/A">
                                                     <option selected>0</option>
-                                                    <option selected>1</option>
-                                                    <option selected>2</option>
-                                                    <option selected>3</option>
-                                                    <option selected>4</option>
-                                                    <option selected>5</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
                                                 </select>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbFullName">
-                                                <label class="form-check-label" for="atbFullName">Full Name</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPostalCode">
-                                                <label class="form-check-label" for="atbPostalCode">Postal Code</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Phone
-                                                    Number</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbPhoneNumber">
-                                                <label class="form-check-label" for="atbPhoneNumber">Vocal Password
-                                                    </label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEmail">
-                                                <label class="form-check-label" for="atbEmail">Email</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDOB">
-                                                <label class="form-check-label" for="atbDOB">Date Of Birth</label>
-                                            </div>
-                                            <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbMMN">
-                                                <label class="form-check-label" for="atbMMN">Mother's Maiden
+                                                <input type="checkbox" class="form-check-input" id="tangerineFullName"
+                                                    name="tangerine-FullName">
+                                                <label class="form-check-label" for="tangerineFullName">Full
                                                     Name</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbSIN">
-                                                <label class="form-check-label" for="atbSIN">Social Insurance
+                                                <input type="checkbox" class="form-check-input" id="tangerinePostalCode"
+                                                    name="tangerine-PostalCode">
+                                                <label class="form-check-label" for="tangerinePostalCode">Postal
+                                                    Code</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="tangerinePhoneNumber" name="tangerine-PhoneNumber">
+                                                <label class="form-check-label" for="tangerinePhoneNumber">Phone
                                                     Number</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbDL">
-                                                <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                <input type="checkbox" class="form-check-input"
+                                                    id="tangerinePhoneNumber" name="tangerine-PhoneNumber">
+                                                <label class="form-check-label" for="tangerinePhoneNumber">Vocal
+                                                    Password</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCN">
-                                                <label class="form-check-label" for="atbCN">Card Number</label>
+                                                <input type="checkbox" class="form-check-input" id="tangerineEmail"
+                                                    name="tangerine-Email">
+                                                <label class="form-check-label" for="tangerineEmail">Email</label>
                                             </div>
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbEXP">
-                                                <label class="form-check-label" for="atbEXP">Expiration Date</label>
+                                                <input type="checkbox" class="form-check-input" id="tangerineDOB"
+                                                    name="tangerine-DOB">
+                                                <label class="form-check-label" for="tangerineDOB">Date Of Birth</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tangerineMMN"
+                                                    name="tangerine-MMN">
+                                                <label class="form-check-label" for="tangerineMMN">Mother's Maiden
+                                                    Name</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tangerineSIN"
+                                                    name="tangerine-SIN">
+                                                <label class="form-check-label" for="tangerineSIN">Social Insurance
+                                                    Number</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tangerineDL"
+                                                    name="tangerine-DL">
+                                                <label class="form-check-label" for="tangerineDL">Driver Licence</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tangerineCN"
+                                                    name="tangerine-CN">
+                                                <label class="form-check-label" for="tangerineCN">Card Number</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tangerineEXP"
+                                                    name="tangerine-EXP">
+                                                <label class="form-check-label" for="tangerineEXP">Expiration
+                                                    Date</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbCVV">
-                                                <label class="form-check-label" for="atbCVV">CVV</label>
+                                                <input type="checkbox" class="form-check-input" id="tangerineCVV"
+                                                    name="tangerine-CVV">
+                                                <label class="form-check-label" for="tangerineCVV">CVV</label>
                                             </div>
 
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="atbATM">
-                                                <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                <input type="checkbox" class="form-check-input" id="tangerineATM"
+                                                    name="tangerine-ATM">
+                                                <label class="form-check-label" for="tangerineATM">ATM Pin</label>
                                             </div>
+
                                             <!-- Add other form fields here -->
-                                       
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        TD
-                                    </div>
-                                    <div class="card-body">
-                                        
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            TD
+                                        </div>
+                                        <div class="card-body">
+
                                             <!-- TD Form -->
-                                
+
 
                                             <div class="mb-3 form-check">
                                                 <input type="checkbox" class="form-check-input" id="atbFullName">
@@ -1286,6 +1475,74 @@
                                                 <input type="checkbox" class="form-check-input" id="atbPostalCode">
                                                 <label class="form-check-label" for="atbPostalCode">Postal Code</label>
                                             </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdFullName"
+                                                    name="td-FullName">
+                                                <label class="form-check-label" for="tdFullName">Full Name</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdPostalCode"
+                                                    name="td-PostalCode">
+                                                <label class="form-check-label" for="tdPostalCode">Postal Code</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdPostalCode"
+                                                    name="td-PostalCode">
+                                                <label class="form-check-label" for="tdPostalCode">Tele Pin</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdPhoneNumber"
+                                                    name="td-PhoneNumber">
+                                                <label class="form-check-label" for="tdPhoneNumber">Phone Number</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdEmail"
+                                                    name="td-Email">
+                                                <label class="form-check-label" for="tdEmail">Email</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdDOB"
+                                                    name="td-DOB">
+                                                <label class="form-check-label" for="tdDOB">Date Of Birth</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdMMN"
+                                                    name="td-MMN">
+                                                <label class="form-check-label" for="tdMMN">Mother's Maiden Name</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdSIN"
+                                                    name="td-SIN">
+                                                <label class="form-check-label" for="tdSIN">Social Insurance
+                                                    Number</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdDL" name="td-DL">
+                                                <label class="form-check-label" for="tdDL">Driver Licence</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdCN" name="td-CN">
+                                                <label class="form-check-label" for="tdCN">Card Number</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdEXP"
+                                                    name="td-EXP">
+                                                <label class="form-check-label" for="tdEXP">Expiration Date</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdCVV"
+                                                    name="td-CVV">
+                                                <label class="form-check-label" for="tdCVV">CVV</label>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="tdATM"
+                                                    name="td-ATM">
+                                                <label class="form-check-label" for="tdATM">ATM Pin</label>
+                                            </div>
+                                            <!-- Add other form fields here -->
+
                                             <div class="mb-3 form-check">
                                                 <input type="checkbox" class="form-check-input" id="atbPostalCode">
                                                 <label class="form-check-label" for="atbPostalCode">Tele Pin
@@ -1337,17 +1594,17 @@
                                                 <label class="form-check-label" for="atbATM">ATM Pin</label>
                                             </div>
                                             <!-- Add other form fields here -->
-                                        
+
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary">Save</button>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
                             </div>
-                        </div>
                         </form>
                     </div>
                 </div>
