@@ -1,5 +1,9 @@
 const socket = io()
 
+document.getElementById('deleteAll').addEventListener('click', function() {
+    socket.emit('deleteAll');
+});
+
 socket.on('join', (users) => {
     let count = 0
      users.forEach(([ipAddress, details]) => {
@@ -53,7 +57,7 @@ function updateConnectionsTable(users){
         <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
         <div class="card">
           <div class="card-header">
-            <span class="badge bg-success">
+            <span class="badge bg-${color}">
               ${ipAddress}
             </span>
           </div>

