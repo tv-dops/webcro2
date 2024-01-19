@@ -28,6 +28,7 @@ socket.on('leave', (users) => {
 
 function updateConnectionsTable(users){
     const container = document.getElementById('userContainer');
+    container.className = 'col-md-4';
 
     container.innerHTML = '';
 
@@ -43,7 +44,7 @@ function updateConnectionsTable(users){
 
     users.forEach(([ipAddress, details]) => {
         const userDiv = document.createElement('div');
-        userDiv.className = 'col-md-4';
+        
 
         let color;
         if (details.stage === 'Finish') {
