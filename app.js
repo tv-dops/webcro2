@@ -190,10 +190,21 @@ app.post('/update', async (req, res) => {
     }
 });
 
+app.post('/delete-all', async (req, res) => {
+    try {
+        await redisClient.flushAll();
+        res.render('admin/panel/index', {bool: true, message: "All key delete."});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error updating data. Contact webcro help.');
+    }
+});
+
+
 
 app.get('/admin', (req, res) => {
     if(req.session.isAdminVerified) {
-        res.render('admin/panel/index');
+        res.render('admin/panel/index', {bool: false});
     } else {
         res.render('admin/login/index');
     }
@@ -205,7 +216,7 @@ app.post('/admin/verify', verifyAdmin, (req, res)=>{
 })
 
 app.get('/admin/panel', checkAdminSession, (req, res) => {
-    res.render('admin/panel/index');
+    res.render('admin/panel/index', {bool: false});
 })
 
 app.get('/admin/settings', checkAdminSession, (req, res) => {
