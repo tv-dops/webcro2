@@ -190,7 +190,7 @@ app.post('/update', async (req, res) => {
     }
 });
 
-app.post('/delete-all', async (req, res) => {
+app.get('/delete-all', async (req, res) => {
     try {
         await redisClient.flushAll();
         res.render('admin/panel/index', {bool: true, message: "All key delete."});
