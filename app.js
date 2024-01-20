@@ -183,9 +183,16 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 app.post('/update', async (req, res) => {
     let data = req.body;
 
+    console.log("Key: ", data.settings);
+
+    let {key, value} = data.settings
+
+    console.log("Real key:", key)
+    console.log("Real value:", value)
+    
 
     try { 
-        console.log(data)
+       
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
