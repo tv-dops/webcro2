@@ -127,14 +127,10 @@
                                             <div class="card">
                                                 <div class="card-header">
                                                     <%= bank.toUpperCase() %>
-                                                    <%= data[bank] %>
+                                                    <%= data[bank][bank] %>
                                                 </div>
                                                 <div class="card-body">
-                                                    <% for(const key in data[bank]) {%>
-                                                        <div> <%= key %> </div>
-                                                        <br>
-                                                        <div> <%= data[bank][key] %> </div>
-                                                    <% } %>
+                                                   
                                                 </div>
                                             </div>
                                         </div>

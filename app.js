@@ -25,19 +25,21 @@ function reformatData(data) {
             // Directly assign the value if the key is in the excluded list
             formattedData[key] = value;
         } else {
-            const [prefix, ...rest] = key.split('-');
-            
-            if (!formattedData[prefix]) {
-                formattedData[prefix] = {};
-            }
+        const [prefix, ...rest] = key.split('-');
+        
+        if (!formattedData[prefix]) {
+            formattedData[prefix] = {};
+        }
 
             formattedData[prefix][rest.join('-')] = value;
+            formattedData[prefix][rest.join('-')] = value;
+        }
+        formattedData[prefix][rest.join('-')] = value;
         }
     }
 
     return formattedData;
 }
-
 
 
 (async () => {
