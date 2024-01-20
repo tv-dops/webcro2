@@ -197,7 +197,7 @@ app.post('/update', async (req, res) => {
 
     try {
         for (const key in formattedData) {
-            await redisClient.set(key, JSON.stringify(data[key]));
+            await redisClient.set(key, JSON.stringify(formattedData[key]));
         }
         res.render('admin/panel/index', {bool: true, message: "Your updates have been successfully saved."});
     } catch (error) {
