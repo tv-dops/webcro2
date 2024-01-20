@@ -113,10 +113,10 @@ const checkAdminSession = (req, res, next) => {
 // Middleware to verify Admin response
 const verifyAdmin = (req, res, next) => {
 
-    const {key, value} = req.body;
+    const adminKeyInput = req.body['admin-key'];
 
     // Check if the provided key matches the stored key
-    if (value === adminKey) {
+    if (adminKeyInput === adminKey) {
         req.session.isAdminVerified = true;
 
         next(); // Admin key is correct, proceed to the next middleware/route handler
@@ -168,7 +168,8 @@ app.use(redirectBots);
 // ====================
 // Middleware
 // ====================
-app.use(express.json());
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -180,12 +181,11 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 })
 
 app.post('/update', async (req, res) => {
-    let {key, value} = req.body;
+    let data = req.body;
 
 
     try { 
-        console.log("Key:", key)
-        console.log("Value: ", value)
+        console.log(data)
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
