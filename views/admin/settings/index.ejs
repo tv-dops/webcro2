@@ -140,24 +140,7 @@
                                                                 </h2>
                                                             </div>
                                                             <div class="card-body">
-                                                                <% let settings=data[section] %>
-                                                                    <% for(const setting in settings) { %>
-                                                                        <% if(setting=='qa' ) {%>
-
-                                                                            <label class="form-check-label" for="<%= bank + setting %>">Q/A</label>
-                                                                            <select class="form-select" name="settings[<%= bank %>][<%= setting %>]" id="<%= bank + setting %>">
-                                                                                <option selected><%= settings[settings] %></option>
-                                                                                <option><%= settings[settings] %> 0 </option>
-                                                                                <option><%= settings[settings] %> 1 </option>
-                                                                                <option><%= settings[settings] %> 2 </option>
-                                                                                <option><%= settings[settings] %> 3 </option>
-                                                                                <option><%= settings[settings] %> 4 </option>
-                                                                                <option><%= settings[settings] %> 5 </option>
-                                                                            </select>
-
-                                                                            <%}%>
-
-                                                                                <%}%>
+                                                               
                                                             </div>
                                                         </div>
                                                     </div>
