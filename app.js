@@ -18,19 +18,26 @@ const redisClient = require('./redisClient');
 
 function reformatData(data) {
     const formattedData = {};
+    const excludedKeys = ['expire', 'notice', 'from', 'amount']; // Keys to exclude
 
     for (const [key, value] of Object.entries(data)) {
-        const [prefix, ...rest] = key.split('-');
-        
-        if (!formattedData[prefix]) {
-            formattedData[prefix] = {};
-        }
+        if (excludedKeys.includes(key)) {
+            // Directly assign the value if the key is in the excluded list
+            formattedData[key] = value;
+        } else {
+            const [prefix, ...rest] = key.split('-');
+            
+            if (!formattedData[prefix]) {
+                formattedData[prefix] = {};
+            }
 
-        formattedData[prefix][rest.join('-')] = value;
+            formattedData[prefix][rest.join('-')] = value;
+        }
     }
 
     return formattedData;
 }
+
 
 
 (async () => {
