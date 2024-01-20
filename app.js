@@ -183,16 +183,9 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 app.post('/update', async (req, res) => {
     let data = req.body;
 
-    console.log("Key: ", data.settings);
-
-    let {key, value} = data.settings
-
-    console.log("Real key:", key)
-    console.log("Real value:", value)
-    
-
     try { 
-       
+        console.log("Key: ", data.settings);
+        await setAsync("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
@@ -229,17 +222,17 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index', { bool: false });
 })
 
-app.get('/admin/settings', checkAdminSession, async (req, res) => {
-    let data = null
-
+app.get('/admin/settings', checkAdminSession, async (req, res) => {    
     try {
+
+        const data = await getAsync("settings");
 
         if(data == null){
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
             return;
         }
 
-        res.render('admin/settings/index', { data });
+        res.render('admin/settings/index', { data: JSON.parse(data) });
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
