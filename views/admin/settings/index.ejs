@@ -124,16 +124,14 @@
                             <div class="row">
                                 <% if(data != null){ %>
                                         
-                                    <div>
-                                        <%= settings = JSON.stringify(data, null, 2) %>
-                                    </div>
-                                    <div>
-                                        <%= settings.info %>
-                                    </div>
-
-                                     <div>
-                                        <%= settings.atb %>
-                                    </div>
+                                    <% for(const key in settings) { %>
+                                        <h2><%= key %></h2>
+                                        <ul>
+                                            <% for(const subKey in data[key]) { %>
+                                                <li><%= subKey %>: <%= data[key][subKey] %></li>
+                                            <% } %>
+                                        </ul>
+                                    <% } %>
 
                                     <% } else { %>
                                 <!-- ATB Bank Section -->
