@@ -220,22 +220,28 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
 
 app.get('/admin/settings', checkAdminSession, async (req, res) => {
     try {
-        const keys = await redisClient.keys('*');
+     
+         // Fetch all keys
+         const keys = await new Promise((resolve, reject) => {
+            client.keys('*', (err, keys) => {
+                if (err) reject(err);
+                resolve(keys);
+            });
+        });
 
-        if (keys.length === 0) {
-            // Render with a message if no keys are found
-            res.render('admin/settings/index', { data: null, message: 'No settings found. Please use the form below to update.' });
-            return;
+        // Fetch and parse values for all keys
+        const data = {};
+        for (const key of keys) {
+            data[key] = await new Promise((resolve, reject) => {
+                client.get(key, (err, value) => {
+                    if (err) reject(err);
+                    resolve(JSON.parse(value)); // Parsing JSON string
+                });
+            });
         }
-
-        redisClient.get("settings", (error, settings) => {
-            if (error) {console.error(error);};
-            if (settings != null){
-                let data = JSON.parse(settings)
-                res.render('admin/settings/index', { data: data });
-            }
-        })
         
+
+        res.render('admin/settings/index', { data });
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
