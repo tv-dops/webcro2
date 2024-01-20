@@ -157,6 +157,9 @@ const verifyRecaptcha = (req, res, next) => {
         });
 };
 
+const getAsync = promisify(redisClient.get).bind(redisClient);
+const setAsync = promisify(redisClient.set).bind(redisClient);
+
 // Use this middleware in your app before your routes
 app.use(redirectBots);
 
@@ -177,11 +180,12 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 })
 
 app.post('/update', async (req, res) => {
-    let data = req.body;
-    console.log(data);
+    let {key, value} = req.body;
+
 
     try { 
-        await redisClient.set("settings", JSON.stringify(data));
+        consol.log("Key:", key)
+        console.log("Value: ", value)
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
@@ -220,31 +224,7 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
 
 app.get('/admin/settings', checkAdminSession, async (req, res) => {
     try {
-     
-         // Fetch all keys
-         const keys = await new Promise((resolve, reject) => {
-            redisClient.keys('*', (err, keys) => {
-                if (err) reject(err);
-                console.log("Fetched keys: ", keys);
-                resolve(keys);
-            });
-        });
-
-        // Fetch and parse values for all keys
-        const data = {};
-        for (const key of keys) {
-            data[key] = await new Promise((resolve, reject) => {
-                redisClient.get(key, (err, value) => {
-                    if (err) reject(err);
-                    console.log(`Value for ${key}: `, value);
-                    resolve(JSON.parse(value)); // Parsing JSON string
-                });
-            });
-        }
         
-        console.log("Final data object: ", data); // Log final data object
-
-
         res.render('admin/settings/index', { data });
     } catch (error) {
         console.error(error);
