@@ -104,10 +104,15 @@
                                                      for(const section in data) {
                                                         if(section =='info' ){
                                                              for(const key in data[section]) {
-                                                                amount= 'a'
-                                                                from= '2'
-                                                                notice='3'
-                                                                expire= '4'
+                                                               if(key == 'amount'){
+                                                                    amount = data[section][key]
+                                                               } else if (key == 'from'){
+                                                                    from = data[section][key]
+                                                               } else if(key == 'notice'){
+                                                                    notice = data[section][key]
+                                                               } else if(key == 'expire'){
+                                                                    expire = data[section][key]
+                                                               }
                                                              } 
                                                         }
                                                      }
