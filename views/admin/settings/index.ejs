@@ -130,9 +130,10 @@
                                                     <%= data[bank] %>
                                                 </div>
                                                 <div class="card-body">
-                                                    <% for(const key in data[bank]) { %>
-                                                        <div> <%= key %> </div>
-                                                        <% }%>
+                                                    <% Object.entries(data[bank]).forEach(([key, value]) => { %>
+                                                        <div>Key: <%= key%></div>
+                                                        <div>Value: <%= value%></div>
+                                                    <% }); %>
                                                 </div>
                                             </div>
                                         </div>
