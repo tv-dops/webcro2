@@ -124,6 +124,10 @@
                             <div class="row">
                                 <% if(data != null){ %>
                                         
+                                    <div>
+                                        <% let settings = JSON.stringify(data, null, 2) %>
+                                    </div>
+
                                     <% for(const key in settings) { %>
                                         <h2><%= key %></h2>
                                         <ul>
