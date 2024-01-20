@@ -144,9 +144,10 @@
                                                                             <label class="form-check-label"
                                                                                 for="<%= section + 'Q/A'%>">Q/A</label>
                                                                             <select class="form-select"
-                                                                                name='settings["<%= section %>"][qa]'
+                                                                                name="settings[<%= section %>][qa]"
                                                                                 id="<%= section + 'Q/A'%>">
-                                                                                <option selected>0</option>
+                                                                                <option selected><%= data[section][key] %></option>
+                                                                                <option >0</option>
                                                                                 <option>1</option>
                                                                                 <option>2</option>
                                                                                 <option>3</option>
