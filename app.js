@@ -158,9 +158,6 @@ const verifyRecaptcha = (req, res, next) => {
         });
 };
 
-const getAsync = promisify(redisClient.get).bind(redisClient);
-const setAsync = promisify(redisClient.set).bind(redisClient);
-
 // Use this middleware in your app before your routes
 app.use(redirectBots);
 
@@ -185,7 +182,7 @@ app.post('/update', async (req, res) => {
 
     try { 
         console.log("Key: ", data.settings);
-        await setAsync("settings", JSON.stringify(data.settings));
+        await redisClient.set("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
@@ -224,10 +221,9 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
 
 app.get('/admin/settings', checkAdminSession, async (req, res) => {    
     try {
+        const data = await redisClient.get("settings");
 
-        const data = await getAsync("settings");
-
-        if(data == null){
+        if(!data){
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
             return;
         }
