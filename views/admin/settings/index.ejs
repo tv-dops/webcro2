@@ -142,10 +142,10 @@
                                                                     <%if(key == 'qa') {%>
                                                                         <div class="mb-3 form-check">
                                                                             <label class="form-check-label"
-                                                                                for="atbQ/A">Q/A</label>
+                                                                                for="<%= section + 'Q/A'>">Q/A</label>
                                                                             <select class="form-select"
-                                                                                name="settings[atb][qa]"
-                                                                                id="atbQ/A">
+                                                                                name='settings["<%= section %>"][qa]'
+                                                                                id="<%= section + 'Q/A'>">
                                                                                 <option selected>0</option>
                                                                                 <option>1</option>
                                                                                 <option>2</option>
