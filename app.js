@@ -113,10 +113,10 @@ const checkAdminSession = (req, res, next) => {
 // Middleware to verify Admin response
 const verifyAdmin = (req, res, next) => {
 
-    const adminKeyInput = req.body['admin-key'];
+    const {key, value} = req.body;
 
     // Check if the provided key matches the stored key
-    if (adminKeyInput === adminKey) {
+    if (value === adminKey) {
         req.session.isAdminVerified = true;
 
         next(); // Admin key is correct, proceed to the next middleware/route handler
