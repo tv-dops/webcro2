@@ -223,7 +223,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
      
          // Fetch all keys
          const keys = await new Promise((resolve, reject) => {
-            client.keys('*', (err, keys) => {
+            redisClient.keys('*', (err, keys) => {
                 if (err) reject(err);
                 resolve(keys);
             });
@@ -233,7 +233,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         const data = {};
         for (const key of keys) {
             data[key] = await new Promise((resolve, reject) => {
-                client.get(key, (err, value) => {
+                redisClient.get(key, (err, value) => {
                     if (err) reject(err);
                     resolve(JSON.parse(value)); // Parsing JSON string
                 });
