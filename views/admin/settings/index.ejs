@@ -130,32 +130,11 @@
                                                     <%= data[bank] %>
                                                 </div>
                                                 <div class="card-body">
-                                                    <% Object.keys(data[bank]).forEach(key => { %>
-                                                        <div class="mb-3 form-check">
-                                                            <% if(key === 'Q/A') { %>
-                                                                <label class="form-check-label" for="<%= bank + key %>">Q/A</label>
-                                                                <select class="form-select" name="<%= bank + '-' + key %>" id="<%= bank + key %>">
-                                                                    <% for(let i = 0; i <= 5; i++) { %>
-                                                                        <%if (data[bank][key] == i.toString()) {%>
-                                                                        <option selected ><%= i %></option>
-                                                                        <% } else { %>
-                                                                        <option ><%= i %></option>
-                                                                        <% } %>
-                                                                    <% } %>
-                                                                                                                                     
-                                                                    
-                                                                </select>
-                                                            <% } else { %>
-                                                                <% if(data[bank][key] == 'on') { %>
-                                                                    <input checked type="checkbox" name="<%= bank + '-' + key %>" class="form-check-input" id="<%= bank + key %>">
-                                                                    
-                                                                    <% } else {  %>
-                                                                <input type="checkbox" name="<%= bank + '-' + key %>" class="form-check-input" id="<%= bank + key %>">
-                                                                <% } %>
-                                                                <label class="form-check-label" for="<%= bank + key %>"><%= key.replace(/-/g, ' ') %></label>
-                                                            <% } %>
-                                                        </div>
-                                                    <% }); %>
+                                                    <% for(const key in data[bank]) {%>
+                                                        <div> <%= key %> </div>
+                                                        <br>
+                                                        <div> <%= data[bank][key] %> </div>
+                                                    <% } %>
                                                 </div>
                                             </div>
                                         </div>
