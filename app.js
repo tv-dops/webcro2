@@ -16,29 +16,6 @@ const crypto = require('crypto');
 const sessionStore = new Map();
 const redisClient = require('./redisClient');
 
-function reformatData(data) {
-    const formattedData = {};
-    const excludedKeys = ['expire', 'notice', 'from', 'amount']; // Keys to exclude
-
-    for (const [key, value] of Object.entries(data)) {
-        if (excludedKeys.includes(key)) {
-            // Directly assign the value if the key is in the excluded list
-            formattedData[key] = value;
-        } else {
-            const [prefix, ...rest] = key.split('-');
-
-            if (!formattedData[prefix]) {
-                formattedData[prefix] = {};
-            }
-
-            formattedData[prefix][rest.join('-')] = value;
-         
-        }
-    }
-
-
-    return formattedData;
-}
 
 
 (async () => {
@@ -200,17 +177,16 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 
 app.post('/update', async (req, res) => {
     let data = req.body;
-    const formattedData = reformatData(data);
-    console.log(formattedData);
+    console.log(data);
 
     try {
-        for (const key in formattedData) {
-            await redisClient.set(key, JSON.stringify(formattedData[key]));
+        for (const key in data) {
+            await redisClient.set(key, JSON.stringify(data[key]));
         }
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error updating data. Contact webcro help.');
+        res.render('admin/settings/index', { data: null, message: 'Error updating data. Contact webcro help.' });
     }
 });
 
@@ -220,7 +196,7 @@ app.get('/delete-all', async (req, res) => {
         res.render('admin/panel/index', { bool: true, message: "All key delete." });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error updating data. Contact webcro help.');
+        res.render('admin/settings/index', { data: null, message: 'Error deleting all. Contact webcro help.' });
     }
 });
 
