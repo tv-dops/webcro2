@@ -125,7 +125,14 @@
                                 <% if(data != null){ %>
                                         
                                     <div>
-                                        <%= JSON.stringify(data, null, 2) %>
+                                        <%= settings = JSON.stringify(data, null, 2) %>
+                                    </div>
+                                    <div>
+                                        <%= settings.info %>
+                                    </div>
+
+                                     <div>
+                                        <%= settings.atb %>
                                     </div>
 
                                     <% } else { %>
