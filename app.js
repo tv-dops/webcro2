@@ -232,8 +232,15 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         const values = await Promise.all(keys.map(key => redisClient.get(key)));
 
         let data = keys.reduce((obj, key, index) => {
-            // Ensure the value exists before parsing
-            obj[key] = values[index];
+            // Ensure the value exists before assigning
+            const value = values[index];
+            try {
+                // Attempt to parse the value as JSON
+                obj[key] = JSON.parse(value);
+            } catch (error) {
+                // If parsing fails, assign the raw string
+                obj[key] = value;
+            }
             return obj;
         }, {});
 
