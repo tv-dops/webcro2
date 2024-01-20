@@ -121,24 +121,19 @@
                                             
                                                 
                                                 %>
-
-                                                <%= amount%>
-                                                <%= from%>
-                                                <%= notice%>
-                                                <%= expire%>
-
+                                                
                                                 <div class="row">
                                                     <div class="col-md-6">
 
                                                         <label for="amount" class="form-label">Amount ($)</label>
                                                         <input type="text" name="settings[info][amount]"
-                                                            class="form-control" id="amount" placeholder="123.45"
+                                                            class="form-control" id="amount" placeholder="123.45" value="<%= amount>"
                                                             required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="from" class="form-label">From</label>
                                                         <input type="text" name="settings[info][from]"
-                                                            class="form-control" id="from" placeholder="Bussines"
+                                                            class="form-control" id="from" placeholder="Bussines" value="<%= from>"
                                                             required>
                                                     </div>
                                                 </div>
@@ -147,13 +142,13 @@
                                                         <label for="notice" class="form-label">Notice</label>
                                                         <input type="text" name="settings[info][notice]"
                                                             class="form-control" id="notice"
-                                                            placeholder="Your new bill arrived" required>
+                                                            placeholder="Your new bill arrived" value="<%= notice>" required>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <label for="expire" class="form-label">Expire</label>
                                                         <input type="text" name="settings[info][expire]"
                                                             class="form-control" id="expire"
-                                                            placeholder="Use the date you want" required>
+                                                            placeholder="Use the date you want" value="<%= expire>" required>
                                                     </div>
                                                 </div>
                                             </div>
