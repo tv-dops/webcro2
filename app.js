@@ -227,7 +227,12 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
     let data = null
 
     try {
-        
+
+        if(data == null){
+            res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
+            return;
+        }
+
         res.render('admin/settings/index', { data });
     } catch (error) {
         console.error(error);
