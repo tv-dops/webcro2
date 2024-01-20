@@ -185,7 +185,7 @@ app.post('/update', async (req, res) => {
 
 
     try { 
-        consol.log("Key:", key)
+        console.log("Key:", key)
         console.log("Value: ", value)
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
@@ -224,6 +224,8 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
 })
 
 app.get('/admin/settings', checkAdminSession, async (req, res) => {
+    let data = null
+
     try {
         
         res.render('admin/settings/index', { data });
