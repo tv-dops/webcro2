@@ -15,6 +15,7 @@ const session = require('express-session');
 const crypto = require('crypto');
 const sessionStore = new Map();
 const redisClient = require('./redisClient');
+const { error } = require('node:console');
 
 
 
@@ -179,10 +180,8 @@ app.post('/update', async (req, res) => {
     let data = req.body;
     console.log(data);
 
-    try {
-        for (const key in data) {
-            await redisClient.set(key, JSON.stringify(data[key]));
-        }
+    try { 
+        await redisClient.set("settings", JSON.stringify(data));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
@@ -229,26 +228,14 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
             return;
         }
 
-        const values = await Promise.all(keys.map(key => redisClient.get(key)));
-
-        let data = keys.reduce((obj, key, index) => {
-            // Ensure the value exists before assigning
-            const value = values[index];
-            try {
-                // Attempt to parse the value as JSON
-                obj[key] = JSON.parse(value);
-            } catch (error) {
-                // If parsing fails, assign the raw string
-                obj[key] = value;
+        redisClient.get("settings", (error, settings) => {
+            if (error) {console.error(error);};
+            if (settings != null){
+                let data = JSON.parse(settings)
+                res.render('admin/settings/index', { data: data });
             }
-            return obj;
-        }, {});
-
-        data = JSON.parse(data);
-
-        console.log(data)
-
-        res.render('admin/settings/index', { data: data });
+        })
+        
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
