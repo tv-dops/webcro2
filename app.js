@@ -237,7 +237,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
             return obj;
         }, {});
 
-        data = JSON.parse(data)
+        data = JSON.parse(data);
 
         console.log(data)
 
