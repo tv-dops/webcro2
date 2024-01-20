@@ -127,26 +127,20 @@
                                   
                                        
                                   
-
                                     <% if (data) { %>
-                                        <% if (typeof data === 'object' && !Array.isArray(data)) { %>
-                                            <% for (const key in data) { %>
-                                                <h2><%= key %></h2>
-                                                <pre><%= JSON.stringify(data[key], null, 2) %></pre>
-                                            <% } %>
-                                        <% } else if (Array.isArray(data)) { %>
-                                            <ul>
-                                                <% data.forEach(item => { %>
-                                                    <li><%= item %></li>
-                                                <% }); %>
-                                            </ul>
-                                        <% } else { %>
-                                            <p><%= data %></p>
+                                        <% for(const section in data) { %>
+                                            <div class="data-section">
+                                                <h2><%= section %></h2>
+                                                <dl>
+                                                    <% for(const key in data[section]) { %>
+                                                        <dt><%= key %>:</dt>
+                                                        <dd><%= data[section][key] %></dd>
+                                                    <% } %>
+                                                </dl>
+                                            </div>
                                         <% } %>
-                                    <% } else { %>
-                                        <p>No data available.</p>
-                                    <% } %>
-
+                                    <% }
+                                    
                                     <% } else { %>
                                 <!-- ATB Bank Section -->
                                 <div class="col-md-4">
