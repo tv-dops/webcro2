@@ -130,7 +130,9 @@
                                                     <%= data[bank] %>
                                                 </div>
                                                 <div class="card-body">
-                                                   
+                                                    <% for(const key in data[bank]) { %>
+                                                        <div> <%= key %> </div>
+                                                        <% }%>
                                                 </div>
                                             </div>
                                         </div>
