@@ -97,7 +97,7 @@ async function setInitialDataIfNotPresent() {
     try {
       const exists = await redisClient.exists('settings');
       if (exists === 0) {
-        await redisClient.set('settings', JSON.stringify(initialData['settings']));
+        await redisClient.set('settings', JSON.stringify(initialData));
         console.log('Initial data set in Redis');
       } else {
         console.log('Data already exists in Redis');
@@ -249,7 +249,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
             return;
         }
 
-        res.render('admin/settings/index', { data: JSON.parse(data) });
+        res.render('admin/settings/index', { data: JSON.parse(data.settings) });
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
