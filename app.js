@@ -201,7 +201,7 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 app.post('/update', async (req, res) => {
     let data = req.body;
 
-    console.log(`Data: ${data}`)
+    console.log(data)
 
     try {
 
@@ -213,7 +213,7 @@ app.post('/update', async (req, res) => {
     `;
 
         const result = await pool.query(upsertQuery, [data]);
-        console.log(`Insert to database : ${result.rows[0]}`)
+        console.log(result.rows[0])
         //await redisClient.set("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
@@ -265,7 +265,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
         if (result.rows.length > 0) {
-            console.log(`Get from databases: ${result.rows[0].data}`);
+            console.log(result.rows[0].data);
             res.render('admin/settings/index', { data: result.rows[0].data });
         } else {
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
