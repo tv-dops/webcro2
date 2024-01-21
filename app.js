@@ -202,7 +202,7 @@ app.post('/update', async (req, res) => {
     let data = req.body;
 
     console.log('new one')
-    console.log(data)
+    console.log(data.settings)
 
     try {
 
@@ -211,7 +211,7 @@ app.post('/update', async (req, res) => {
 
         if (get.rows.length > 0) {
             console.log('old one')
-            console.log(get.rows[0].data);
+            console.log(get.rows[0].data.settings);
         }
 
         const upsertQuery = `
