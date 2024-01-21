@@ -201,9 +201,18 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 app.post('/update', async (req, res) => {
     let data = req.body;
 
+    console.log('new one')
     console.log(data)
 
     try {
+
+        const getId = 1;
+        const get = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
+
+        if (result.rows.length > 0) {
+            console.log('old one')
+            console.log(result.rows[0].data);
+        }
 
         const upsertQuery = `
       INSERT INTO items (id, data) VALUES (1, $1)
