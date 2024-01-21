@@ -4,20 +4,14 @@
 const express = require('express');
 const { createServer } = require('node:http');
 const bodyParser = require('body-parser');
-const { join } = require('node:path');
 const { Server } = require('socket.io');
-const fs = require('fs');
 let fetch;
-const https = require('https');
-const http = require(`http`);
 const TelegramBot = require('node-telegram-bot-api');
 const session = require('express-session');
-const crypto = require('crypto');
 const sessionStore = new Map();
-const redisClient = require('./redisClient');
 const { error } = require('node:console');
-const { promisify } = require('util');
 const initialData = require('./data');
+const dbConfig = require('./dbConfig');
 
 
 
@@ -93,22 +87,6 @@ const botList = [
     // ... Add all the bots from your list
 ];
 
-async function setInitialDataIfNotPresent() {
-    try {
-      const exists = await redisClient.exists('settings');
-      if (exists === 0) {
-        await redisClient.set('settings', JSON.stringify(initialData));
-        console.log('Initial data set in Redis');
-      } else {
-        console.log('Data already exists in Redis');
-      }
-    } catch (error) {
-      console.error('Error setting initial data in Redis:', error);
-    }
-  }
-
-setInitialDataIfNotPresent();
-  
  
 
 const redirectBots = (req, res, next) => {
@@ -179,6 +157,23 @@ const verifyRecaptcha = (req, res, next) => {
         });
 };
 
+// Function to create table with JSONB column
+const createTable = async () => {
+    const createTableQuery = `
+      CREATE TABLE IF NOT EXISTS items (
+        id SERIAL PRIMARY KEY,
+        data JSONB NOT NULL
+      );
+    `;
+  
+    try {
+      await pool.query(createTableQuery);
+      console.log('Table created successfully');
+    } catch (error) {
+      console.error('Error creating table:', error);
+    }
+  };
+
 // Use this middleware in your app before your routes
 app.use(redirectBots);
 
@@ -189,6 +184,10 @@ app.use(redirectBots);
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));
+
+const pool = new Pool(dbConfig);
+
+createTable();
 
 app.get('/', (req, res) => {
     res.render('captcha/index')
@@ -202,8 +201,7 @@ app.post('/update', async (req, res) => {
     let data = req.body;
 
     try { 
-        console.log("Key: ", data.settings);
-        await redisClient.set("settings", JSON.stringify(data.settings));
+        //await redisClient.set("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
         console.error(error);
@@ -242,14 +240,14 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
 
 app.get('/admin/settings', checkAdminSession, async (req, res) => {    
     try {
-        const data = await redisClient.get("settings");
+        const data = null
 
         if(!data){
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
             return;
         }
 
-        res.render('admin/settings/index', { data: JSON.parse(data.settings) });
+        res.render('admin/settings/index', { data: JSON.parse(data) });
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
