@@ -200,7 +200,7 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 
 app.post('/update', async (req, res) => {
     let data = req.body;
-
+    console.log(typeof data);
     try { 
         //await redisClient.set("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
