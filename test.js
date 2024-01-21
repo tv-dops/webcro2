@@ -1,6 +1,7 @@
 const { initialData, initialDataTest } = require('./data');
 
-//console.log(initialData)
+console.log(initialData)
+console.log(initialDataTest)
 
 
 for (key1 in initialData['settings']) {
@@ -34,5 +35,5 @@ for (key1 in initialData['settings']) {
 
 
 
-console.log(initialData)
+//console.log(initialData)
 
