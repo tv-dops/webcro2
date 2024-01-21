@@ -262,9 +262,8 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
-        console.log(result.rows[0].data);
-
         if (result.rows.length > 0) {
+            console.log(result.rows[0].data);
             res.render('admin/settings/index', { data: result.rows[0].data });
         } else {
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
