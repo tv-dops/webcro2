@@ -101,7 +101,7 @@
                                             
 
                                                 if(data != null){
-                                                     for(const section in data) {
+                                                     for(const section in data['settings']) {
                                                         if(section =='info' ){
                                                              for(const key in data[section]) {
                                                                if(key == 'amount'){
@@ -162,7 +162,7 @@
                                         <% if(data !=null){ %>
 
 
-                                            <% for(const section in data) { %>
+                                            <% for(const section in data['settings']) { %>
                                                 <% if(section !='info' ){%>
 
                                                     <div class="col-md-4">
