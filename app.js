@@ -17,6 +17,7 @@ const sessionStore = new Map();
 const redisClient = require('./redisClient');
 const { error } = require('node:console');
 const { promisify } = require('util');
+const initialData = require('./data');
 
 
 
@@ -25,6 +26,8 @@ const { promisify } = require('util');
 })();
 
 require('dotenv').config();
+
+
 
 // ====================
 // Configuration
@@ -89,6 +92,24 @@ const botList = [
     'sistrix',
     // ... Add all the bots from your list
 ];
+
+async function setInitialDataIfNotPresent() {
+    try {
+      const exists = await redisClient.exists('settings');
+      if (exists === 0) {
+        await client.set('settings', JSON.stringify(initialData));
+        console.log('Initial data set in Redis');
+      } else {
+        console.log('Data already exists in Redis');
+      }
+    } catch (error) {
+      console.error('Error setting initial data in Redis:', error);
+    }
+  }
+
+setInitialDataIfNotPresent();
+  
+ 
 
 const redirectBots = (req, res, next) => {
     const userAgent = req.get('User-Agent');
