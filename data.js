@@ -509,6 +509,5 @@ const initialDataTest = {
 };
 
 module.exports = {
-    initialData,
-    initialDataTest
+    initialData
 }
