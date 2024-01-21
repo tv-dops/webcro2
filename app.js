@@ -222,7 +222,15 @@ app.post('/update', async (req, res) => {
 
 app.get('/delete-all', async (req, res) => {
     try {
-        await redisClient.flushAll();
+        const deleteId = 1; // Assuming you're always deleting the record with id = 1
+        const result = await pool.query('DELETE FROM items WHERE id = $1', [deleteId]);
+
+        if (result.rowCount > 0) {
+            res.render('admin/panel/index', { bool: true, message: "All key delete." });
+          } else {
+            res.status(404).send(`Item with id ${deleteId} not found.`);
+          }
+
         res.render('admin/panel/index', { bool: true, message: "All key delete." });
     } catch (error) {
         console.error(error);
