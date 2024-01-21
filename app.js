@@ -209,9 +209,9 @@ app.post('/update', async (req, res) => {
         const getId = 1;
         const get = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
-        if (result.rows.length > 0) {
+        if (get.rows.length > 0) {
             console.log('old one')
-            console.log(result.rows[0].data);
+            console.log(get.rows[0].data);
         }
 
         const upsertQuery = `
