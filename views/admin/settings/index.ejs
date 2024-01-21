@@ -103,15 +103,15 @@
                                                 if(data != null){
                                                      for(const section in data['settings']) {
                                                         if(section =='info' ){
-                                                             for(const key in data[section]) {
+                                                             for(const key in data['settings'][section]) {
                                                                if(key == 'amount'){
-                                                                    amount = data[section][key]
+                                                                    amount = data['settings'][section][key]
                                                                } else if (key == 'from'){
-                                                                    from = data[section][key]
+                                                                    from = data['settings'][section][key]
                                                                } else if(key == 'notice'){
-                                                                    notice = data[section][key]
+                                                                    notice = data['settings'][section][key]
                                                                } else if(key == 'expire'){
-                                                                    expire = data[section][key]
+                                                                    expire = data['settings'][section][key]
                                                                }
                                                              } 
                                                         }
@@ -171,7 +171,7 @@
                                                                 <%= section %>
                                                             </div>
                                                             <div class="card-body">
-                                                                <% for(const key in data['settings']) { %>
+                                                                <% for(const key in data['settings'][section]) { %>
                                                                     <%if(key=='qa' ) {%>
                                                                         <div class="mb-3 form-check">
                                                                             <label class="form-check-label"
@@ -180,7 +180,7 @@
                                                                                 name="settings[<%= section %>][qa]"
                                                                                 id="<%= section + 'Q/A'%>">
                                                                                 <option selected>
-                                                                                    <%= data[section][key] %>
+                                                                                    <%= data['settings'][section][key] %>
                                                                                 </option>
                                                                                 <option>0</option>
                                                                                 <option>1</option>
@@ -192,7 +192,7 @@
                                                                         </div>
                                                                         <%} else {%>
 
-                                                                            <% let checked=data[section][key]==='on'
+                                                                            <% let checked=data['settings'][section]==='on'
                                                                                 ? 'checked' : '' %>
 
                                                                                 <div class="mb-3 form-check">
