@@ -249,7 +249,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
             return;
         }
 
-        res.render('admin/settings/index', { data: JSON.parse(data.settings) });
+        res.render('admin/settings/index', { data: JSON.parse(data) });
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
