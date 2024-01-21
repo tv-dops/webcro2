@@ -178,7 +178,7 @@ function update(initialData, initialDataTest){
     for (key1 in initialData['settings']) {
     
         if (key1 != 'info') {
-            for (key2 in initialData['settings'][key1]) {)
+            for (key2 in initialData['settings'][key1]) {
                 if (key2 != 'qa') {
                     if (initialDataTest['settings'][key1][key2] == 'on') {
                       
