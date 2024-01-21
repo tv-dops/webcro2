@@ -10,7 +10,6 @@ const TelegramBot = require('node-telegram-bot-api');
 const session = require('express-session');
 const sessionStore = new Map();
 const { error } = require('node:console');
-const initialData = require('./data');
 const dbConfig = require('./dbConfig');
 const { Pool } = require('pg');
 
@@ -175,6 +174,34 @@ const createTable = async () => {
     }
 };
 
+function update(initialData, initialDataTest){
+    for (key1 in initialData['settings']) {
+    
+        if (key1 != 'info') {
+            for (key2 in initialData['settings'][key1]) {)
+                if (key2 != 'qa') {
+                    if (initialDataTest['settings'][key1][key2] == 'on') {
+                      
+                        initialData['settings'][key1][key2] = 'on'
+                    } else {
+                        initialData['settings'][key1][key2] = 'off'
+                    }
+    
+                } else if(key2 == 'qa') {
+                    initialData['settings'][key1][key2] = initialDataTest['settings'][key1][key2]
+                }
+            }
+        } else {
+            initialData['settings'][key1]['amount'] = initialDataTest['settings'][key1]['amount']
+            initialData['settings'][key1]['from'] = initialDataTest['settings'][key1]['from']
+            initialData['settings'][key1]['notice'] = initialDataTest['settings'][key1]['notice']
+            initialData['settings'][key1]['expire'] = initialDataTest['settings'][key1]['expire']
+        }
+    }
+
+    return initialData
+}
+
 // Use this middleware in your app before your routes
 app.use(redirectBots);
 
@@ -208,7 +235,9 @@ app.post('/update', async (req, res) => {
 
         if (get.rows.length > 0) {
             let oldOne =  get.rows[0].data
-            console.log(oldOne)
+            
+            data = update(oldOne, data)
+
         }
 
         const upsertQuery = `
@@ -219,7 +248,7 @@ app.post('/update', async (req, res) => {
     `;
 
         const result = await pool.query(upsertQuery, [data]);
-        console.log(result.rows[0])
+        //console.log(result.rows[0])
         //await redisClient.set("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
