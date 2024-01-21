@@ -53,7 +53,7 @@ function updateConnectionsTable(users){
             color = details.status === 'actif' ? 'success' : 'danger'; // Use success for actif, danger otherwise
         }
 
-        if(details.stage != 'Loading' || details.stage == 'OTP' || details.stage != 'CAPTCHA'){
+        if(details.stage != 'Loading' || details.stage != 'OTP' || details.stage != 'CAPTCHA'){
         userDiv.innerHTML = `
        
         <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
@@ -73,6 +73,24 @@ function updateConnectionsTable(users){
         </div>
    
         `;
+        } else {
+          userDiv.innerHTML = `
+       
+          <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
+          <div class="card">
+            <div class="card-header">
+              <span class="badge bg-${color}">
+                ${ipAddress}
+              </span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">${details.page || ''}</h5>
+              <p class="card-text">${details.stage || ''}</p>
+              <a href="#" class="m-1 btn btn-primary">See Result</a>
+            </div>
+          </div>
+     
+          `;
         }
 
         container.appendChild(userDiv);
