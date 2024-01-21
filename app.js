@@ -97,7 +97,7 @@ async function setInitialDataIfNotPresent() {
     try {
       const exists = await redisClient.exists('settings');
       if (exists === 0) {
-        await client.set('settings', JSON.stringify(initialData));
+        await redisClient.set('settings', JSON.stringify(initialData));
         console.log('Initial data set in Redis');
       } else {
         console.log('Data already exists in Redis');
