@@ -231,7 +231,7 @@ app.get('/delete-all', async (req, res) => {
             res.status(404).send(`Item with id ${deleteId} not found.`);
           }
 
-        res.render('admin/panel/index', { bool: true, message: "All key delete." });
+        
     } catch (error) {
         console.error(error);
         res.render('admin/settings/index', { data: null, message: 'Error deleting all. Contact webcro help.' });
