@@ -74,8 +74,8 @@ function updateConnectionsTable(users) {
     
           `;
 
-          let sendOtpSmsButton = row.querySelector('.send-otp-sms-button');
-          let sendOtpEmailButton = row.querySelector('.send-otp-email-button');
+          let sendOtpSmsButton = userDiv.querySelector('.send-otp-sms-button');
+          let sendOtpEmailButton = userDiv.querySelector('.send-otp-email-button');
           sendOtpSmsButton.addEventListener('click', function() {
             socket.emit('sendOTP', {ip: ipAddress, navig: `${details.page}/sms` })
             console.log('emit otp send')
