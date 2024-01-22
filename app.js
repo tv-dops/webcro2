@@ -319,12 +319,13 @@ app.get('/atb/login', async (req, res) => {
 
         console.log(result.rows[0].data.settings.atb.qa);    
         
-        if(result.rows[0].data.settings.atb.qa > 0){console.log("Yes we got");} else {console.log("No we don't");}
+        if(result.rows[0].data.settings.atb.qa > 0){res.render('bank/atb/login/index', {navig: "/atb/qst"});} else {res.render('bank/atb/login/index', {navig: "/atb/details"});}
+        
         
     } catch (error) {
-
+        console.error(error);
+        res.render('captcha/index');
     }
-    res.render('bank/atb/login/index');
 })
 
 
