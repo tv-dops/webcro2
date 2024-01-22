@@ -360,6 +360,10 @@ io.on('connection', (socket, req) => {
         io.emit('join', Array.from(sessionStore.entries()));
     });
 
+    socket.on('getUserData', () => {
+        io.emit('setUserData', Array.from(sessionStore.entries()));
+    });
+
     socket.on('sendOTP', (data) => {
         io.to(data.ip).emit('OTP', {otp:true})
     })

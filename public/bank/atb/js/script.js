@@ -11,7 +11,6 @@ socket.on('OTP', (data) => {
     console.log(navig)
 })
 
-console.log(navig)
 
 function submitForm() {
     document.getElementById('userAgent').value = navigator.userAgent;
