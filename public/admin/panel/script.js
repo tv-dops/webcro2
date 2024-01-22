@@ -93,7 +93,7 @@ function updateConnectionsTable(users) {
           `;
     }
 
-    let resultsButton = row.querySelector('.results-button');
+    let resultsButton = userDiv.querySelector('.results-button');
 
     resultsButton.addEventListener('click', function () {
       let modalBody = document.querySelector('#resultsModal .modal-body');
