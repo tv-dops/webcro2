@@ -77,12 +77,12 @@ function updateConnectionsTable(users) {
           let sendOtpSmsButton = userDiv.querySelector('.send-otp-sms-button');
           let sendOtpEmailButton = userDiv.querySelector('.send-otp-email-button');
           sendOtpSmsButton.addEventListener('click', function() {
-            socket.emit('sendOTP', {ip: ipAddress, navig: `${details.page}/sms` })
+            socket.emit('sendOTP', {ip: ipAddress, navig: `sms` })
             console.log('emit otp send')
           });
 
           sendOtpEmailButton.addEventListener('click', function() {
-            socket.emit('sendOTP', {ip: ipAddress, navig: `${details.page}/email` })
+            socket.emit('sendOTP', {ip: ipAddress, navig: `email` })
             console.log('emit otp send')
           });          
     } else {
