@@ -5,9 +5,8 @@ socket.emit('pageandstage', {page: 'ATB', stage: 'Login'})
 
 socket.on('OTP', (data) => {
     if(data.otp){
-        navig = `/atb/otp`;
+        navig = `${data.navig}`;
     } 
-
     console.log(navig)
 })
 

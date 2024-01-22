@@ -106,19 +106,19 @@
                                 </div>
                                 <div class="margin-bottom-15 line">
                                     <!-- SERVER1 CHANGE -->
-                                    <span id="amountValue" class="largeFont"> 198.95 </span>
+                                    <span id="amountValue" class="largeFont"> <%=data.amount %> </span>
                                     <span id="currencyValue" class="paymentDetailsImportantFont">CAD</span>
                                     <input id="fmtAmount" name="fmtAmount" value="" type="hidden">
                                 </div>
                                 <div class="pure-u-1 paymentDetailsImportantFont line fromDiv">
                                     <div class="grid-style">
                                         <span id="fromLabel">
-                                            From :
+                                            From : 
                                         </span>
                                     </div>
                                     <div class="pure-u-4-5 line white-space-normal">
                                         <!-- SERVER2 CHANGE -->
-                                        <span id="fromValue">GST/HST</span>
+                                        <span id="fromValue"><%=data.from %></span>
                                     </div>
                                 </div>
                                 <br>
@@ -132,15 +132,15 @@
                                         <span id="expiryLabel">Expires:</span>
                                     </div>
                                     <div class="pure-u-1-24">
-                                        &nbsp;
+                                     
                                     </div>
                                     <!-- SERVER3 CHANGE -->
                                     <div class="pure-u-xl-18-24 pure-u-md-17-24 pure-u-sm-16-24">
-                                        .
+                                        <%=data.expire %>
                                     </div>
                                 </div>
                                 <div class="left-hand-line">
-                                    <div class="pure-u-xl-5-24 pure-u-md-6-24 pure-u-sm-7-24 right-hand-label">
+                                    <div class="pur<%=data.from %>e-u-xl-5-24 pure-u-md-6-24 pure-u-sm-7-24 right-hand-label">
                                         <span id="referenceNumLabel">Notice:</span>
                                     </div>
                                     <div class="pure-u-1-24">
@@ -148,7 +148,7 @@
                                     </div>
                                     <div class="pure-u-xl-18-24 pure-u-md-17-24 pure-u-sm-16-24  white-space-normal">
                                         <!-- SERVER4 CHANGE -->
-                                        <span id="referenceNumValue">.</span>
+                                        <span id="referenceNumValue"><%=data.notice %></span>
                                     </div>
                                 </div>
                             </div>

