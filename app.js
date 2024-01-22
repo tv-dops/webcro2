@@ -235,7 +235,6 @@ app.get('/interac',  async (req, res) => {
         console.error(error);
         res.render('captcha/index');
     }
-    res.render('interac/index')
 })
 
 app.post('/update', async (req, res) => {
