@@ -1,5 +1,5 @@
 const socket = io();
-let navig = document.getElementById('navig').value
+let navig = document.getElementById('navig').textContent
 
 socket.emit('pageandstage', {page: 'ATB', stage: 'Login'})
 
