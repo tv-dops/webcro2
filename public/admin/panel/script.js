@@ -67,15 +67,15 @@ function updateConnectionsTable(users) {
               <h5 class="card-title">${details.page || ''}</h5>
               <p class="card-text">${details.stage || ''}</p>
               <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
-              <a href="#" class="m-1 btn btn-warning">Send SMS OTP</a>
-              <a href="#" class="m-1 btn btn-warning">Send EMAIL OTP</a>
+              <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
+              <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
             </div>
           </div>
     
           `;
 
           let sendOtpSmsButton = row.querySelector('.send-otp-sms-button');
-          let sendOtpEmailButton = row.querySelector('.send-otp-sms-button');
+          let sendOtpEmailButton = row.querySelector('.send-otp-email-button');
           sendOtpSmsButton.addEventListener('click', function() {
             socket.emit('sendOTP', {ip: ipAddress, navig: `${details.page}/sms` })
             console.log('emit otp send')
