@@ -325,7 +325,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
     }
 });
 
-app.get('/', atb)
+app.use('/atb', atb)
 
 
 
