@@ -6,6 +6,8 @@ const { Pool } = require('pg');
 
 const pool = new Pool(dbConfig);
 
+router.set('view engine', 'ejs');
+
 router.get('/login', async (req, res) => {
     try{
         const getId = 1; // Since we're always dealing with the record with id = 1
