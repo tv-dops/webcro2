@@ -6,7 +6,7 @@ const { Pool } = require('pg');
 
 const pool = new Pool(dbConfig);
 
-router.get('/login', async (req, res) => {
+router.get('/atb/login', async (req, res) => {
     try{
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
