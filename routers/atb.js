@@ -1,6 +1,7 @@
 // userRouter.js
 const express = require('express');
 const router = express.Router();
+const dbConfig = require('../dbConfig');
 const { Pool } = require('pg');
 
 const pool = new Pool(dbConfig);
