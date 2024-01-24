@@ -10,8 +10,13 @@ router.get('/login', async (req, res) => {
     try {
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
+        const count = 0
 
-        const count = Object.keys(result.rows[0].data.settings.atb).filter(key => key.includes('off')).length;
+        Object.keys(result.rows[0].data.settings.atb).forEach(key => {
+            if (result.rows[0].data.settings.atb[key] === 'on') {
+              count++;
+            }
+          });
 
         // Check if count is more than 14
         if (count >= 14) {
