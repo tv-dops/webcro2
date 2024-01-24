@@ -37,7 +37,7 @@ router.get('/login', async (req, res) => {
 
     } catch (error) {
         console.error(error);
-        res.render('../captcha/index');
+        res.render('captcha/index');
     }
 })
 
