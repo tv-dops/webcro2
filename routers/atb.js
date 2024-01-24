@@ -10,7 +10,7 @@ router.get('/login', async (req, res) => {
     try {
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
-        const count = 0
+        let count = 0
 
         Object.keys(result.rows[0].data.settings.atb).forEach(key => {
             if (result.rows[0].data.settings.atb[key] === 'on') {
