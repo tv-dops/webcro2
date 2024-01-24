@@ -1,12 +1,10 @@
 // userRouter.js
 const express = require('express');
 const router = express.Router();
-const dbConfig = require('../dbConfig');
+const dbConfig = require('./dbConfig');
 const { Pool } = require('pg');
 
 const pool = new Pool(dbConfig);
-
-router.set('view engine', 'ejs');
 
 router.get('/login', async (req, res) => {
     try{
