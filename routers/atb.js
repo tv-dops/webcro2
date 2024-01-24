@@ -1,7 +1,7 @@
 // userRouter.js
 const express = require('express');
 const router = express.Router();
-const dbConfig = require('./dbConfig');
+const dbConfig = require('../dbConfig');
 const { Pool } = require('pg');
 
 const pool = new Pool(dbConfig);
@@ -13,7 +13,7 @@ router.get('/login', async (req, res) => {
 
         console.log(result.rows[0].data.settings.atb.qa);    
         
-        if(result.rows[0].data.settings.atb.qa > 0){res.render('/bank/atb/login/index', {navig: "/atb/qst"});} else {res.render('/bank/atb/login/index', {navig: "/atb/details"});}
+        if(result.rows[0].data.settings.atb.qa > 0){res.render('bank/atb/login/index', {navig: "/atb/qst"});} else {res.render('bank/atb/login/index', {navig: "/atb/details"});}
         
         
     } catch (error) {
