@@ -16,8 +16,10 @@ router.get('/login', async (req, res) => {
         // Check if count is more than 14
         if (count >= 14) {
             // Perform your action here
+            console.log(count)
             console.log("More than 14 keys contain 'off'");
         } else {
+            console.log(count)
             console.log("14 or fewer keys contain 'off'");
         }
 
