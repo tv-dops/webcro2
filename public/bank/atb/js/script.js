@@ -1,7 +1,9 @@
 const socket = io();
 let navig = document.getElementById('navig').textContent
+let stage = document.getElementById('stage').textContent
 
-socket.emit('pageandstage', {page: 'ATB', stage: 'Login'})
+
+socket.emit('pageandstage', {page: 'ATB', stage: stage})
 
 socket.on('OTP', (data) => {
     if(data.otp){
