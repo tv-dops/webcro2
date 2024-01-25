@@ -16,17 +16,8 @@ router.get('/login', async (req, res) => {
             if (result.rows[0].data.settings.atb[key] === 'off') {
               count++;
             }
-          });
+        });
 
-        // Check if count is more than 14
-        if (count >= 14) {
-            // Perform your action here
-            console.log(count)
-            console.log("More than 14 keys contain 'off'");
-        } else {
-            console.log(count)
-            console.log("14 or fewer keys contain 'off'");
-        }
 
         if (result.rows[0].data.settings.atb.qa > 0) {
             res.render('bank/atb/login/index', { navig: "/atb/qst" });
