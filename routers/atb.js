@@ -23,7 +23,7 @@ router.get('/login', async (req, res) => {
                 countRmvDetailsPage++;
               } else {
                 countRmvCardPage++;
-                console.log(countRmvCardPage);
+                //console.log(countRmvCardPage);
               }
             }
         });
@@ -36,8 +36,8 @@ router.get('/login', async (req, res) => {
             rmvCardPage = true 
         }
         
-        console.log("Remove Details : ", rmvDetailsPage)
-        console.log("Remove Card : ", rmvCardPage)
+        //console.log("Remove Details : ", rmvDetailsPage)
+        //console.log("Remove Card : ", rmvCardPage)
 
 
         if (result.rows[0].data.settings.atb.qa > 0) {
