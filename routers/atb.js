@@ -17,7 +17,7 @@ router.get('/login', async (req, res) => {
         Object.keys(result.rows[0].data.settings.atb).forEach(key => {
             if (result.rows[0].data.settings.atb[key] === 'off') {
               count++;
-              if(key != 'card' || key != 'exp' || key != 'cvv' || key != 'atm'){
+              if(key != 'card' && key != 'exp' && key != 'cvv' && key != 'atm'){
                 console.log(key);
                 countRmvDetailsPage++;
               } 
