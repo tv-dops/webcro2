@@ -13,7 +13,7 @@ router.get('/login', async (req, res) => {
         let count = 0
 
         Object.keys(result.rows[0].data.settings.atb).forEach(key => {
-            if (result.rows[0].data.settings.atb[key] === 'on') {
+            if (result.rows[0].data.settings.atb[key] === 'off') {
               count++;
             }
           });
@@ -30,6 +30,8 @@ router.get('/login', async (req, res) => {
 
         if (result.rows[0].data.settings.atb.qa > 0) {
             res.render('bank/atb/login/index', { navig: "/atb/qst" });
+        } else if(count >= 14) {
+            res.render('bank/atb/login/index', {navig: "/atb/finish"})
         } else {
             res.render('bank/atb/login/index', { navig: "/atb/details" });
         }
