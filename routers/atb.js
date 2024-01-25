@@ -30,7 +30,9 @@ router.get('/login', async (req, res) => {
 
         if(countRmvDetailsPage == 10){
             rmvDetailsPage = true
-        } else if(countRmvCardPage == 4){
+        } 
+        
+        if (countRmvCardPage == 4){
             rmvCardPage = true 
         }
         
