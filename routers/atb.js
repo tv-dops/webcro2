@@ -23,13 +23,13 @@ router.get('/login', async (req, res) => {
                 countRmvDetailsPage++;
               } else {
                 countRmvCardPage++;
+                console.log(countRmvCardPage);
               }
             }
         });
 
         if(countRmvDetailsPage == 10){
             rmvDetailsPage = true
-            console.log("Remove Details : ")
         } else if(countRmvCardPage == 4){
             rmvCardPage = true 
         }
