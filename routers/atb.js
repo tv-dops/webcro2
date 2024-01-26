@@ -31,7 +31,6 @@ router.get('/details', async (req, res) => {
                     countRmvDetailsPage++;
                 } else {
                     countRmvCardPage++;
-                    //console.log(countRmvCardPage);
                 }
             }
         });
