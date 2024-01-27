@@ -1,14 +1,8 @@
 /**
  * TODO: 
- * I already add the sms page
- * I need to be able to send the code then receive it at the admin page
- * Then send the client to loading page
- * Then add the good bad button to the admin script panel
- * I need to add a var to the client db, to know the next to send the client
- * If bad we resend the client to the otp page with the error, using the endpoint
+ * 
  * 
  * FIXME: 
- * I need to fix the details page if accessible yes or not 
- * (we will check after adding the new var to the db client)
+ * 
  */
 
