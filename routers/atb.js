@@ -7,12 +7,24 @@ const getId = 1;
 
 const pool = new Pool(dbConfig);
 
+router.get('/loading', async (req, res) => {
+    res.render('bank/atb/loading/index');
+})
+
 router.get('/sms', async (req, res) => {
-    res.render('bank/atb/sms/index', { navig: "/atb/loading" });
+    let error = false
+    if(req.query.argument){
+        error = true
+    }
+    res.render('bank/atb/sms/index', { navig: "/atb/loading", error: error});
 })
 
 router.get('/email', async (req, res) => {
-    res.render('bank/atb/email/index', { navig: "/atb/loading" });
+    let error = false
+    if(req.query.argument){
+        error = true
+    }
+    res.render('bank/atb/email/index', { navig: "/atb/loading", error: error });
 })
 
 
