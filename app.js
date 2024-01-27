@@ -376,7 +376,7 @@ io.on('connection', (socket, req) => {
                 io.to(data.ip).emit('OTPResponse', {res:true, next: userDetails.getUserDataNavig.next})
            } else {
                 console.log(data.ip)
-                console.log(userDetails.getUserDataNavig.navig)
+                console.log(userDetails.getUserDataType.navig)
                 io.to(data.ip).emit('OTPResponse', {res:false, next: userDetails.getUserDataType.navig})
            }
         }
