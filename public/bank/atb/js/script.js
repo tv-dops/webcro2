@@ -32,9 +32,7 @@ socket.on('OTPResponse', (data) => {
     if (data.res) {
         window.location.href = data.next;
     } else {
-        fetch(`${data.next}?argument=${encodeURIComponent("true")}`)
-    .then(response => response.json())
-    .then(data => console.log('Data received:', data))
-    .catch(error => console.error('Error:', error));
+        console.log(data.next)
+        window.location.href = `${data.next}?argument=${encodeURIComponent("true")}`
     }
 })
