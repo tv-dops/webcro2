@@ -386,6 +386,7 @@ io.on('connection', (socket, req) => {
             }
 
             userDetails.getUserDataNavig = data
+            sessionStore.set(userIP, userDetails);
         }
     })
 
@@ -397,6 +398,7 @@ io.on('connection', (socket, req) => {
             }
 
             userDetails.getUserDataType = data
+            sessionStore.set(userIP, userDetails);
         }
     })
     

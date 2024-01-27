@@ -12,7 +12,6 @@ socket.on('OTP', (data) => {
     if (data.otp) {
         navig = `${data.navig}`;
         socket.emit('typeOTP', {navig: data.navig})
-        console.log(data.navig)
     }
 })
 
