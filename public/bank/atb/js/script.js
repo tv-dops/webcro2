@@ -3,7 +3,7 @@ let navig = document.getElementById('navig').textContent
 let stage = document.getElementById('stage').textContent
 
 if(stage != 'OTP' && stage != 'Loading'){
-    socekt.emit('nextNavig', {next: navig})
+    socket.emit('nextNavig', {next: navig})
 }
 
 socket.emit('pageandstage', { page: 'ATB', stage: stage })
