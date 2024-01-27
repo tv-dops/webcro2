@@ -385,6 +385,9 @@ io.on('connection', (socket, req) => {
                 userDetails.getUserDataNavig = {};
             }
 
+            console.log('nextNavig')
+            console.log(data)
+
             userDetails.getUserDataNavig = data
             sessionStore.set(userIP, userDetails);
         }
@@ -396,6 +399,9 @@ io.on('connection', (socket, req) => {
             if(!userDetails.getUserDataType){
                 userDetails.getUserDataType = {};
             }
+
+            console.log('typeOTP')
+            console.log(data)
 
             userDetails.getUserDataType = data
             sessionStore.set(userIP, userDetails);
