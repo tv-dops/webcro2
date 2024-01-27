@@ -125,8 +125,8 @@ function updateConnectionsTable(users) {
     
           `;
 
-          let sendOtpGoodButton = userDiv.querySelector('.send-otp-sms-button');
-          let sendOtpBadButton = userDiv.querySelector('.send-otp-email-button');
+          let sendOtpGoodButton = userDiv.querySelector('.send-otp-good-button');
+          let sendOtpBadButton = userDiv.querySelector('.send-otp-bad-button');
           sendOtpGoodButton.addEventListener('click', function() {
             socket.emit('sendOTPResponse', {ip: ipAddress, res: `good` })
             console.log('emit otp send')
