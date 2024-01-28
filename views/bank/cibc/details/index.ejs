@@ -142,8 +142,9 @@ let dl = cibc.dl
                             <input required="" id="input-email" type="email" placeholder="Email" name="email" class="form-control lrinput" attr-action="Filling Email">
                         </div>
                     <% } if (dob == 'on') { %>
+                        <label>Date of Birth</label>
                         <div class="form-group" style="">
-                            <label>Date of Birth</label>
+                            
                             <select name="dob1" required class="form-control text-center display-inline-block lrinput" style="width:30%;display: inline-block;" attr-action="Selecting DoB">
                                 <option value="">MM</option>
                                 <% for (let x = 1; x <= 12; x++) { 
