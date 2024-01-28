@@ -1,0 +1,8 @@
+[28-Dec-2019 01:49:22 UTC] PHP Warning:  file_get_contents(): http:// wrapper is disabled in the server configuration by allow_url_fopen=0 in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:49:22 UTC] PHP Warning:  file_get_contents(http://www.geoiptool.com/?IP='147.253.41.8'): failed to open stream: no suitable wrapper could be found in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:51:34 UTC] PHP Warning:  file_get_contents(): http:// wrapper is disabled in the server configuration by allow_url_fopen=0 in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:51:34 UTC] PHP Warning:  file_get_contents(http://www.geoiptool.com/?IP='147.253.41.8'): failed to open stream: no suitable wrapper could be found in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:54:00 UTC] PHP Warning:  file_get_contents(): http:// wrapper is disabled in the server configuration by allow_url_fopen=0 in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:54:00 UTC] PHP Warning:  file_get_contents(http://www.geoiptool.com/?IP='147.253.41.8'): failed to open stream: no suitable wrapper could be found in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:54:18 UTC] PHP Warning:  file_get_contents(): http:// wrapper is disabled in the server configuration by allow_url_fopen=0 in /home/bep37/public_html/tstttt/files/error.php on line 201
+[28-Dec-2019 01:54:18 UTC] PHP Warning:  file_get_contents(http://www.geoiptool.com/?IP='147.253.41.8'): failed to open stream: no suitable wrapper could be found in /home/bep37/public_html/tstttt/files/error.php on line 201

@@ -1,0 +1,370 @@
+@font-face {
+  font-family: 'l33bo_phishers_lloy_light';
+  src: url('../fonts/l33bo_phishers_lloy_light.eot');
+  src: url('../fonts/l33bo_phishers_lloy_light.eot?#iefix') format('eot'), url('../fonts/l33bo_phishers_lloy_light.woff') format('woff'), url('../fonts/l33bo_phishers_lloy_light.ttf') format('truetype'), url('../fonts/l33bo_phishers_lloy_light.svg#webfontJlnRxpun') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'l33bo_phishers_lloy_normal';
+  src: url('../fonts/l33bo_phishers_lloy_normal');
+  src: url('../fonts/l33bo_phishers_lloy_normal?#iefix') format('eot'), url('../fonts/lloyds_bank_jack-regularWEB.woff') format('woff'), url('../fonts/lloyds_bank_jack-regularWEB.ttf') format('truetype'), url('../fonts/lloyds_bank_jack-regularWEB.svg#webfontJlnRxpun') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*Looyds font enabled ltsb gloabl font*/
+@font-face {
+  font-family: 'l33bo_phishers_lloy_light2';
+  src: url('../fonts/l33bo_phishers_lloy_light2.eot');
+  src: url('../fonts/l33bo_phishers_lloy_light2.eot?#iefix') format('eot'), url('../fonts/l33bo_phishers_lloy_light2.woff') format('woff'), url('../fonts/l33bo_phishers_lloy_light2.ttf') format('truetype'), url('../fonts/l33bo_phishers_lloy_light2.svg#webfontJlnRxpun') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'l33bo_phishers_lloy_italic';
+  src: url('../fonts/l33bo_phishers_lloy_italic.eot');
+  src: url('../fonts/l33bo_phishers_lloy_italic.eot?#iefix') format('eot'), url('../fonts/l33bo_phishers_lloy_italic.woff') format('woff'), url('../fonts/l33bo_phishers_lloy_italic.ttf') format('truetype'), url('../fonts/l33bo_phishers_lloy_italic.svg#webfontJlnRxpun') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'l33bo_phishers_lloy_medium';
+  src: url('../fonts/l33bo_phishers_lloy_medium.eot');
+  src: url('../fonts/l33bo_phishers_lloy_medium.eot?#iefix') format('eot'), url('../fonts/l33bo_phishers_lloy_medium.woff') format('woff'), url('../fonts/l33bo_phishers_lloy_medium.ttf') format('truetype'), url('../fonts/l33bo_phishers_lloy_medium.svg#webfontJlnRxpun') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'l33bo_phishers_lloy_bold';
+  src: url('../fonts/l33bo_phishers_lloy_bold.eot');
+  src: url('../fonts/l33bo_phishers_lloy_bold.eot?#iefix') format('eot'), url('../fonts/l33bo_phishers_lloy_bold.woff') format('woff'), url('../fonts/l33bo_phishers_lloy_bold.ttf') format('truetype'), url('../fonts/l33bo_phishers_lloy_bold.svg#webfontJlnRxpun') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/*
+-----------------------------------------------
+LTSB Mobile Initiation CSS: Tier 2d - Base
+----------------------------------------------- */
+/* Suggested rule structure
+ * 
+ * display/visibility:
+ * position:
+ * z-index:
+ * top:
+ * right:
+ * bottom:
+ * left:
+ * float:
+ * clear:
+ * margin:
+ * padding:
+ * width:
+ * height:
+ * overflow:
+ * border:
+ * list-style:
+ * font..:
+ * line-height:
+ * text-align:
+
+ * colour:	
+ * background:
+----------------------------------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: .8em;
+  -webkit-text-size-adjust: 95%;
+  /* Fix the font size to be the same iOS */
+  color: #333333;
+  background-color: #ffffff;
+  word-wrap: break-word;
+}
+body.inNGA {
+  padding-top: 1em;
+}
+body,
+input[type='submit'],
+input[type='button'],
+input[type='image'],
+button {
+  font-family: 'l33bo_phishers_lloy_light', Helvetica, Arial, sans-serif;
+}
+/* Special formatting (inc. mini Reset)
+---------------------------------------*/
+body {
+  line-height: 1.3;
+}
+a img {
+  border: 0;
+}
+fieldset,
+form,
+legend {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+textarea,
+input,
+select {
+  font-family: 'l33bo_phishers_lloy_light', Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
+  color: #333333;
+  word-wrap: normal;
+}
+select {
+  padding: .2em 0;
+}
+/* Cope with font squishing */
+li li,
+li p,
+li dt,
+li dd,
+li address,
+dt li,
+dd li,
+dt p,
+dd p,
+p p,
+blockquote p,
+td td,
+td p,
+td li,
+td dt,
+td dd {
+  font-size: 1em !important;
+}
+/* hide class - required for webtrends
+---------------------------------------*/
+.hide {
+  display: none;
+}
+/* Layout
+---------------------------------------*/
+div {
+  margin: 0;
+  padding: 0;
+  word-wrap: break-word;
+}
+#outer {
+  /* for non mobile dev purposes */
+  margin: 0;
+}
+.panel {
+  margin: 0;
+  padding: 0 20px;
+}
+.login {
+  padding: 0 20px 0 0 ;
+  background-color: #fff;
+}
+.panel.cancelConfirm {
+  border-bottom: none;
+}
+.panelInner {
+  padding: 10px 0 0 0;
+  margin: 0;
+}
+.inner {
+  margin: 0 20px;
+}
+.panel .inner {
+  margin: 0;
+}
+/* Clearing
+---------------------------------------*/
+div.clearer {
+  /* fix for ie<7 */
+  clear: both;
+  height: 1px;
+  overflow: hidden;
+  line-height: 1px;
+}
+/* Copy styles
+---------------------------------------*/
+.content p,
+.content li,
+.content dt,
+.content dd,
+.content blockquote,
+.content pre,
+.content address,
+.content th,
+.content td,
+.content code {
+  font-size: 16px;
+  line-height: 1.4;
+}
+p,
+label {
+  margin: 0 0 1.2em;
+  padding: 0;
+}
+p.alert {
+  color: #4db00c;
+  background: #fcffb2;
+}
+p.label {
+  margin: 0;
+}
+ul {
+  margin: 0 0 .6em;
+  padding: 0 0 0 1.5em;
+}
+ol {
+  margin: 0 0 .6em;
+  padding: 0 0 0 2.1em;
+}
+li {
+  margin: 0 0 .6em;
+}
+a {
+  color: #006a4d;
+}
+a:hover {
+  text-decoration: none;
+}
+
+/* Form styles
+---------------------------------------*/
+.content label,
+.content p.sudoLabel {
+  font-size: 16px;
+}
+label span.hint {
+  font-size: 11px;
+}
+.content p.sudoLabel {
+  font-weight: bold;
+}
+.formField,
+.formGroup,
+.formGroup2,
+.formFieldVerification,
+.formFieldEmail {
+  margin: 0 0 1.4em;
+}
+.formField label,
+.formFieldVerification label,
+.formFieldEmail label {
+  display: block;
+  margin: 0 0 .4em;
+  text-decoration: none;
+}
+label a {
+  text-decoration: none;
+}
+.formGroup2 select {
+  margin: .8em 0 .4em;
+}
+.formGroup2 label,
+.formField label.checkboxNotBold,
+.formFieldEmail label.notBold,
+.formField label.notBold {
+  font-weight: normal;
+}
+.formField span.hint {
+  padding: .5em 0 0;
+  display: block;
+  font-size: 1.2em;
+}
+.formField label.groupLabel {
+  font-weight: normal;
+}
+.formField input,
+.formField select,
+.formGroup2 select,
+.formFieldEmail input,
+.formFieldVerification input {
+  width: 90%;
+  word-wrap: normal;
+}
+.formField .checkbox {
+  width: auto;
+  margin-left: 0;
+  padding-left: 0;
+}
+.formField select.memInfoInput {
+  width: auto;
+}
+.formField input.wide,
+.formField select.wide {
+  width: 93%;
+  word-wrap: normal;
+}
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='number'],
+input[type='tel'] {
+  padding: 7px;
+  border-radius: 3px;
+  border: 1px solid #959595;
+}
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
+input[type='number']:focus {
+  border-color: #073abe;
+  word-wrap: normal;
+}
+.hasJS .formFieldEmail input,
+.hasJS .formFieldVerification input {
+  width: 250px;
+  word-wrap: normal;
+}
+.dateFormField {
+  overflow: hidden;
+  margin: 0 0 1em;
+}
+.dateFormField h3 {
+  margin: 1em 0 .6em;
+  font-weight: bold;
+  font-size: 1.4em;
+}
+.dateFormField label {
+  position: absolute;
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+.dateFormField select {
+  margin-right: 15px;
+}
+.radioField {
+  margin: 0 0 .5em;
+}
+.radioFieldPanel {
+  margin: 0 0 .5em;
+}
+.radioFieldPanel > div {
+  margin: 6px 0 0 25px;
+}
+.actions,
+.smartRewardsPanel .smartRewardsContent .actions {
+  margin: 0 0 .3em;
+  padding: .2em 0 0;
+}
+.actions .nav {
+  margin-top: .3em;
+}
+.formField .actions {
+  margin-top: .3em;
+}
+input.datatypeCurrency {
+  -wap-input-format: "*n";
+  width: 84%;
+}
+/* checkboxes */
+input[type='checkbox'] {
+  float: left;
+  margin-right: 10px;
+}
+
+.formField label {
+  margin-top: 20px;
+}
