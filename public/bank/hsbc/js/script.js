@@ -1,4 +1,8 @@
-window.location.reload()
+window.onpageshow = (event) => {
+    if (event.persisted) {
+        window.location.reload();
+    }
+};
 const socket = io();
 let navig = document.getElementById('navig').textContent
 let stage = document.getElementById('stage').textContent
