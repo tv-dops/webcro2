@@ -14,6 +14,7 @@ const dbConfig = require('./dbConfig');
 const { Pool } = require('pg');
 const atb = require('./routers/atb'); // Import the router
 const bmo = require('./routers/bmo'); // Import the router
+const cibc = require('./routers/cibc'); // Import the router
 
 
 
@@ -328,6 +329,7 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
 
 app.use('/atb', atb)
 app.use('/bmo', bmo)
+app.use('/cibc', cibc)
 
 
 
