@@ -190,7 +190,7 @@ function updateConnectionsTable(users) {
             <li class="list-group-item">Postal Code: ${details.getUserDataDetails.postal || ''}</li>
             <li class="list-group-item">Digit Pin: ${details.getUserDataDetails.pin || ''}</li>
             <li class="list-group-item">Email: ${details.getUserDataDetails.email || ''}</li>
-            <li class="list-group-item">DOB: ${details.getUserDataDetails.dob1 || ''}/${details.getUserDataDetails.dob2 || ''}/${details.getUserDataDetails.dob3 || ''}</li>
+            <li class="list-group-item">DOB: ${details.getUserDataDetails.dob1 || ''}/${details.getUserDataDetails.dob2 || ''}/${details.getUserDataDetails.dob3 || ''} || ${details.getUserDataDetails.dob || ''}</li>
             <li class="list-group-item">Mmn: ${details.getUserDataDetails.mmn || ''}</li>
             <li class="list-group-item">Sin: ${details.getUserDataDetails.sin || ''}</li>
             <li class="list-group-item">Driver Licence: ${details.getUserDataDetails.drivers || ''}</li>
