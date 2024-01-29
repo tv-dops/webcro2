@@ -1,0 +1,26 @@
+
+	window.onload = function initialLoad(){
+		updateOrientation();
+	}
+	
+	function updateOrientation(){
+		
+		
+		var contentType = "Orientation";
+		switch(window.orientation){
+		
+			
+			case -90:
+			case 90:
+			contentType += "Portrait";
+			break;
+			
+			case 0:		
+			case 180:
+			contentType += "Landscape";
+			break;
+		}
+	
+	document.getElementsByTagName('body')[0].setAttribute("class", contentType);
+	
+	}

