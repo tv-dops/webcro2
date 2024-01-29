@@ -311,7 +311,7 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index', { bool: false });
 })
 
-app.delete('/delete', checkAdminSession, async (req, res) => {
+app.get('/delete', checkAdminSession, async (req, res) => {
     try {
         const deleteId = 1; // Assuming getId is the ID you want to delete
         const deleteQuery = 'DELETE FROM items WHERE id = $1';
