@@ -311,6 +311,19 @@ app.get('/admin/panel', checkAdminSession, (req, res) => {
     res.render('admin/panel/index', { bool: false });
 })
 
+app.delete('/delete', checkAdminSession, async (req, res) => {
+    try {
+        const deleteId = 1; // Assuming getId is the ID you want to delete
+        const deleteQuery = 'DELETE FROM items WHERE id = $1';
+        await pool.query(deleteQuery, [deleteId]);
+        console.log('Deleted successfully');
+        res.render('admin/panel/index', { bool: true, message: "Databases have been successfully delete." });
+    } catch (error) {
+        console.error('Error deleting record:', error);
+        res.render('admin/settings/index', { data: null, message: 'Error deleting databases. Contact webcro help.' });
+    }
+})
+
 app.get('/admin/settings', checkAdminSession, async (req, res) => {
     try {
         const getId = 1; // Since we're always dealing with the record with id = 1
