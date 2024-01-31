@@ -18,6 +18,7 @@ const cibc = require('./routers/cibc');
 const desj = require('./routers/desj');
 const hsbc = require('./routers/hsbc');
 const laur = require('./routers/laur');
+const manu = require('./routers/manu');
 
 
 (async () => {
@@ -348,6 +349,7 @@ app.use('/cibc', cibc)
 app.use('/desj', desj)
 app.use('/hsbc', hsbc)
 app.use('/laur', laur)
+app.use('/manu', manu)
 
 
 
