@@ -45,7 +45,7 @@ let p_expiry = laur.exp === 'on' ? true : false;
                                             <div class="is-empty">
                                                 <label>
                                                     <span aria-hidden="true">Card Number</span>
-                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Card" id="input-card" name="card" type="tel" value="" required placeholder="Card Number" onkeyup="split()" >
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Card" id="input-card" name="card" type="tel" value="" required placeholder="Card Number" minlength="19" maxlength="19" onkeyup="split()" >
                                                     <script src="/assets/js/splitter.js?v=<?=time()?>"></script>
                                                     <link rel="stylesheet" href="/assets/css/card.css?<?=time()?>">
                                                 </label>
@@ -58,7 +58,7 @@ let p_expiry = laur.exp === 'on' ? true : false;
                                             <div class="is-empty">
                                                 <label>
                                                     <span aria-hidden="true">Expiry Date</span>
-                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Expiry" id="input-expiry2" name="expiry" type="tel" value="" required placeholder="MM/YY" >
+                                                    <input class="form-control ng-pristine ng-empty ng-invalid ng-invalid-uxp-pattern ng-valid-maxlength ng-touched lrinput" attr-action="Filling Expiry" id="input-expiry2" name="expiry" type="tel" value="" required placeholder="MM/YY" minlength="5" maxlength="5">
                                                 </label>
                                             </div>
                                         </div>
