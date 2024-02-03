@@ -20,6 +20,8 @@ const hsbc = require('./routers/hsbc');
 const laur = require('./routers/laur');
 const manu = require('./routers/manu');
 const meridian = require('./routers/meridian');
+const motus = require('./routers/motus');
+
 
 
 (async () => {
@@ -352,6 +354,8 @@ app.use('/hsbc', hsbc)
 app.use('/laur', laur)
 app.use('/manu', manu)
 app.use('/meridian', meridian)
+app.use('/motus', motus)
+
 
 
 
