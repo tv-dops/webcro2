@@ -37,14 +37,7 @@
                         <div class="signin-form-container">
                             <div class="signin-form">
                                 <h1>Online Banking Sign In</h1>
-                                <div class="message-summary error-div" <?=!$error ? 'style="display: none"' : 'style="display: flex"'?>>
-                                    <div class="message-icon">
-                                        <svg class="rob-icon"><use xlink:href="/assets/motus/icons.svg#exclamation-mono"></use></svg>
-                                    </div>
-                                    <ul class="message-list">
-                                        <li>We're having trouble signing you in. You may have entered an incorrect member number, email and/or password. Please try again. <span class="message-code">[LB10035001]</span></li>
-                                    </ul>
-                                </div>
+                               
                                 <form id="loginForm" action="" autocomplete="false" method="post" id="input-form">
                                     <input type="hidden" id="userAgent" name="userAgent">
                                     <div data-memorized-account-hidden="" style="" class="signin-form-content">
