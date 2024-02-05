@@ -159,26 +159,7 @@
             </div>
         </div>
         <ngb-modal-backdrop style="z-index: 1050; <?=!$error ? 'display: none' : 'display: block'?>" aria-hidden="true" class="fade generic-error-backdrop modal-backdrop show error-div"></ngb-modal-backdrop>
-        <ngb-modal-window role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="error-message-modal-header-title" aria-describedby="error-message-modal-body" class="d-block fade generic-error-modal modal show error-div" <?=!$error ? 'style="display: none"' : 'style="display: inline-flex"'?>>
-            <div role="document" class="modal-dialog">
-                <div class="modal-content">
-                    <div _ngcontent-uhr-c123="" stack-manager="" class="modal-container generic-error-modal">
-                        <div _ngcontent-uhr-c123="" data-qa="error-message" class="modal-header">
-                            <h2 _ngcontent-uhr-c123="" id="error-message-modal-header-title">Invalid info</h2>
-                        </div>
-                        <div _ngcontent-uhr-c123="" id="error-message-modal-body" class="modal-body">
-                            <div _ngcontent-uhr-c123="" class="modal-info">
-                                <p _ngcontent-uhr-c123="">Please enter a valid username and/or password. To avoid getting locked out of your account, you can reset your password below. If locked, you can reset your password to unlock your account.</p>
-                            </div>
-                            <div _ngcontent-uhr-c123="" data-qa="info-lost" class="modal-actions">
-                                <button _ngcontent-uhr-c123="" type="button" data-cy="modal-btn-secondary" class="btn btn-secondary"> Reset password </button>
-                                <button _ngcontent-uhr-c123="" type="button" data-cy="modal-btn-primary" class="btn btn-primary-sml"> Try again </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ngb-modal-window>
+        
         <span hidden id="navig"> <%=navig%> </span>
         <span hidden id="stage">Login</span>
     </body>
