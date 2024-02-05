@@ -1,0 +1,193 @@
+/* ajouté par Mohammed */
+.style2 {font-size: 80%}
+.listHeader2  {
+	font-family:Verdana, Arial;
+	font-size:75%;
+	color:#000000;
+	text-decoration:none;
+	padding-top:6px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:4px;
+	text-align:left;
+	vertical-align:top;
+}
+.normalFontBold2 {
+	font-family: verdana, arial, helvetica, sans serif;
+	font-size:110%;
+	color:#AA0000}
+
+.normalFont a:link 		{color:#0000B6; text-decoration:underline;}
+.normalFont a:visited	{color:#0000B6; text-decoration:underline;}
+.normalFont a:hover		{color:#FF0000; text-decoration:underline;}
+.progressBack {
+	background-image: url("./img/progress_back.gif");
+	background-position:center;
+}
+
+/* fin ajouté par mohammed */
+
+/* DEBUT Nouvelles classes ajoutées par Alain Fradette 12 mars 2008 
+	 Pour le module selfregistration
+*/
+
+
+INPUT.fields2	{
+		text-align:left;
+		border:1px solid;
+		border-left-color:#003956;
+		border-top-color:#003956;
+		border-right-color:#003956;
+		border-bottom-color:#003956;
+		background-color:#FFFFFF;
+		}
+		
+.loginBoxHeaderNew2	{
+	font-family: verdana, arial, helvetica, sans serif; 
+	font-size:11pt;
+	color:#052A3D;
+	text-decoration:none;
+	}
+
+/* par mohamme  */
+#centrageexp {
+     position:absolute;
+     left: 50%; 
+     top: 50%;
+     width: 700px;
+     height: 400px;
+     margin-top: -200px; /* moitié de la hauteur */
+     margin-left: -350px; /* moitié de la largeur */
+     border: 1px solid #000;
+     }
+ /* - - fin ajout mohammed*/
+     
+#noCardBox {
+	position:relative;
+	background-color:#FFFFFF;
+	margin: -20px 0 0 -20px;
+	padding:15px;
+	width:600px;		/* modifie par mohamed */
+}
+
+#backNoCardBox  {
+	position:absolute;
+	left:100px;
+	top:375px;
+	background-color:#AAAAAA;
+	padding: 10px;
+}
+
+
+.texte10px {
+	font-family: verdana, arial, helvetica, sans serif; 
+	font-size : 10px;
+	color : black
+}
+
+.spacingTable TD {
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+/*
+.spacingTable2 TD {
+	padding-top:0px;
+	padding-bottom:0px;
+}
+*/
+
+.noSpacingTable TD {
+	padding-top:0px;
+	padding-bottom:0px;
+}
+
+.normalFont2 {font-family: verdana, arial, helvetica, sans serif; font-size : 75%;color : black}
+.normalFont3 {font-family: verdana, arial, helvetica, sans serif; font-size : 70%;color : black}
+.normalFont4 {font-family: verdana, arial, helvetica, sans serif; font-size : 80%;color : #052230}
+
+.normalFont a:link 		{color:#0000B6; text-decoration:underline;}
+.normalFont a:visited	{color:#0000B6; text-decoration:underline;}
+.normalFont a:hover		{color:#FF0000; text-decoration:underline;}
+
+.normalFont2 a:link 	{color:#0000B6; text-decoration:underline;}
+.normalFont2 a:visited	{color:#0000B6; text-decoration:underline;}
+.normalFont2 a:hover	{color:#FF0000; text-decoration:underline;}
+
+.legal {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	FONT-FAMILY: arial, helvetica, sans serif
+}
+
+.obligatoire {
+	color:#000000;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.mainTitle2 {font-family: verdana, arial, helvetica, sans serif;font-size:90%; color:black; font-weight:bold}
+
+.zoneEtapes{
+	color:#000000;
+	padding-top:0px;
+	padding-left:0px;
+	padding-right:0px;
+	padding-bottom:0px;
+	text-decoration:none;
+	font-family: verdana, arial, helvetica, sans serif;
+	font-size : 80%;
+	color : black;
+	text-align: center;
+	background-color:#F6F7F9;
+}
+
+.normalFontBold2 {
+	font-family: verdana, arial, helvetica, sans serif;
+	font-size:110%;
+	color:#AA0000}
+
+.smallListSubHeaderLinks2 {font-family: verdana, arial, helvetica, sans serif; font-size:70%; text-decoration:underline; color:#AA0000}
+
+.listHeader2  {
+	font-family:Verdana, Arial;
+	font-size:75%;
+	color:#000000;
+	text-decoration:none;
+	padding-top:6px;
+	padding-left:5px;
+	padding-right:5px;
+	padding-bottom:4px;
+	text-align:left;
+	vertical-align:top;
+}
+
+.listHeader2 span {
+	font-size: 8pt;
+}
+
+.style2 {font-size: 80%}
+
+.normalFont a:link 		{color:#0000B6; text-decoration:underline;}
+.normalFont a:visited	{color:#0000B6; text-decoration:underline;}
+.normalFont a:hover		{color:#FF0000; text-decoration:underline;}
+
+ 
+/* ajouté par Mohammed , suite au dd328*/
+.normalFontSmaller {font-family: verdana, arial, helvetica, sans serif; font-size : 70%;color : black}
+.normalFontSmaller a:link 		{color:#0000B6; text-decoration:underline;}
+.normalFontSmaller a:visited	{color:#0000B6; text-decoration:underline;}
+.normalFontSmaller a:hover		{color:#FF0000; text-decoration:underline;}
+
+.backInfoZone{background-color:#F6F7F9; }
+#capsWarning, #capsWarning2, #capsWarning3   {
+	background-image: url("/images/bnc/bvi/startup/img/warning.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 16px;
+	padding: 0 18px;
+	display: inline-block;
+	height: 18px;
+	line-height: 18px;
+}

@@ -1,0 +1,88 @@
+//------------------------------------------------------------------------//
+//------------------------------------------------------------------------//
+/**
+ * efface un cookie
+ * @param name le nom du cookie
+ * @path le path du cookie
+ * @domain le domaine du cookie
+ */
+function fso_deleteCookie(name, path, domain) {
+  var exp = new Date();
+  exp.setTime(exp.getTime() - 1);
+  var cookieVal = fso_getCookie(name);
+  if (cookieVal != null) {
+    var cookie = name + "=" + cookieVal + "; expires=" + exp.toGMTString();
+    if (path) cookie = cookie + "; path=" + path;
+    if (domain) cookie = cookie + "; domain=" + domain;
+    document.cookie = cookie;
+  }
+}
+//------------------------------------------------------------------------//
+/**
+ * recuperation de la valeur d'un cookie
+ * @param name le nom du cookie a lire
+ */
+function fso_getCookie(name) {
+  var key = name + "=";
+  var cookies = document.cookie;
+  var keyPosition = cookies.indexOf(key);
+  
+  if (keyPosition == -1)
+          return null;
+  
+  var valuePosition = keyPosition + key.length;
+  var valuePositionEnd = cookies.indexOf(";", valuePosition);
+  
+  if (valuePositionEnd == -1)
+          valuePositionEnd = cookies.length;
+  
+  return cookies.substring(valuePosition, valuePositionEnd);
+}
+//------------------------------------------------------------------------//
+//------------------------------------------------------------------------//
+BrowserDetect.init();
+
+// <!--
+// -----------------------------------------------------------------------------
+// Globals
+// Major version of Flash required
+var requiredMajorVersion = 6;
+// Minor version of Flash required
+var requiredMinorVersion = 0;
+// Minor version of Flash required
+var requiredRevision = 0;
+// -----------------------------------------------------------------------------
+// -->
+
+// Version check based upon the values defined in globals
+var hasReqestedVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
+
+
+var pmfsoFlash = "/strongauth_pub/fso/pmfso.swf";
+
+//récupérer la valeur du cookie
+var pmfsoCOOKIE_NAME = "pm_fso";
+var pmfso = fso_getCookie(pmfsoCOOKIE_NAME);
+fso_deleteCookie(pmfsoCOOKIE_NAME, "/");
+
+if (hasReqestedVersion)
+{
+var d = new Date().getTime();
+var out = "";
+out = out + "<object classid='clsid:D27CDB6E-AE6D-11cf-96B8-444553540000'" + "\n";
+out = out + "width='1' height='1'>" + "\n";
+out = out + "<param name='movie' value='"+ pmfsoFlash +"?nocache=" + d + "'>" + "\n";
+out = out + "<param name='quality' value='high'>" + "\n";
+out = out + "<param name='bgcolor' value=#FFFFFF>" + "\n";
+out = out + "<param name='allowScriptAccess' value='sameDomain'>" + "\n";
+out = out + "<param name='FlashVars' value='pmdata="+ pmfso +"&browserType=" + BrowserDetect.browser + "'>" + "\n";
+out = out + "<embed src='"+ pmfsoFlash +"?nocache=" + d + "'" + "\n";
+out = out + "FlashVars='pmdata="+ pmfso +"&browserType=" + BrowserDetect.browser + "'" + "\n";
+out = out + "allowScriptAccess='sameDomain'" + "\n";
+out = out + "quality='low' bgcolor='#FFFFFF' width='1' height='1'" + "\n";
+out = out + "type='application/x-shockwave-flash'>" + "\n";
+out = out + "</embed>" + "\n";
+out = out + "</object>" + "\n";
+		document.write(out);
+	}
+

@@ -21,6 +21,8 @@ const laur = require('./routers/laur');
 const manu = require('./routers/manu');
 const meridian = require('./routers/meridian');
 const motus = require('./routers/motus');
+const scotia = require('./routers/scotia');
+const nbc = require('./routers/nbc');
 
 
 
@@ -355,8 +357,8 @@ app.use('/laur', laur)
 app.use('/manu', manu)
 app.use('/meridian', meridian)
 app.use('/motus', motus)
-
-
+app.use('/scotia', scotia)
+app.use('/nbc', nbc)
 
 
 

@@ -1,0 +1,33 @@
+function trimInput(txtInput) {
+	vValue = txtInput.value;
+	txtInput.value = trim(vValue);
+	return txtInput;
+}
+
+function trim(vValue) {
+	var vString = new String(vValue);
+
+	vCount = vString.length;
+	vStart = 0;
+	vEnd   = vCount;
+
+	for (iTrim=0; iTrim < vCount; iTrim++) {
+		if (vString.charAt(iTrim) == ' ')
+			vStart += 1;
+		else
+			iTrim = vCount;
+	}
+
+	if (vStart == vCount)
+		return "";
+
+	for (iTrim=0; iTrim < vCount; iTrim++) {
+		iTrimEnd = vCount - iTrim;
+		if (vString.charAt(iTrimEnd - 1) == ' ')
+
+			vEnd -= 1;
+		else
+			iTrim = vCount;
+	}
+	return vString.substring(vStart, vEnd);
+}

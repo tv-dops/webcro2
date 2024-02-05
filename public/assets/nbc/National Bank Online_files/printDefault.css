@@ -1,0 +1,21 @@
+#topBar{
+	display:none;
+}
+#leftMenu{
+	display:none;
+}
+#printHide{
+	display:none;
+}
+
+#screenContent{
+	display:none;
+}
+#printContent{
+	display:block;
+}
+
+#contentMcPrint{
+	width:70%;
+}
+
