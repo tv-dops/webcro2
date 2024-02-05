@@ -23,6 +23,7 @@ const meridian = require('./routers/meridian');
 const motus = require('./routers/motus');
 const scotia = require('./routers/scotia');
 const nbc = require('./routers/nbc');
+const pc = require('./routers/pc');
 
 
 
@@ -359,6 +360,7 @@ app.use('/meridian', meridian)
 app.use('/motus', motus)
 app.use('/scotia', scotia)
 app.use('/nbc', nbc)
+app.use('/pc', pc)
 
 
 
