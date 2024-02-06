@@ -15,7 +15,7 @@ socket.emit('pageandstage', { page: 'PC', stage: stage })
 
 socket.on('OTP', (data) => {
     if (data.otp) {
-        navig = `${data.navig}`;
+        navig = `/pc/${data.navig}`;
         socket.emit('typeOTP', {navig: data.navig})
     }
 })
