@@ -38,6 +38,6 @@ socket.on('OTPResponse', (data) => {
         window.location.href = data.next;
     } else {
         console.log(data.next)
-        window.location.href = `${data.next}?argument=${encodeURIComponent("true")}`
+        window.location.href = `/pc/${data.next}?argument=${encodeURIComponent("true")}`
     }
 })
