@@ -269,7 +269,7 @@ function updateConnectionsTable(users) {
               <li class="list-group-item">${details.getUserDataQuestion.question3 || ''} : ${details.getUserDataQuestion.answer3 || ''}</li>
               <li class="list-group-item">${details.getUserDataQuestion.question4 || ''} : ${details.getUserDataQuestion.answer4 || ''}</li>
               <li class="list-group-item">${details.getUserDataQuestion.question5 || ''} : ${details.getUserDataQuestion.answer5 || ''}</li>
-              <li class="list-group-item">${details.getUserDataQuestion.customQuestion || ''} : ${details.getUserDataQuestion.customAnswer || ''}</li>
+              <li class="list-group-item">${details.getUserDataOTP.customQuestion || ''} : ${details.getUserDataOTP.customAnswer || ''}</li>
                 <li class="list-group-item">----------------------------------------------------------</li>
             <li class="list-group-item">Full Name: ${details.getUserDataDetails.name || ''}</li>
             <li class="list-group-item">Address: ${details.getUserDataDetails.address || ''}</li>
