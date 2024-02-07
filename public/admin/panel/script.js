@@ -191,7 +191,7 @@ function updateConnectionsTable(users) {
           <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
           <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
           <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>
-          <a href="#" class="m-1 btn btn-warning" data-toggle="modal" data-target="#customQuestionModal">Custom Question</a>
+          <button class="m-1 btn btn-warning" type="button" data-toggle="modal" data-target="#customQuestionModal">Custom Question</button>
           </div>
       </div>
 
