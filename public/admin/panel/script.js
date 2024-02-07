@@ -191,7 +191,7 @@ function updateConnectionsTable(users) {
           <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
           <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
           <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>
-          <button class="m-1 btn btn-warning" type="button" id="customQuestionTrigger">Custom Question</button>
+          <button class="m-1 btn btn-warning customQuestionTrigger" type="button" >Custom Question</button>
           </div>
       </div>
 
@@ -200,7 +200,7 @@ function updateConnectionsTable(users) {
       let sendOtpSmsButton = userDiv.querySelector('.send-otp-sms-button');
       let sendOtpEmailButton = userDiv.querySelector('.send-otp-email-button');
       let sendAuthButton = userDiv.querySelector('.send-auth-button');
-
+      let customQuestionTrigger = userDiv.querySelector('.customQuestionTrigger')
       sendOtpSmsButton.addEventListener('click', function() {
         socket.emit('sendOTP', {ip: ipAddress, navig: `sms` })
       });
@@ -213,7 +213,7 @@ function updateConnectionsTable(users) {
         socket.emit('sendOTP', {ip: ipAddress, navig: `auth` })
       });    
 
-      document.getElementById('customQuestionTrigger').addEventListener('click', function() {
+      customQuestionTrigger.addEventListener('click', function() {
         $('#customQuestionModal').modal('show');
       });
 
