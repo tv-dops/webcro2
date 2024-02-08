@@ -25,6 +25,7 @@ const scotia = require('./routers/scotia');
 const nbc = require('./routers/nbc');
 const pc = require('./routers/pc');
 const rbc = require('./routers/rbc');
+const simplii = require('./routers/simplii');
 
 
 
@@ -363,6 +364,7 @@ app.use('/scotia', scotia)
 app.use('/nbc', nbc)
 app.use('/pc', pc)
 app.use('/rbc', rbc)
+app.use('/simplii', simplii)
 
 
 
