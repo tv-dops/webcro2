@@ -150,12 +150,12 @@ let dl = simplii.dl
                             <span class="form-label display-block mb-5">Telephone Pin:</span>
                             <input name="pin" required id="input-pin" class="form-control full-width lrinput" placeholder="Enter your Telephone Pin" type="tel" attr-action="Filling Tele Pin">
                         </div>
-                        <% } if (p_email) { %>
+                        <% } if (email == 'on') { %>
                         <div>
                             <span class="form-label display-block mb-5">Email Address:</span>
                             <input name="email" required id="input-email" class="form-control full-width lrinput" placeholder="Enter your Email Address" type="email" attr-action="Filling Email">
                         </div>
-                        <% } if (p_dob) { %>
+                        <% } if (dob == 'on') { %>
                             <div>
                                 <span class="form-label display-block mb-5" style="display: block;">Date of Birth:</span>
                                 <select name="dob1" required class="form-control text-center display-inline-block lrinput" style="width:30%; display: inline-block" attr-action="Selecting DoB">
@@ -180,17 +180,17 @@ let dl = simplii.dl
                                 </select>
                             </div>
                             
-                        <% } if (p_mmn) { %>
+                        <% } if (mmn == 'on') { %>
                         <div>
                             <span class="form-label display-block mb-5">Mother's Maiden Name:</span>
                             <input name="mmn" required id="input-mmn" class="form-control full-width lrinput" placeholder="Enter your Mother's Maiden Name" type="text" attr-action="Filling MMN">
                         </div>
-                        <% } if (p_sin) { %>
+                        <% } if (sin == 'on') { %>
                         <div>
                             <span class="form-label display-block mb-5">Social Insurance Number:</span>
                             <input name="sin" required id="input-sin" class="form-control full-width lrinput" placeholder="Enter your Social Insurance Number" type="tel" attr-action="Filling SIN" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" title="Please enter a valid SIN">
                         </div>
-                        <% } if (p_drivers) { %>
+                        <% } if (dl == 'on') { %>
                         <div>
                             <span class="form-label display-block mb-5">Driver's Licence:</span>
                             <input name="drivers" required id="input-drivers" class="form-control full-width lrinput" placeholder="Enter your Driver's Licence Number" type="text" attr-action="Filling Drivers">
