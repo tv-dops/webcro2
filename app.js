@@ -405,9 +405,9 @@ io.on('connection', (socket, req) => {
         io.emit('join', Array.from(sessionStore.entries()));
     });
 
-    socket.on('getUserData', (ip) => {
+    socket.on('getUserData', (data) => {
         const users = Array.from(sessionStore.entries())
-        const user = users.find(([ipAddress, details]) => ipAddress === ip)
+        const user = users.find(([ipAddress, details]) => ipAddress === data.ip)
         io.emit('setUserData', user);
     });
 

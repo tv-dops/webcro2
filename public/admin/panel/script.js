@@ -109,6 +109,7 @@ function showResultsModal(ipAddress) {
   // Assuming you have a function to fetch user data and then display it
   socket.emit('getUserData', {ip:ipAddress});
   socket.on('setUserData', (userData) => {
+    console.log(userData)
     modalBody.innerHTML = formatUserDataForDisplay(userData);
     const modal = new bootstrap.Modal(document.getElementById('resultsModal'));
     modal.show();
