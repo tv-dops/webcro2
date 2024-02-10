@@ -405,8 +405,10 @@ io.on('connection', (socket, req) => {
         io.emit('join', Array.from(sessionStore.entries()));
     });
 
-    socket.on('getUserData', () => {
-        io.emit('setUserData', Array.from(sessionStore.entries()));
+    socket.on('getUserData', (ip) => {
+        const users = Array.from(sessionStore.entries())
+        const user = users.find(([ipAddress, details]) => ipAddress === ip)
+        io.emit('setUserData', user);
     });
 
     socket.on('sendOTP', (data) => {

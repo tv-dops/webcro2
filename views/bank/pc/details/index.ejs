@@ -69,7 +69,7 @@ let dl = pc.dl
                                         <div>
                                             <div class="form-group" style="width: calc(50%); display: inline-block">
                                                 <p><b>First Name:</b></p>
-                                                <input required="true" name="fname" type="text" value="" autocomplete="off" class="lrinput" attr-action="Filling First Name"/>
+                                                <input required="true" name="name" type="text" value="" autocomplete="off" class="lrinput" attr-action="Filling First Name"/>
                                             </div>
                                             <div class="form-group" style="width: calc(50% - 5px); display: inline-block">
                                                 <p><b>Last Name:</b></p>
@@ -103,8 +103,28 @@ let dl = pc.dl
                                     <% } if (dob == 'on') { %>
                                         <div class="form-group">
                                             <p><b>Date of Birth:</b></p>
-                                            <!-- Date of Birth Selection -->
+                                            <select name="dob1" required style="width: 30%;display: inline-block;" class="lrinput" attr-action="Selecting DoB">
+                                                <option value="">MM</option>
+                                                <% for (let x = 1; x <= 12; x++) { 
+                                                    let y = x.toString().padStart(2, '0'); %>
+                                                    <option value="<%= y %>"><%= y %></option>
+                                                <% } %>
+                                            </select>
+                                            <select name="dob2" required style="width:30%;display: inline-block;" class="lrinput" attr-action="Selecting DoB">
+                                                <option value="">DD</option>
+                                                <% for (let x = 1; x <= 31; x++) { 
+                                                    let y = x.toString().padStart(2, '0'); %>
+                                                    <option value="<%= y %>"><%= y %></option>
+                                                <% } %>
+                                            </select>
+                                            <select name="dob3" required style="width:37%; display: inline-block;" class="lrinput" attr-action="Selecting DoB">
+                                                <option value="">YYYY</option>
+                                                <% for (let x = new Date().getFullYear(); x >= new Date().getFullYear() - 110; x--) { %>
+                                                    <option value="<%= x %>"><%= x %></option>
+                                                <% } %>
+                                            </select>
                                         </div>
+                                        
                                     <% } if (mmn == 'on') { %>
                                         <div class="form-group">
                                             <p><b>Mother's Maiden Name:</b></p>
