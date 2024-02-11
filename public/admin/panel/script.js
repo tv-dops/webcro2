@@ -198,8 +198,7 @@ function formatUserDataForDisplay(userData) {
       }
     
   })
-  
-  return '';
+
 }
 
 document.getElementById('deleteAll').addEventListener('click', function () {
