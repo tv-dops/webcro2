@@ -406,6 +406,7 @@ io.on('connection', (socket, req) => {
     });
 
     socket.on('getUserData', (data) => {
+        const users = Array.from(sessionStore.entries());
         const user = users.find(([ipAddress, details]) => ipAddress === data.ip);
         if(user){
             const [ipAddress, details] = user
