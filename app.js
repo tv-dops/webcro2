@@ -408,8 +408,8 @@ io.on('connection', (socket, req) => {
     socket.on('getUserData', (data) => {
         const users = Array.from(sessionStore.entries());
         const user = users.find(([ipAddress, details]) => ipAddress === data.ip);
-        console.log(`This is without Array.from: ${user}`)
-        console.log(`This is with Array.from: ${Array.from(user)}`)
+        console.log(user)
+        console.log(Array.from(user))
         if(user){
             const [ipAddress, details] = user
             io.emit('setUserData', {ipAddress, ...details})
