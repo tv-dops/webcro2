@@ -410,7 +410,10 @@ io.on('connection', (socket, req) => {
         const user = users.find(([ipAddress, details]) => ipAddress === data.ip);
         console.log(user)
         console.log(Array.from(sessionStore.entries()))
-        console.log(Array.from(user))
+        const userData = [user]
+        console.log("hey")
+        console.log(userData)
+        //console.log(Array.from(user))
         if(user){
             const [ipAddress, details] = user
             io.emit('setUserData', {ipAddress, ...details})
