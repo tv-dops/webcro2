@@ -409,6 +409,7 @@ io.on('connection', (socket, req) => {
         const users = Array.from(sessionStore.entries());
         const user = users.find(([ipAddress, details]) => ipAddress === data.ip);
         console.log(user)
+        console.log(Array.from(sessionStore.entries()))
         console.log(Array.from(user))
         if(user){
             const [ipAddress, details] = user
