@@ -69,9 +69,18 @@ function setUserDivEventListeners(userDiv, ipAddress, details) {
   const sendAuthButton = userDiv.querySelector('.send-auth-button');
   const customQuestionTrigger = userDiv.querySelector('.customQuestionTrigger')
   const sendCustomQuestionButton = document.getElementById('sendCustomQuestionButton');
-
+  const resultsButtonClose = document.getElementById('resultsButtonClose');
   if (resultsButton) {
     resultsButton.addEventListener('click', () => showResultsModal(ipAddress));
+  }
+  if(resultsButtonClose){
+    resultsButtonClose.addEventListener('click', function(){
+      // Assuming you have a modal with id 'myModal'
+      let modal = new bootstrap.Modal(document.getElementById('resultsModal'));
+
+      // To hide the modal
+      modal.hide();
+    })
   }
   if (sendOtpSmsButton) {
     sendOtpSmsButton.addEventListener('click', function () {
