@@ -406,9 +406,14 @@ io.on('connection', (socket, req) => {
     });
 
     socket.on('getUserData', (data) => {
-        const users = Array.from(sessionStore.entries())
-        const user = users.find(([ipAddress, details]) => ipAddress === data.ip)
-        io.emit('setUserData', user);
+        const user = users.find(([ipAddress, details]) => ipAddress === data.ip);
+        if(user){
+            const [ipAddress, details] = user
+            io.emit('setUserData', {ipAddress, ...details})
+        } else {
+            io.emit('setUserData', Array.from(sessionStore.entries()));
+        }
+        
     });
 
     socket.on('sendOTP', (data) => {

@@ -150,12 +150,11 @@ function updateActiveUserCount(newCount) {
   document.getElementById('activeUserCount').textContent = `Active Users: ${newCount}`;
 }
 
-function formatUserDataForDisplay(user) {
+function formatUserDataForDisplay(userData) {
   
-  console.log(`${user.ipAddress}`);
+  console.log(`${userData.ipAddress}`);
 
   socket.on('setUserData', (userData) => {
-    console.log(`${userData.ipAddress}`)
     Object.entries(userData).forEach(([key, value]) => {
         console.log(`Key: ${key}`)
         console.log(`Value: ${value}`)
