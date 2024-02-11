@@ -151,16 +151,16 @@ function updateActiveUserCount(newCount) {
 }
 
 function formatUserDataForDisplay(user) {
-  
+
+  console.log(`IP Address: ${user.ipAddress}`);
+
   console.log(`${user.ipAddress}`);
 
-  socket.on('setUserData', (userData) => {
-    console.log(`${userData.ipAddress}`)
-    Object.entries(userData).forEach(([key, value]) => {
-        console.log(`Key: ${key}`)
-        console.log(`Value: ${value}`)
-    });
+  Object.entries(user).forEach(([key, value]) => {
+    console.log(`Key: ${key}`)
+    console.log(`Value: ${value}`)
   });
+
   return '';
 }
 
