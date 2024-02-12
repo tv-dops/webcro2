@@ -305,11 +305,9 @@ function updateConnectionsTable(users) {
             <li class="list-group-item">OTP: ${details.getUserDataOTP.code || ''}</li>
         </ul> </div>`;
 
-              // ... Code to set modalBody.innerHTML ...
-
-              // Attach an event listener to the download button
+              
               document.getElementById('downloadButton').addEventListener('click', function () {
-                downloadUserData(details); // Assuming 'details' contains all the user data
+                downloadUserData(details); 
               });
 
 
@@ -321,7 +319,7 @@ function updateConnectionsTable(users) {
 
       })
 
-      // Show the modal
+      
       let modal = new bootstrap.Modal(document.getElementById('resultsModal'));
       modal.show();
     });

