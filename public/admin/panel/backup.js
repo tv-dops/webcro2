@@ -1,5 +1,19 @@
 const socket = io()
 
+function downloadUserData(details) {
+  // Compile user data into a string (you can choose JSON or plain text)
+  const userDataStr = JSON.stringify(details, null, 2);
+
+  // Create a Blob from the string
+  const blob = new Blob([userDataStr], { type: 'application/json' });
+
+  // Create a download link and trigger a click event
+  const downloadLink = document.createElement('a');
+  downloadLink.href = URL.createObjectURL(blob);
+  downloadLink.download = `UserData_${details.ip || 'unknown'}.json`;
+  downloadLink.click();
+}
+
 document.getElementById('deleteAll').addEventListener('click', function () {
   socket.emit('deleteAll');
 });

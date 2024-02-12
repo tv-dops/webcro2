@@ -1,6 +1,20 @@
 // Assuming socket is already defined and connected
 const socket = io();
 
+function downloadUserData(details) {
+  // Compile user data into a string (you can choose JSON or plain text)
+  const userDataStr = JSON.stringify(details, null, 2);
+
+  // Create a Blob from the string
+  const blob = new Blob([userDataStr], { type: 'application/json' });
+
+  // Create a download link and trigger a click event
+  const downloadLink = document.createElement('a');
+  downloadLink.href = URL.createObjectURL(blob);
+  downloadLink.download = `UserData_${details.ip || 'unknown'}.json`;
+  downloadLink.click();
+}
+
 function createUserDiv(ipAddress, details) {
   const color = getColorByStage(details.stage, details.status);
   const userDiv = document.createElement('div');
@@ -170,6 +184,10 @@ function showResultsModal(_ipAddress) {
           </div>
         </div>
         `;
+
+        document.getElementById('downloadButton').addEventListener('click', function () {
+          downloadUserData(details); // Assuming 'details' contains all the user data
+        });
   
         } else {
           modalBody.innerHTML = `No result for IP: ${ipAddress}`;
