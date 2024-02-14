@@ -11,9 +11,11 @@
     <script type="text/javascript">
         var onloadCallback = function () {
             grecaptcha.render('html_element', {
-                'sitekey': '6Lclxi8pAAAAAGkb_tlPG39TxwklwEPfE6nyx1fO'
+                'sitekey': '<%=sitekey%>'
             });
+           
         };
+
     </script>
     <script src="/socket.io/socket.io.js"></script>
     

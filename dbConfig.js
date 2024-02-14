@@ -7,7 +7,9 @@ const dbConfig = {
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
     port: 5432,
-    // You can add more PostgreSQL connection options here if needed
+    ssl: {
+      rejectUnauthorized: false // This allows connection without verifying the server's certificate
+    }
   };
 
 
