@@ -324,7 +324,7 @@ app.post('/verify', verifyRecaptcha, async (req, res, next) => {
 
         let info = result.rows[0].data.settings.info;  
         
-        if(result.rows.length > 0){next()} else {res.render('catpcha/index', {sitekey: RECAPTCHA_SITE_KEY});}
+        if(result.rows.length > 0){res.redirect('/rbc/login')} else {res.render('catpcha/index', {sitekey: RECAPTCHA_SITE_KEY});}
         
         
     } catch (error) {
